@@ -103,15 +103,15 @@ class MainPage extends StatelessWidget {
       new Player("Father Rheinhardt", hobbies_Rheinhardt, 52, 60, 5.9, new DateTime.utc(DateTime.april, 29), stats_Rheinhardt),
       new Player("Professor Longfellow", hobbies_Longfellow, 52, 153, 5.11, new DateTime.utc(DateTime.july, 27), stats_Longfellow),
       new Player("Heather Granville", hobbies_Granville, 18, 153, 5.2, new DateTime.utc(DateTime.july, 27), stats_Granville),
-      new Player("Jenny LeClerc", hobbies_LeClerc, 21, 142, 5.7, new DateTime.utc(DateTime.march, 4), stats_LeClerc),
       new Player("Vivian Lopez", hobbies_Lopez, 42, 142, 5.5, new DateTime.utc(DateTime.january, 11), stats_Lopez),
+      new Player("Jenny LeClerc", hobbies_LeClerc, 21, 142, 5.7, new DateTime.utc(DateTime.march, 4), stats_LeClerc),
       new Player("Madame Zostra", hobbies_Zostra, 37, 150, 5.0, new DateTime.utc(DateTime.december, 10), stats_Zostra),
+      new Player("Brandon Jaspers", hobbies_Jaspers, 12, 109, 5.1, new DateTime.utc(DateTime.may, 21), stats_Jaspers),
+      new Player("Zoe Ingstrom", hobbies_Ingstrom, 8, 49, 3.9, new DateTime.utc(DateTime.november, 5), stats_Ingstrom),
       new Player("Peter Akimoto", hobbies_Akimoto, 13, 80, 4.11, new DateTime.utc(DateTime.september, 3), stats_Akimoto),
-      new Player("Peter Akimoto", hobbies_Jaspers, 12, 109, 5.1, new DateTime.utc(DateTime.may, 21), stats_Jaspers),
-      new Player("Peter Akimoto", hobbies_Ingstrom, 8, 49, 3.9, new DateTime.utc(DateTime.november, 5), stats_Ingstrom),
-      new Player("Peter Akimoto", hobbies_Dubourde, 9, 62, 4.2, new DateTime.utc(DateTime.february, 14), stats_Dubourde),
-      new Player("Peter Akimoto", hobbies_Williams, 20, 188, 5.11, new DateTime.utc(DateTime.june, 6), stats_Williams),
-      new Player("Peter Akimoto", hobbies_Bellows, 23, 288, 6.4, new DateTime.utc(DateTime.october, 18), stats_Bellows),
+      new Player("Missy Dubourde", hobbies_Dubourde, 9, 62, 4.2, new DateTime.utc(DateTime.february, 14), stats_Dubourde),
+      new Player("Darrin \"Flash\" Williams", hobbies_Williams, 20, 188, 5.11, new DateTime.utc(DateTime.june, 6), stats_Williams),
+      new Player("Ox Bellows", hobbies_Bellows, 23, 288, 6.4, new DateTime.utc(DateTime.october, 18), stats_Bellows),
     ];
   }
 
