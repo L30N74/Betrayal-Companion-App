@@ -1,5 +1,6 @@
 import 'package:betrayalcompanionapp/GameLogic/Player.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
+import 'package:betrayalcompanionapp/Globals/Globals.dart';
 import 'package:betrayalcompanionapp/Globals/NavBar.dart';
 import 'package:betrayalcompanionapp/main.dart';
 import 'package:flutter/material.dart';
@@ -24,24 +25,30 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       color: Colors.black,
-      home: SafeArea(
-        child: DefaultTabController(
-          length: characters_copy.length,
-          child: Scaffold(
-            backgroundColor: Color(0xff5B5B5B),
-            body:
-              Column(
+      home: Scaffold(
+        body: SafeArea(
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/background.png"),
+                  fit: BoxFit.cover
+              ),
+            ),
+            child: DefaultTabController(
+              length: characters_copy.length,
+              child: Column(
                 children: [
                   Header("CHARACTER SELECTION"),
                   SizedBox(height: 10),
                   Container(
-                    height: 400,
+                    height: 650,
                     child: TabBarView(
                       children: characters_copy.map((player) => CreateCharacterPage(player)).toList(),
                     ),
                   ),
-                ]
+                ],
               ),
+            ),
           ),
         ),
       ),
@@ -53,7 +60,6 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
     String imagePath = "assets/images/" + nameSplits[nameSplits.length-1]  + ".png";
 
     return Container(
-      color: Color(0xff5B5B5B),
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
@@ -68,20 +74,27 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
               CreateStatField("Sanity", player.stats.sanity, player.stats.sanityDefaultIndex)
             ],
           ),
-          SizedBox(height: 50),
-          Text("Hobbies: " + player.hobbies, style: TextStyle(color: Colors.white, fontSize: 20),),
+          SizedBox(height: 10),
+          Text(player.name, style: characterStatsTextStyle,),
+          Text("Hobbies: " + player.hobbies, style: characterStatsTextStyle,),
           SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Birthday: " + player.birthday.month.toString() + " " + player.birthday.day.toString(),
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              Text("Birthday: " + player.birthday.day.toString() + "." + player.birthday.month.toString(),
+                  style: characterStatsTextStyle),
               Text("Weight: " + player.weight.toString() +  "lbs",
-                  style: TextStyle(color: Colors.white, fontSize: 20)),
+                  style: characterStatsTextStyle),
             ],
           ),
           SizedBox(height: 20),
-          Text("Age: " + player.age.toString(), style: TextStyle(color: Colors.white, fontSize: 20)),
+          Text("Age: " + player.age.toString(), style: characterStatsTextStyle),
+          SizedBox(height: 20),
+          RaisedButton(
+            child: Text("Pick", style: TextStyle(fontSize: 24, color: Colors.black)),
+            onPressed: () {
+              // TODO: Implement picking of characters
+            })
         ],
       ),
     );
@@ -91,22 +104,23 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
     return Column(
       children: [
         Text(statName, style: TextStyle(fontSize: 16, color: Colors.white)),
-        Column(
-          children: []//CreateStatNumbers(list, statDefaultIndex),
+        Container(
+          height: 180,
+          width: 50,
+          child: Column(
+            children: CreateStatNumbers(list, statDefaultIndex).toList(),
+          ),
         )
       ],
     );
   }
 
-  CreateStatNumbers(List<int> list, int statDefaultIndex){
-    var statFields = <TextField>[];
-    var textEditingControllers = <TextEditingController>[];
+  List<Text> CreateStatNumbers(List<int> list, int statDefaultIndex){
+    var statFields = <Text>[];
 
     for(int i = 0; i < list.length; i++) {
-      var textEditingController = new TextEditingController(text: list[i].toString());
-      textEditingControllers.add(textEditingController);
-      Color color = (i == statDefaultIndex) ? Color.fromRGBO(96,217,104, 100) : Colors.white;
-      statFields.add(new TextField(controller: textEditingController, style: TextStyle(color: color, fontSize: 16)));
+      Color color = (i == statDefaultIndex) ? Color(0xff57C138) : Colors.white;
+      statFields.add(new Text(list[i].toString(), style: TextStyle(color: color, fontSize: 16, height: 1.4)));
     }
 
     return statFields;
