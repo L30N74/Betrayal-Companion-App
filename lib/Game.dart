@@ -43,8 +43,6 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                 children: [
                   Header("Betrayal At House On The Hill"),
                   SizedBox(height: 20),
-                  Text("Players", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
-                  SizedBox(height: 20),
                   Expanded(
                     child: TabBarView(
                       controller: _controller,
@@ -82,13 +80,18 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
   Container PlayerGamePage() {
     return Container(
       child: Column(
-        children: CreatePlayerBanners(),
+        children: CreatePlayerBanners()
       ),
     );
   }
 
   List<Row> CreatePlayerBanners() {
-    List<Row> banners = new List<Row>();
+    List<Row> banners = [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Text("Players", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline))],
+      )
+    ];
 
     for(int i = 0; i < MainPage.players.length; i++) {
         Character player = MainPage.players[i];
