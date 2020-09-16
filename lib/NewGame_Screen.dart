@@ -1,23 +1,21 @@
 import 'package:betrayalcompanionapp/CharacterSelection_Screen.dart';
+import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
-import 'package:betrayalcompanionapp/Globals/MyDrawer.dart';
+import 'package:betrayalcompanionapp/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 String selectedPlayerCount = "2 Spieler";
 int playerCount = 2;
 
 
 class NewGame_Screen extends StatelessWidget {
-  static const String _title = "New Game";
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: _title,
       home: Scaffold(
         backgroundColor: Color.fromRGBO(128, 128, 128, 100),
-        drawer: MyDrawer(),
         body: NewGameWidget(),
       ),
     );
@@ -40,7 +38,12 @@ class NewGameWidgetState extends State<NewGameWidget> {
       child: Scaffold(
         backgroundColor: Color.fromRGBO(128, 128, 128, 100),
         body: Container(
-          alignment: Alignment.bottomCenter,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/background.png"),
+                fit: BoxFit.cover
+            ),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -67,7 +70,26 @@ class NewGameWidgetState extends State<NewGameWidget> {
               ),
               SizedBox(height: 50,),
               RaisedButton(
-                child: Text("Confirm", style: TextStyle(fontSize: 40)),
+                child: Text("Randomize Players", style: TextStyle(fontSize: 40)),
+                onPressed: (){
+                  playerCount  = int.parse(selectedPlayerCount.split(" ")[0]);
+
+                  RandomizePlayers();
+
+                  // Check if 2 Players was selected
+                  if(playerCount == 2){
+                    // Choose a third player
+
+                  }
+                  else {
+
+                  }
+
+//                  Navigator.push(context, MaterialPageRoute(builder: (context) => CharacterSelection_Screen(playerCount)));
+                },
+              ),
+              RaisedButton(
+                child: Text("Choose Players", style: TextStyle(fontSize: 40)),
                 onPressed: (){
                   playerCount  = int.parse(selectedPlayerCount.split(" ")[0]);
                   Navigator.push(context, MaterialPageRoute(builder: (context) => CharacterSelection_Screen(playerCount)));
@@ -88,3 +110,16 @@ var listEntries = ["2 Players", "3 Players", "4 Players", "5 Players", "6 Player
       value: value,
       child: Text(value, style: TextStyle(fontSize: 26, color: Colors.black)));
 }).toList();
+
+void RandomizePlayers() {
+  //Select x amount of characters
+    for(int i = 0; i < playerCount; i++) {
+      // Choose character
+      Random rand = new Random();
+      Character character = MainPage.characters[rand.nextInt(MainPage.characters.length)];
+      MainPage.players.add(character);
+
+      // Remove characters from list
+      MainPage.RemoveCharacterPairFromList(character);
+    }
+}

@@ -1,4 +1,4 @@
-import 'package:betrayalcompanionapp/GameLogic/Player.dart';
+import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
 import 'package:betrayalcompanionapp/Globals/NavBar.dart';
@@ -17,9 +17,9 @@ class CharacterSelection_Screen extends StatefulWidget {
 
 class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
   int playerCount;
-  _CharacterSelection_ScreenState(this.playerCount);
+  var controller = PageController(initialPage: 0);
 
-  List<Player> characters_copy = MainPage.characters;
+  _CharacterSelection_ScreenState(this.playerCount);
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +34,17 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
                   fit: BoxFit.cover
               ),
             ),
-            child: DefaultTabController(
-              length: characters_copy.length,
-              child: Column(
-                children: [
-                  Header("CHARACTER SELECTION"),
-                  SizedBox(height: 10),
-                  Container(
-                    height: 650,
-                    child: TabBarView(
-                      children: characters_copy.map((player) => CreateCharacterPage(player)).toList(),
-                    ),
+            child: Column(
+              children: [
+                Header("CHARACTER SELECTION"),
+                SizedBox(height: 10),
+                Expanded(
+                  child: PageView(
+                    controller: controller,
+                    children: MainPage.characters.map((player) => CreateCharacterPage(player)).toList()
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -55,45 +52,54 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
     );
   }
 
-  Container CreateCharacterPage(Player player) {
-    var nameSplits = player.name.split(' ');
-    String imagePath = "assets/images/" + nameSplits[nameSplits.length-1]  + ".png";
-
+  Container CreateCharacterPage(Character character) {
     return Container(
       width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          Image(image: AssetImage(imagePath), height: 200, width: 200),
+          Image(image: AssetImage(character.imagePath), height: 200, width: 200),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              CreateStatField("Might", player.stats.speed, player.stats.speedDefaultIndex),
-              CreateStatField("Speed", player.stats.might, player.stats.mightDefaultIndex),
-              CreateStatField("Knowledge", player.stats.knowledge, player.stats.knowledgeDefaultIndex),
-              CreateStatField("Sanity", player.stats.sanity, player.stats.sanityDefaultIndex)
+              CreateStatField("Might", character.stats.speed, character.stats.speedDefaultIndex),
+              CreateStatField("Speed", character.stats.might, character.stats.mightDefaultIndex),
+              CreateStatField("Knowledge", character.stats.knowledge, character.stats.knowledgeDefaultIndex),
+              CreateStatField("Sanity", character.stats.sanity, character.stats.sanityDefaultIndex)
             ],
           ),
           SizedBox(height: 10),
-          Text(player.name, style: characterStatsTextStyle,),
-          Text("Hobbies: " + player.hobbies, style: characterStatsTextStyle,),
+          Text(character.name, style: characterStatsTextStyle,),
+          SizedBox(height: 10),
+          Text("Hobbies: " + character.hobbies, style: characterStatsTextStyle,),
           SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text("Birthday: " + player.birthday.day.toString() + "." + player.birthday.month.toString(),
+              Text("Birthday: " + character.birthday.day.toString() + "." + character.birthday.month.toString(),
                   style: characterStatsTextStyle),
-              Text("Weight: " + player.weight.toString() +  "lbs",
+              Text("Weight: " + character.weight.toString() +  "lbs",
                   style: characterStatsTextStyle),
             ],
           ),
           SizedBox(height: 20),
-          Text("Age: " + player.age.toString(), style: characterStatsTextStyle),
+          Text("Age: " + character.age.toString(), style: characterStatsTextStyle),
           SizedBox(height: 20),
           RaisedButton(
             child: Text("Pick", style: TextStyle(fontSize: 24, color: Colors.black)),
             onPressed: () {
-              // TODO: Implement picking of characters
+              MainPage.players.add(character);
+
+              setState(() {
+                MainPage.RemoveCharacterPairFromList(character);
+                controller = PageController(initialPage: 0);
+              });
+
+              if(MainPage.players.length == playerCount) {
+                MainPage.players.forEach((pc) => print(pc.name));
+
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+              }
             })
         ],
       ),
