@@ -96,9 +96,8 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
               });
 
               if(MainPage.players.length == playerCount) {
-                MainPage.players.forEach((pc) => print(pc.name));
-
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Game()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
+//                MainPage.CreateAlertDialog(context);
               }
             })
         ],

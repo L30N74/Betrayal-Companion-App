@@ -79,14 +79,13 @@ class NewGameWidgetState extends State<NewGameWidget> {
 
                   // Check if 2 Players was selected
                   if(playerCount == 2){
-                    // Choose a third player
-
+                    // TODO: Choose a third player
                   }
                   else {
-
+//                    MainPage.CreateAlertDialog(context);
                   }
 
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Game()));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
                 },
               ),
               RaisedButton(

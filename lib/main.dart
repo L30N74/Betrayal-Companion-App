@@ -1,7 +1,6 @@
 import 'package:betrayalcompanionapp/CoinFlip.dart';
 import 'package:betrayalcompanionapp/Game.dart';
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
-import 'package:betrayalcompanionapp/Globals/MyNavButton.dart';
 import 'package:betrayalcompanionapp/GameLogic/Stats.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/NewGame_Screen.dart';
@@ -15,6 +14,8 @@ class MainPage extends StatelessWidget {
 
   static List<Character> characters;
   static List<Character> players = new List<Character>(); //Characters the players chose
+
+  static bool startingPlayerDetermined = false;
 
   @override
   Widget build(BuildContext context) {
@@ -206,5 +207,45 @@ class MainPage extends StatelessWidget {
       new Character("Darrin \"Flash\" Williams", hobbies_Williams, 20, 188, 5.11, new DateTime(DateTime.june, 6), stats_Williams, CharacterColor.Red),
       new Character("Ox Bellows", hobbies_Bellows, 23, 288, 6.4, new DateTime(DateTime.october, 18), stats_Bellows, CharacterColor.Red),
     ];
+  }
+
+  static Character DetermineStartingPlayer() {
+    DateTime today = DateTime.now();
+    Character starter = players[0];
+
+    Duration timeDifference = today.difference(players[0].birthday);
+
+    for(Character c in players) {
+      var difference = today.difference(c.birthday);
+      print(c.name + "; " + c.birthday.toIso8601String() + "; today: " + today.toIso8601String() + "; difference: " + difference.toString());
+
+      if(difference < timeDifference)
+        starter = c;
+    }
+
+    return starter;
+  }
+
+  static CreateAlertDialog(BuildContext context) {
+    Character startingPlayer = DetermineStartingPlayer();
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Starting player"),
+            content: Text("The starting player is \n" + startingPlayer.name, textAlign: TextAlign.center),
+            actions: [
+              MaterialButton(
+                elevation: 0,
+                child: Text("Got It"),
+                onPressed: () {
+                  startingPlayerDetermined = true;
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        }
+    );
   }
 }

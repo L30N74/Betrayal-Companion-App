@@ -26,6 +26,12 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
   @override
   void initState() {
     _controller = TabController(vsync: this, length: 2);
+    super.initState();
+
+    if(!MainPage.startingPlayerDetermined)
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        await MainPage.CreateAlertDialog(context);
+      });
   }
 
   @override
@@ -58,7 +64,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
             ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           floatingActionButton: FloatingActionButton(
-            backgroundColor: darkGreyColor,
+            backgroundColor: background_color,
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
             },
