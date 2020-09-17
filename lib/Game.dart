@@ -34,9 +34,10 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
         child: Scaffold(
             body: Container(
               decoration: BoxDecoration(
+                color: darkGreyColor,
                 image: DecorationImage(
-                    image: AssetImage("assets/images/background.png"),
-                    fit: BoxFit.cover
+                  image: AssetImage("assets/images/background.png"),
+                  fit: BoxFit.cover
                 ),
               ),
               child: Column(
@@ -55,7 +56,18 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                 ],
               ),
             ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: darkGreyColor,
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+            },
+            child: Icon(
+              Icons.home,
+            ),
+          ),
           bottomNavigationBar: BottomAppBar(
+            shape: CircularNotchedRectangle(),
             color: darkGreyColor,
             child: TabBar(
               controller: _controller,
@@ -67,6 +79,25 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
           ),
         ),
     );
+  }
+
+  getBottomNavBar(context) {
+    return Stack(children: [
+      Positioned(
+        bottom: 0,
+        child: BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          color: darkGreyColor,
+          child: TabBar(
+            controller: _controller,
+            tabs: [
+              Tab(icon: Icon(Icons.account_box)),
+              Tab(icon: Icon(Icons.print))
+            ],
+          )
+        ),
+      )
+    ]);
   }
 
   Container HauntCountPage() {
@@ -105,13 +136,13 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                 color: darkGreyColor,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30),
-                  topRight: Radius.circular(10),
+                  topRight: Radius.circular(50),
                   bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(30)
+                  bottomRight: Radius.circular(50)
                 ),
                 boxShadow: [
                   BoxShadow(
-                    blurRadius: 3
+                    blurRadius: 15
                   )
                 ]
               ),

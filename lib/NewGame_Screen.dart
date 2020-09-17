@@ -1,4 +1,5 @@
 import 'package:betrayalcompanionapp/CharacterSelection_Screen.dart';
+import 'package:betrayalcompanionapp/Game.dart';
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/main.dart';
@@ -85,7 +86,7 @@ class NewGameWidgetState extends State<NewGameWidget> {
 
                   }
 
-//                  Navigator.push(context, MaterialPageRoute(builder: (context) => CharacterSelection_Screen(playerCount)));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Game()));
                 },
               ),
               RaisedButton(

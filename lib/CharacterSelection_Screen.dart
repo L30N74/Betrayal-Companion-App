@@ -1,8 +1,8 @@
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
-import 'package:betrayalcompanionapp/Globals/NavBar.dart';
 import 'package:betrayalcompanionapp/main.dart';
+import 'package:betrayalcompanionapp/Game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -98,7 +98,7 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
               if(MainPage.players.length == playerCount) {
                 MainPage.players.forEach((pc) => print(pc.name));
 
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Game()));
               }
             })
         ],
