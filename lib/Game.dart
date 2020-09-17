@@ -56,7 +56,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
               ),
             ),
           bottomNavigationBar: BottomAppBar(
-            color: BACKGROUND_COLOR,
+            color: darkGreyColor,
             child: TabBar(
               controller: _controller,
               tabs: [
@@ -80,33 +80,60 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
   Container PlayerGamePage() {
     return Container(
       child: Column(
-        children: CreatePlayerBanners()
+        children: [
+          Text("Players", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
+          CreatePlayerBanners(),
+        ]
       ),
     );
   }
 
-  List<Row> CreatePlayerBanners() {
-    List<Row> banners = [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text("Players", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline))],
-      )
-    ];
-
-    for(int i = 0; i < MainPage.players.length; i++) {
-        Character player = MainPage.players[i];
-
-        banners.add(Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text((i+1).toString(), style: TextStyle(fontSize: 26, color: Colors.white)),
-            Text(player.name, style: TextStyle(fontSize: 26, color: Colors.white)),
-            Image(image: AssetImage(player.imagePath), width: 100, height: 100),
-          ],
-        ));
-    }
-
-    return banners;
+  CreatePlayerBanners() {
+    return Expanded(
+      child: ListView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        itemCount: MainPage.players.length,
+        itemBuilder: (BuildContext context, int index) {
+          return InkWell(
+            onTap: () => {
+              // TODO: Redirect to Character Details Page
+              print(MainPage.players[index].name + " was tapped")
+            },
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              decoration: BoxDecoration(
+                color: darkGreyColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(30)
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 3
+                  )
+                ]
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                      child:  Text(("\t")*5 + (index+1).toString(), style: TextStyle(fontSize: 26, color: Colors.white), textAlign: TextAlign.center)
+                  ),
+                  Container(
+                      child:  Text(MainPage.players[index].name, style: TextStyle(fontSize: 26, color: Colors.white), textAlign: TextAlign.center)
+                  ),
+                  Container(
+                      child:  Image(image: AssetImage(MainPage.players[index].imagePath), width: 100, height: 100)
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
   }
 }
 

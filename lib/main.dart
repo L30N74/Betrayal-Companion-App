@@ -57,7 +57,7 @@ class MainPage extends StatelessWidget {
                     child: Text("Current Game", style: TextStyle(fontSize: 36)),
                     onPressed: () {
                       InitializeCharacterLists();
-                      players = [ characters[0], characters[2], characters[4], characters[6] ];
+                      players = [ characters[0], characters[1], characters[2], characters[4], characters[5], characters[6] ];
                       Navigator.push(context, MaterialPageRoute(builder: (context) => Game()));
                     },
                   ),
