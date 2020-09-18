@@ -252,6 +252,7 @@ class MainPage extends StatelessWidget {
                     alignment: Alignment.center,
                     child: RaisedButton(
                       onPressed: () {
+                        startingPlayerDetermined = true;
                         Navigator.of(context).pop();
                         },
                       child: Text("Got it"),
