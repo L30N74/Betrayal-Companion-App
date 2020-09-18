@@ -17,8 +17,11 @@ class MainPage extends StatelessWidget {
 
   static bool startingPlayerDetermined = false;
 
+  bool currentGameButtonDisabled;
+
   @override
   Widget build(BuildContext context) {
+    currentGameButtonDisabled = (players.length == 0);
 
     return MaterialApp(
       title: _title,
@@ -56,13 +59,15 @@ class MainPage extends StatelessWidget {
 
                       Navigator.push(context, MaterialPageRoute(builder: (context) => NewGame_Screen()));
                     },
+                    elevation: 10,
                   ),
                   Divider(),
                   RaisedButton(
-                    child: Text("Current Game", style: TextStyle(fontSize: 36)),
-                    onPressed: () {
+                    child: Text(currentGameButtonDisabled ? "No Game yet" : "Current Game", style: TextStyle(fontSize: 36)),
+                    onPressed: currentGameButtonDisabled ? null : () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => Game()));
                     },
+                    elevation: 10,
                   ),
                 ],
               )
