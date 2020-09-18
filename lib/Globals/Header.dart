@@ -15,7 +15,14 @@ class Header extends StatelessWidget {
           color: Colors.white
       ),
       child: Center(
-          child: Text(this.text, style: TextStyle(color: Colors.black, fontSize: 28), textAlign: TextAlign.center)
+        child: Text(
+          this.text,
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 24,
+            fontFamily: 'Rock'),
+            textAlign: TextAlign.center
+        )
       ),
     );
   }

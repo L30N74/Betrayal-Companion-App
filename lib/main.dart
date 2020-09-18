@@ -1,10 +1,12 @@
-import 'package:betrayalcompanionapp/CoinFlip.dart';
+import 'package:betrayalcompanionapp/Globals/BottomBar.dart';
+import 'package:flutter/material.dart';
 import 'package:betrayalcompanionapp/Game.dart';
-import 'package:betrayalcompanionapp/GameLogic/Character.dart';
-import 'package:betrayalcompanionapp/GameLogic/Stats.dart';
+import 'package:betrayalcompanionapp/CoinFlip.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/NewGame_Screen.dart';
-import 'package:flutter/material.dart';
+import 'package:betrayalcompanionapp/Globals/Globals.dart';
+import 'package:betrayalcompanionapp/GameLogic/Stats.dart';
+import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 
 void main() => runApp(MainPage());
 
@@ -24,10 +26,26 @@ class MainPage extends StatelessWidget {
     currentGameButtonDisabled = (players.length == 0);
 
     return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        backgroundColor: Color.fromRGBO(128, 128, 128, 100),
-        body: HomeMenu(context, _title),
+      home: Builder(
+        builder: (context) => Scaffold(
+          backgroundColor: Color.fromRGBO(128, 128, 128, 100),
+          body: HomeMenu(context, _title),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: FloatingActionButton(
+            backgroundColor: backgroundColor,
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+            },
+            child: Icon(
+              Icons.home,
+            ),
+          ),
+          bottomNavigationBar: BottomBar(
+            child: Container(
+              height: 60,
+            ),
+          )
+        ),
       ),
     );
   }
@@ -50,20 +68,34 @@ class MainPage extends StatelessWidget {
                 children: [
                   Divider(),
                   RaisedButton(
-                    child: Text("Start New Game", style: TextStyle(fontSize: 36)),
+                    child: Text(
+                      "Start New Game",
+                      style: TextStyle(
+                        fontSize: 36,
+                        fontFamily: 'Shadows',
+                        fontWeight: FontWeight.bold
+                      )
+                    ),
                     onPressed: () {
-                      InitializeCharacterLists();
-                      players = new List<Character>();
-
-                      startingPlayerDetermined = false;
-
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => NewGame_Screen()));
+                      if(players.length > 0)
+                        CreateNewGameConfirmationAlert(context);
+                      else {
+                        StartNewGame(context);
+                      }
                     },
                     elevation: 10,
                   ),
                   Divider(),
                   RaisedButton(
-                    child: Text(currentGameButtonDisabled ? "No Game yet" : "Current Game", style: TextStyle(fontSize: 36)),
+                    child: Text(
+                      currentGameButtonDisabled ? "No Game yet" : "Current Game",
+                      style: TextStyle(
+                        fontSize: 36,
+                        fontFamily: 'Shadows',
+                        fontWeight: FontWeight.bold,
+                        color: currentGameButtonDisabled ? Colors.white : Colors.black
+                      )
+                    ),
                     onPressed: currentGameButtonDisabled ? null : () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => Game()));
                     },
@@ -76,6 +108,15 @@ class MainPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  StartNewGame(context) {
+    InitializeCharacterLists();
+    players = new List<Character>();
+
+    startingPlayerDetermined = false;
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => NewGame_Screen()));
   }
 
   static Character GetCharacterByName(String name) {
@@ -234,7 +275,7 @@ class MainPage extends StatelessWidget {
     return starter;
   }
 
-  static CreateAlertDialog(BuildContext context) {
+  static CreateStartingCharacterAlert(BuildContext context) {
     Character startingPlayer = DetermineStartingPlayer();
     return showDialog(
         context: context,
@@ -268,6 +309,57 @@ class MainPage extends StatelessWidget {
             ),
           );
         }
+    );
+  }
+
+  CreateNewGameConfirmationAlert(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            "Creating a new Game",
+            style: TextStyle(),
+            textAlign: TextAlign.center,
+          ),
+          content: Container(
+            height: 200,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Creating a new Game will erase the old one.\nAre you sure you want to do that?",
+                    style: TextStyle(fontSize: 26),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    RaisedButton(
+                      child: Text(
+                        "Yes",
+                        style: TextStyle(fontSize: 24),
+                        textAlign: TextAlign.center,
+                      ),
+                      onPressed: () => StartNewGame(context),
+                    ),
+                    RaisedButton(
+                      child: Text(
+                        "No",
+                        style: TextStyle(fontSize: 24),
+                        textAlign: TextAlign.center,
+                      ),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      }
     );
   }
 }

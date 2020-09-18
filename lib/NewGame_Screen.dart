@@ -1,11 +1,11 @@
 import 'dart:math';
+import 'package:betrayalcompanionapp/Globals/BottomBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:betrayalcompanionapp/main.dart';
 import 'package:betrayalcompanionapp/Game.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
-import 'package:infinity_page_view/infinity_page_view.dart';
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'package:betrayalcompanionapp/CharacterSelection_Screen.dart';
 
@@ -41,7 +41,7 @@ class NewGameWidgetState extends State<NewGameWidget> {
   @override
   void initState() {
     super.initState();
-    _controller = PageController(initialPage: 2, viewportFraction: 0.5);
+    _controller = PageController(initialPage: 0, viewportFraction: 0.5);
   }
 
 
@@ -65,6 +65,21 @@ class NewGameWidgetState extends State<NewGameWidget> {
               Header("NEW GAME"),
               MainContent()
             ],
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: backgroundColor,
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+          },
+          child: Icon(
+            Icons.home,
+          ),
+        ),
+        bottomNavigationBar: BottomBar(
+          child: Container(
+            height: 60,
           ),
         ),
       ),

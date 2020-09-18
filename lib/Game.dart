@@ -30,7 +30,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
 
     if(!MainPage.startingPlayerDetermined)
       WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await MainPage.CreateAlertDialog(context);
+        await MainPage.CreateStartingCharacterAlert(context);
       });
   }
 
@@ -72,44 +72,28 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
               Icons.home,
             ),
           ),
-          bottomNavigationBar: BottomAppBar(
-            shape: CircularNotchedRectangle(),
-            color: darkGreyColor,
-            child: TabBar(
-              controller: _controller,
-              tabs: [
-                Tab(icon: Icon(Icons.account_box)),
-                Tab(icon: Icon(Icons.print))
-              ],
-            ),
-          ),
+          bottomNavigationBar: GetBottomNavBar()
         ),
     );
   }
 
-  getBottomNavBar(context) {
-    return Stack(children: [
-      Positioned(
-        bottom: 0,
-        child: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          color: darkGreyColor,
-          child: TabBar(
-            controller: _controller,
-            tabs: [
-              Tab(icon: Icon(Icons.account_box)),
-              Tab(icon: Icon(Icons.print))
-            ],
-          )
-        ),
+  GetBottomNavBar() {
+    return BottomAppBar(
+      shape: CircularNotchedRectangle(),
+      color: darkGreyColor,
+      child: TabBar(
+        controller: _controller,
+        tabs: [
+          Tab(icon: Icon(Icons.account_box)),
+          Tab(icon: Icon(Icons.print))
+        ],
       )
-    ]);
+    );
   }
 
   Container HauntCountPage() {
     return Container(
       child: Column(
-
       ),
     );
   }
