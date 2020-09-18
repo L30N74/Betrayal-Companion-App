@@ -19,6 +19,7 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: _title,
       home: Scaffold(
@@ -50,6 +51,9 @@ class MainPage extends StatelessWidget {
                     onPressed: () {
                       InitializeCharacterLists();
                       players = new List<Character>();
+
+                      startingPlayerDetermined = false;
+
                       Navigator.push(context, MaterialPageRoute(builder: (context) => NewGame_Screen()));
                     },
                   ),
@@ -78,8 +82,8 @@ class MainPage extends StatelessWidget {
     throw new Exception("No Character with the name \"$name\"");
   }
 
-  static Character RemoveCharacterPairFromList(Character character) {
-    switch(character.color) {
+  static Character RemoveCharacterPairFromList(CharacterColor color) {
+    switch(color) {
       case CharacterColor.White:
         characters.remove(MainPage.GetCharacterByName("Professor Longfellow"));
         characters.remove(MainPage.GetCharacterByName("Father Rheinhardt"));
@@ -192,32 +196,31 @@ class MainPage extends StatelessWidget {
         [2, 2, 3, 3, 5, 5, 6, 6], 2);
 
     String hobbies_Bellows = "Football, Shiny Objects";
-
+    int currentYear = DateTime.now().year;
     characters = [
-      new Character("Father Rheinhardt", hobbies_Rheinhardt, 52, 60, 5.9, new DateTime(DateTime.april, 29), stats_Rheinhardt, CharacterColor.White),
-      new Character("Professor Longfellow", hobbies_Longfellow, 52, 153, 5.11, new DateTime(DateTime.july, 27), stats_Longfellow, CharacterColor.White),
-      new Character("Heather Granville", hobbies_Granville, 18, 153, 5.2, new DateTime(DateTime.july, 27), stats_Granville, CharacterColor.Purple),
-      new Character("Vivian Lopez", hobbies_Lopez, 42, 142, 5.5, new DateTime(DateTime.january, 11), stats_Lopez, CharacterColor.Purple),
-      new Character("Jenny LeClerc", hobbies_LeClerc, 21, 142, 5.7, new DateTime(DateTime.march, 4), stats_LeClerc, CharacterColor.Blue),
-      new Character("Madame Zostra", hobbies_Zostra, 37, 150, 5.0, new DateTime(DateTime.december, 10), stats_Zostra, CharacterColor.Blue),
-      new Character("Brandon Jaspers", hobbies_Jaspers, 12, 109, 5.1, new DateTime(DateTime.may, 21), stats_Jaspers, CharacterColor.Yellow),
-      new Character("Zoe Ingstrom", hobbies_Ingstrom, 8, 49, 3.9, new DateTime(DateTime.november, 5), stats_Ingstrom, CharacterColor.Yellow),
-      new Character("Peter Akimoto", hobbies_Akimoto, 13, 80, 4.11, new DateTime(DateTime.september, 3), stats_Akimoto, CharacterColor.Green),
-      new Character("Missy Dubourde", hobbies_Dubourde, 9, 62, 4.2, new DateTime(DateTime.february, 14), stats_Dubourde, CharacterColor.Green),
-      new Character("Darrin \"Flash\" Williams", hobbies_Williams, 20, 188, 5.11, new DateTime(DateTime.june, 6), stats_Williams, CharacterColor.Red),
-      new Character("Ox Bellows", hobbies_Bellows, 23, 288, 6.4, new DateTime(DateTime.october, 18), stats_Bellows, CharacterColor.Red),
+      new Character("Father Rheinhardt", hobbies_Rheinhardt, 52, 60, 5.9, new DateTime.utc(currentYear, DateTime.april, 29), stats_Rheinhardt, CharacterColor.White),
+      new Character("Professor Longfellow", hobbies_Longfellow, 52, 153, 5.11, new DateTime.utc(currentYear, DateTime.july, 27), stats_Longfellow, CharacterColor.White),
+      new Character("Heather Granville", hobbies_Granville, 18, 153, 5.2, new DateTime.utc(currentYear, DateTime.august, 2), stats_Granville, CharacterColor.Purple),
+      new Character("Vivian Lopez", hobbies_Lopez, 42, 142, 5.5, new DateTime.utc(currentYear, DateTime.january, 11), stats_Lopez, CharacterColor.Purple),
+      new Character("Jenny LeClerc", hobbies_LeClerc, 21, 142, 5.7, new DateTime.utc(currentYear, DateTime.march, 4), stats_LeClerc, CharacterColor.Blue),
+      new Character("Madame Zostra", hobbies_Zostra, 37, 150, 5.0, new DateTime.utc(currentYear, DateTime.december, 10), stats_Zostra, CharacterColor.Blue),
+      new Character("Brandon Jaspers", hobbies_Jaspers, 12, 109, 5.1, new DateTime.utc(currentYear, DateTime.may, 21), stats_Jaspers, CharacterColor.Yellow),
+      new Character("Zoe Ingstrom", hobbies_Ingstrom, 8, 49, 3.9, new DateTime.utc(currentYear, DateTime.november, 5), stats_Ingstrom, CharacterColor.Yellow),
+      new Character("Peter Akimoto", hobbies_Akimoto, 13, 80, 4.11, new DateTime.utc(currentYear, DateTime.september, 3), stats_Akimoto, CharacterColor.Green),
+      new Character("Missy Dubourde", hobbies_Dubourde, 9, 62, 4.2, new DateTime.utc(currentYear, DateTime.february, 14), stats_Dubourde, CharacterColor.Green),
+      new Character("Darrin \"Flash\" Williams", hobbies_Williams, 20, 188, 5.11, new DateTime.utc(currentYear, DateTime.june, 6), stats_Williams, CharacterColor.Red),
+      new Character("Ox Bellows", hobbies_Bellows, 23, 288, 6.4, new DateTime.utc(currentYear, DateTime.october, 18), stats_Bellows, CharacterColor.Red),
     ];
   }
 
   static Character DetermineStartingPlayer() {
-    DateTime today = DateTime.now();
+    DateTime today = DateTime.now().toUtc();
     Character starter = players[0];
 
-    Duration timeDifference = today.difference(players[0].birthday);
+    final timeDifference = today.difference(players[0].birthday).inDays;
 
     for(Character c in players) {
-      var difference = today.difference(c.birthday);
-      print(c.name + "; " + c.birthday.toIso8601String() + "; today: " + today.toIso8601String() + "; difference: " + difference.toString());
+      var difference =  today.difference(c.birthday).inDays;
 
       if(difference < timeDifference)
         starter = c;
@@ -233,17 +236,30 @@ class MainPage extends StatelessWidget {
         builder: (context) {
           return AlertDialog(
             title: Text("Starting player"),
-            content: Text("The starting player is \n" + startingPlayer.name, textAlign: TextAlign.center),
-            actions: [
-              MaterialButton(
-                elevation: 0,
-                child: Text("Got It"),
-                onPressed: () {
-                  startingPlayerDetermined = true;
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
+            content: Container(
+              height: 150,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    child: Text(
+                        "The starting player is \n" + startingPlayer.name,
+                        style: TextStyle(fontSize: 26),
+                        textAlign: TextAlign.center
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    child: RaisedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        },
+                      child: Text("Got it"),
+                    )
+                  )
+                ],
+              ),
+            ),
           );
         }
     );

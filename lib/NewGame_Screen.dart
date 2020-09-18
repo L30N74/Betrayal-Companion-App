@@ -120,6 +120,6 @@ void RandomizePlayers() {
       MainPage.players.add(character);
 
       // Remove characters from list
-      MainPage.RemoveCharacterPairFromList(character);
+      MainPage.RemoveCharacterPairFromList(character.color);
     }
 }

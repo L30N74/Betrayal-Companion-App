@@ -91,7 +91,7 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
               MainPage.players.add(character);
 
               setState(() {
-                MainPage.RemoveCharacterPairFromList(character);
+                MainPage.RemoveCharacterPairFromList(character.color);
                 controller = PageController(initialPage: 0);
               });
 
