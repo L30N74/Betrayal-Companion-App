@@ -64,7 +64,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
             ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           floatingActionButton: FloatingActionButton(
-            backgroundColor: background_color,
+            backgroundColor: backgroundColor,
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
             },

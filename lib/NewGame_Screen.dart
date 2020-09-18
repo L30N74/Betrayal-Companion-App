@@ -1,14 +1,14 @@
-import 'package:betrayalcompanionapp/CharacterSelection_Screen.dart';
-import 'package:betrayalcompanionapp/Game.dart';
-import 'package:betrayalcompanionapp/GameLogic/Character.dart';
-import 'package:betrayalcompanionapp/Globals/Header.dart';
-import 'package:betrayalcompanionapp/main.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:betrayalcompanionapp/main.dart';
+import 'package:betrayalcompanionapp/Game.dart';
+import 'package:betrayalcompanionapp/Globals/Header.dart';
+import 'package:betrayalcompanionapp/Globals/Globals.dart';
+import 'package:infinity_page_view/infinity_page_view.dart';
+import 'package:betrayalcompanionapp/GameLogic/Character.dart';
+import 'package:betrayalcompanionapp/CharacterSelection_Screen.dart';
 
-String selectedPlayerCount = "2 Spieler";
-int playerCount = 2;
 
 
 class NewGame_Screen extends StatelessWidget {
@@ -31,88 +31,181 @@ class NewGameWidget extends StatefulWidget {
 }
 
 class NewGameWidgetState extends State<NewGameWidget> {
-  String dropdownValue = "2 Players";
+  PageController _controller;
+
+  int playerCount = 2;
+
+  double screenHeight;
+  double screenWidth;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = PageController(initialPage: 2, viewportFraction: 0.5);
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    screenHeight = MediaQuery.of(context).size.height;
+    screenWidth = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color.fromRGBO(128, 128, 128, 100),
         body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/background.png"),
-                fit: BoxFit.cover
-            ),
+          image: DecorationImage(
+            image: AssetImage("assets/images/background.png"),
+            fit: BoxFit.cover
           ),
+        ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Header("NEW GAME"),
-              SizedBox(height: 30),
-              Text("How many Players?", style: TextStyle(fontSize: 26)),
-              SizedBox(height: 50),
-              DropdownButton(
-                  value: dropdownValue,
-                  icon: Icon(Icons.arrow_downward),
-                  iconSize: 24,
-                  elevation: 16,
-                  underline: Container(
-                    height: 3,
-                    color: Colors.deepPurpleAccent,
-                  ),
-                  onChanged: (String newValue) {
-                    setState(() {
-                      dropdownValue = newValue;
-                      selectedPlayerCount = newValue;
-                    });
-                  },
-                  items: listEntries
-              ),
-              SizedBox(height: 50,),
-              RaisedButton(
-                child: Text("Randomize Players", style: TextStyle(fontSize: 40)),
-                onPressed: (){
-                  playerCount  = int.parse(selectedPlayerCount.split(" ")[0]);
-
-                  RandomizePlayers();
-
-                  // Check if 2 Players was selected
-                  if(playerCount == 2){
-                    // TODO: Choose a third player
-                  }
-                  else {
-//                    MainPage.CreateAlertDialog(context);
-                  }
-
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
-                },
-              ),
-              RaisedButton(
-                child: Text("Choose Players", style: TextStyle(fontSize: 40)),
-                onPressed: (){
-                  playerCount  = int.parse(selectedPlayerCount.split(" ")[0]);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => CharacterSelection_Screen(playerCount)));
-                },
-              ),
-              SizedBox(height: 50,)
+              MainContent()
             ],
           ),
         ),
       ),
     );
   }
-}
 
-var listEntries = ["2 Players", "3 Players", "4 Players", "5 Players", "6 Players"]
-    .map<DropdownMenuItem<String>>((String value) {
-  return DropdownMenuItem<String>(
-      value: value,
-      child: Text(value, style: TextStyle(fontSize: 26, color: Colors.black)));
-}).toList();
+  MainContent() {
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            height: 50,
+            width: 300,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+              color: Colors.white,
+            ),
+            child: Center(
+              child: Text(
+                "How many Players?",
+                style: TextStyle(fontSize: 26),
+              ),
+            )
+          ),
+          PlayerAmountBox(),
+          RandomizePlayerButton(),
+          ChoosePlayersButton(),
+          SizedBox(height: screenHeight/10),
+        ],
+      ),
+    );
+  }
 
-void RandomizePlayers() {
-  //Select x amount of characters
+  PlayerAmountBox() {
+    return Center(
+      child: Container(
+        height: 200,
+        child: new PageView.builder(
+          itemCount: 5,
+          scrollDirection: Axis.vertical,
+          controller: _controller,
+          onPageChanged: (value) {
+            setState(() {
+              playerCount = value+2;
+            });
+          },
+          itemBuilder: (context, index) => builder(index),
+        ),
+      ),
+    );
+  }
+
+  builder(index) {
+    return new AnimatedBuilder(
+        animation: _controller,
+        builder: (context, child) {
+          double value = 1.0;
+          if(_controller.position.haveDimensions) {
+            value = _controller.page - index;
+            value = (1 - (value.abs() * 0.5)).clamp(0.0, 1.0);
+          }
+
+          return new Center(
+            child: new SizedBox(
+              height: Curves.easeOut.transform(value) * 50,
+              width: Curves.easeOut.transform(value) * 200,
+              child: child,
+            ),
+          );
+        },
+      child: new Container(
+        decoration: BoxDecoration(
+            color: darkGreyColor,
+            borderRadius: BorderRadius.all(Radius.circular(50),
+            ),
+            boxShadow: [
+              BoxShadow(
+                  blurRadius: 15
+              )
+            ]
+        ),
+        margin: const EdgeInsets.all(0.2),
+        child: Center(child: Text((index+2).toString() + " Spieler", style: TextStyle(fontSize: 24, color: Colors.white))),
+      ),
+    );
+  }
+
+  ChoosePlayersButton() {
+    return RaisedButton(
+
+      child: Text("I want to choose", style: TextStyle(fontSize: 40)),
+      onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CharacterSelection_Screen(playerCount)));
+      },
+    );
+  }
+
+  RandomizePlayerButton() {
+    return RaisedButton(
+      child: Text("Randomize", style: TextStyle(fontSize: 40)),
+      onPressed: (){
+        RandomizePlayers();
+
+        // Check if 2 Players was selected
+        if(playerCount == 2){
+          // TODO: Choose a third player
+        }
+        else {
+          //                    MainPage.CreateAlertDialog(context);
+        }
+
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
+      }
+    );
+  }
+
+//  Widget get _randomizePlayerButton(context) => RaisedButton(
+//    child: Text("Randomize Players", style: TextStyle(fontSize: 40)),
+//    onPressed: (){
+//      playerCount  = int.parse(selectedPlayerCount.split(" ")[0]);
+//
+//      RandomizePlayers();
+//
+//      // Check if 2 Players was selected
+//      if(playerCount == 2){
+//        // TODO: Choose a third player
+//      }
+//      else {
+//        //                    MainPage.CreateAlertDialog(context);
+//      }
+//
+//      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
+//    },
+//  );
+
+  void RandomizePlayers() {
+    //Select x amount of characters
     for(int i = 0; i < playerCount; i++) {
       // Choose character
       Random rand = new Random();
@@ -122,4 +215,5 @@ void RandomizePlayers() {
       // Remove characters from list
       MainPage.RemoveCharacterPairFromList(character.color);
     }
+  }
 }
