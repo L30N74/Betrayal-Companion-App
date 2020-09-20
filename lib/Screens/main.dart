@@ -1,12 +1,11 @@
-import 'package:betrayalcompanionapp/Globals/BottomBar.dart';
 import 'package:flutter/material.dart';
-import 'package:betrayalcompanionapp/Game.dart';
-import 'package:betrayalcompanionapp/CoinFlip.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
-import 'package:betrayalcompanionapp/NewGame_Screen.dart';
-import 'package:betrayalcompanionapp/Globals/Globals.dart';
 import 'package:betrayalcompanionapp/GameLogic/Stats.dart';
+import 'package:betrayalcompanionapp/Globals/BottomBar.dart';
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
+import 'package:betrayalcompanionapp/Screens/NewGame_Screen.dart';
+import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/Game_Screen.dart';
+import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/CoinFlip_Screen.dart';
 
 void main() => runApp(MainPage());
 
@@ -18,6 +17,7 @@ class MainPage extends StatelessWidget {
   static List<Character> players = new List<Character>(); //Characters the players chose
 
   static bool startingPlayerDetermined = false;
+  static int omenInPlay = 0;
 
   bool currentGameButtonDisabled;
 
@@ -30,21 +30,6 @@ class MainPage extends StatelessWidget {
         builder: (context) => Scaffold(
           backgroundColor: Color.fromRGBO(128, 128, 128, 100),
           body: HomeMenu(context, _title),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: backgroundColor,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
-            },
-            child: Icon(
-              Icons.home,
-            ),
-          ),
-          bottomNavigationBar: BottomBar(
-            child: Container(
-              height: 60,
-            ),
-          )
         ),
       ),
     );

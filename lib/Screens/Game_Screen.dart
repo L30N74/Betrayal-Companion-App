@@ -1,7 +1,8 @@
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
-import 'package:betrayalcompanionapp/main.dart';
+import 'package:betrayalcompanionapp/HauntDropdowns.dart';
+import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
 
 class Game extends StatelessWidget {
@@ -25,7 +26,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
 
   @override
   void initState() {
-    _controller = TabController(vsync: this, length: 2);
+    _controller = TabController(vsync: this, length: 3, initialIndex: 0);
     super.initState();
 
     if(!MainPage.startingPlayerDetermined)
@@ -40,7 +41,6 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
         child: Scaffold(
             body: Container(
               decoration: BoxDecoration(
-                color: darkGreyColor,
                 image: DecorationImage(
                   image: AssetImage("assets/images/background.png"),
                   fit: BoxFit.cover
@@ -55,45 +55,85 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                       controller: _controller,
                       children: [
                         PlayerGamePage(),
-                        HauntCountPage()
+                        HauntCountPage(),
+                        HauntRevealPage()
                       ],
                     ),
                   )
                 ],
               ),
             ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          floatingActionButton: FloatingActionButton(
-            backgroundColor: backgroundColor,
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
-            },
-            child: Icon(
-              Icons.home,
-            ),
-          ),
-          bottomNavigationBar: GetBottomNavBar()
+          bottomNavigationBar: GetBottomNavBar(),
         ),
     );
   }
 
-  GetBottomNavBar() {
-    return BottomAppBar(
-      shape: CircularNotchedRectangle(),
-      color: darkGreyColor,
-      child: TabBar(
-        controller: _controller,
-        tabs: [
-          Tab(icon: Icon(Icons.account_box)),
-          Tab(icon: Icon(Icons.print))
+  Container HauntRevealPage() {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text("Let the Fun Begin", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
+          Expanded(
+            child: Column(
+              children: [
+                Container(
+                  child: Column(
+                    children: [
+                      Text("Which Room?", style: TextStyle(fontSize: 26, color: Colors.white),),
+//                      HauntRoomDropdown(),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Column(
+                    children: [
+                      Text("Which Omen?", style: TextStyle(fontSize: 26),),
+//                      HauntOmenDropdown(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
-      )
+      ),
+    );
+  }
+
+  Container DiceRollPage() {
+    return Container(
+      child: Column(
+        children: [
+          Text("Roll The Dice", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
+          Text("Coming Up", style: TextStyle(fontSize: 80, color: Colors.white),),
+        ],
+      ),
     );
   }
 
   Container HauntCountPage() {
     return Container(
       child: Column(
+        children: [
+          Text("Omen In Play", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
+          Text(MainPage.omenInPlay.toString(), style: TextStyle(fontSize: 48),),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: SizedBox(
+              height: 80,
+              width: 200,
+              child: RaisedButton(
+                child: Icon(Icons.add),
+                onPressed: () {
+                  setState(() {
+                    MainPage.omenInPlay++;
+                  });
+                  },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -109,10 +149,10 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
     );
   }
 
-  CreatePlayerBanners() {
+  Expanded CreatePlayerBanners() {
     return Expanded(
       child: ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.only(top: 20, bottom: 80),
         itemCount: MainPage.players.length,
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
@@ -154,6 +194,22 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
           );
         },
       ),
+    );
+  }
+
+  BottomAppBar GetBottomNavBar() {
+    return BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        color: darkGreyColor,
+        child: TabBar(
+          controller: _controller,
+          tabs: [
+            Tab(icon: Icon(Icons.account_box)),
+            Tab(icon: Icon(Icons.print)),
+            Tab(icon: Icon(Icons.close)),
+//            Tab(icon: Icon(Icons.menu)),
+          ],
+        )
     );
   }
 }

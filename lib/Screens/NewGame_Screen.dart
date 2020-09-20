@@ -1,14 +1,13 @@
 import 'dart:math';
-import 'package:betrayalcompanionapp/Globals/BottomBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:betrayalcompanionapp/main.dart';
-import 'package:betrayalcompanionapp/Game.dart';
+import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
+import 'package:betrayalcompanionapp/Globals/BottomBar.dart';
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
-import 'package:betrayalcompanionapp/CharacterSelection_Screen.dart';
-
+import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/Game_Screen.dart';
+import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/CharacterSelection_Screen.dart';
 
 
 class NewGame_Screen extends StatelessWidget {
@@ -65,21 +64,6 @@ class NewGameWidgetState extends State<NewGameWidget> {
               Header("NEW GAME"),
               MainContent()
             ],
-          ),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: backgroundColor,
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
-          },
-          child: Icon(
-            Icons.home,
-          ),
-        ),
-        bottomNavigationBar: BottomBar(
-          child: Container(
-            height: 60,
           ),
         ),
       ),
