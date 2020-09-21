@@ -1,8 +1,6 @@
+import 'dart:math';
 import 'package:betrayalcompanionapp/GameLogic/Database.dart';
-import 'package:betrayalcompanionapp/GameLogic/HauntDropdowns.dart';
-import 'package:betrayalcompanionapp/Globals/Globals.dart';
 import 'package:betrayalcompanionapp/Screens/Game_Screen.dart';
-import 'package:betrayalcompanionapp/GameLogic/Haunt.dart';
 import 'package:flutter/material.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/GameLogic/Stats.dart';
@@ -23,7 +21,7 @@ class MainPage extends StatelessWidget {
   static int omenInPlay = 0;
 
   static bool isHauntRevealed = false;
-  static bool useExpansion = true;
+  static bool useExpansion = false;
 
   static HauntInformation revealedHauntInformation = new HauntInformation(
     hauntName: "The Mind's eye",
@@ -349,46 +347,17 @@ class MainPage extends StatelessWidget {
     });
   }
 
-  static Future CreateHauntDeterminationAlert(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text("Select Room and Omen"),
-          content: Container(
-            height: 200,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    HauntRoomSelection(),
-                    HauntOmenSelection(),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    FlatButton(
-                      child: Text("Cancel", style: hauntDropdownOkCancelTextStyle,),
-                      onPressed: () => Navigator.pop(context),
-                    ),
-                    FlatButton(
-                      child: Text("Ok", style: hauntDropdownOkCancelTextStyle,),
-                      onPressed: () {
-                        DetermineHaunt(revealedHauntInformation.room, revealedHauntInformation.omen);
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                )
-              ],
-            ),
-          ),
-        );
-      }
-    );
+  static void RandomizePlayers(int amount) {
+    //Select x amount of characters
+    for(int i = 0; i < amount; i++) {
+      // Choose character
+      Random rand = new Random();
+      Character character = MainPage.characters[rand.nextInt(MainPage.characters.length)];
+      MainPage.players.add(character);
+
+      // Remove characters from list
+      RemoveCharacterPairFromList(character.color);
+    }
   }
 
   Future CreateNewGameConfirmationAlert(BuildContext context) {

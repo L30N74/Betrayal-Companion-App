@@ -1,11 +1,9 @@
-import 'dart:math';
+import 'package:betrayalcompanionapp/Screens/CoinFlip_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
-import 'package:betrayalcompanionapp/Globals/BottomBar.dart';
-import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/Game_Screen.dart';
 import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/CharacterSelection_Screen.dart';
 
@@ -168,17 +166,16 @@ class NewGameWidgetState extends State<NewGameWidget> {
     return RaisedButton(
       child: Text("Randomize", style: TextStyle(fontSize: 40)),
       onPressed: (){
-        RandomizePlayers();
+        MainPage.RandomizePlayers(playerCount);
 
         // Check if 2 Players was selected
         if(playerCount == 2){
-          // TODO: Choose a third player
+          //Choose a third player
+          //TODO: Redirect to coin flipping to determine which player plays two characters
+          Navigator.push(context, MaterialPageRoute(builder: (context) => CoinFlip()));
         }
-        else {
-          //                    MainPage.CreateAlertDialog(context);
-        }
-
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
+        else
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
       }
     );
   }
@@ -201,17 +198,4 @@ class NewGameWidgetState extends State<NewGameWidget> {
 //      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
 //    },
 //  );
-
-  void RandomizePlayers() {
-    //Select x amount of characters
-    for(int i = 0; i < playerCount; i++) {
-      // Choose character
-      Random rand = new Random();
-      Character character = MainPage.characters[rand.nextInt(MainPage.characters.length)];
-      MainPage.players.add(character);
-
-      // Remove characters from list
-      MainPage.RemoveCharacterPairFromList(character.color);
-    }
-  }
 }

@@ -1,13 +1,26 @@
+import 'package:betrayalcompanionapp/GameLogic/Database.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
 
 class HauntOmenSelection extends StatefulWidget {
+  double width;
+  double height;
+  EdgeInsets margin;
+
+  HauntOmenSelection({this.width, this.height, this.margin});
+
   @override
-  _HauntOmenSelectionState createState() => _HauntOmenSelectionState();
+  _HauntOmenSelectionState createState() => _HauntOmenSelectionState(width, height, margin);
 }
 
 class _HauntOmenSelectionState extends State<HauntOmenSelection> {
+  double width;
+  double height;
+  EdgeInsets margin;
+
+  _HauntOmenSelectionState(this.width, this.height, this.margin);
+
   PageController _controller;
 
   @override
@@ -19,22 +32,41 @@ class _HauntOmenSelectionState extends State<HauntOmenSelection> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> omen = Omen;
+
+    if(MainPage.useExpansion) {
+      omen.addAll(ExpansionOmen);
+      omen.sort();
+    }
+
     return new HauntListView(
       listName: "Omen",
-      list: Omen,
+      list: omen,
       controller: _controller,
-      width: 100,
-      height: 80,
+      width: width,
+      height: height,
     );
   }
 }
 
 class HauntRoomSelection extends StatefulWidget {
+  double width;
+  double height;
+  EdgeInsets margin;
+
+  HauntRoomSelection({this.width, this.height, this.margin});
+
   @override
-  _HauntRoomSelectionState createState() => _HauntRoomSelectionState();
+  _HauntRoomSelectionState createState() => _HauntRoomSelectionState(width, height, margin);
 }
 
 class _HauntRoomSelectionState extends State<HauntRoomSelection> {
+  final double width;
+  final double height;
+  final EdgeInsets margin;
+
+  _HauntRoomSelectionState(this.width, this.height, this.margin);
+
   PageController _controller;
 
   @override
@@ -46,12 +78,19 @@ class _HauntRoomSelectionState extends State<HauntRoomSelection> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> rooms = Rooms;
+
+    if(MainPage.useExpansion) {
+      rooms.addAll(ExpansionRooms);
+      rooms.sort();
+    }
+
     return new HauntListView(
       listName: "Rooms",
-      list: Rooms,
+      list: rooms,
       controller: _controller,
-      width: 100,
-      height: 80,
+      width: width,
+      height: height,
     );
   }
 }
@@ -62,8 +101,9 @@ class HauntListView extends StatefulWidget {
   final PageController controller;
   final double height;
   final double width;
+  final EdgeInsets margin;
 
-  HauntListView({this.listName, this.list, this.controller, this.height, this.width});
+  HauntListView({this.listName, this.list, this.controller, this.height, this.width, this.margin});
 
   @override
   _HauntListViewState createState() => _HauntListViewState(
@@ -81,14 +121,16 @@ class _HauntListViewState extends State<HauntListView> {
   final PageController controller;
   final double height;
   final double width;
+  final EdgeInsets margin;
 
-  _HauntListViewState({this.listName, this.list, this.controller, this.height, this.width});
+  _HauntListViewState({this.listName, this.list, this.controller, this.height, this.width, this.margin});
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: margin,
       width: width,
-      height: height,
+      height: height*1.5,
       child: PageView.builder(
         controller: controller,
         scrollDirection: Axis.vertical,
@@ -120,7 +162,7 @@ class _HauntListViewState extends State<HauntListView> {
               }
               return new Center(
                 child: new SizedBox(
-                  height: Curves.easeOut.transform(value) * 40,
+                  height: Curves.easeOut.transform(value) * 50,
                   width: Curves.easeOut.transform(value) * 200,
                   child: child,
                 ),
@@ -129,15 +171,10 @@ class _HauntListViewState extends State<HauntListView> {
             child: new Container(
               decoration: BoxDecoration(
                 color: darkGreyColor,
+                borderRadius: BorderRadius.all(Radius.circular(50),
+                ),
               ),
-              margin: const EdgeInsets.all(0.2),
-              child: Center(
-                  child: Text(
-                    list[index],
-                    style: TextStyle(fontSize: 14, color: Colors.white),
-                    textAlign: TextAlign.center,
-                  )
-              ),
+              child: Center(child: Text(list[index], style: hauntDropdownsTextStyle)),
             ),
           );
         },
@@ -146,7 +183,30 @@ class _HauntListViewState extends State<HauntListView> {
   }
 }
 
-const List<String> Rooms = [
+Future<List<String>> GetRoomsList() async {
+  await SQLiteDbProvider.db.getHaunts().then(
+      (haunts) {
+    List<String> rooms = new List();
+    haunts.forEach((element) => rooms.add(element.room));
+    return rooms;
+  }).catchError((onError) {
+    throw new Exception(onError);
+  });
+}
+
+Future<List<String>> GetOmenList() async {
+
+  await SQLiteDbProvider.db.getHaunts().then(
+    (haunts) {
+      List<String> omen = new List();
+      haunts.forEach((element) => omen.add(element.omen));
+      return omen;
+    }).catchError((onError) {
+      throw new Exception(onError);
+  });
+}
+
+List<String> Rooms = [
   "Abandoned Room",
   "Balcony",
   "Catacombs",
@@ -162,7 +222,7 @@ const List<String> Rooms = [
   "Servant's Quarters",
 ];
 
-const List<String> ExpansionRooms = [
+List<String> ExpansionRooms = [
   "Dungeon",
   "Nursery",
   "Rookery",
@@ -170,7 +230,7 @@ const List<String> ExpansionRooms = [
   "Theater",
 ];
 
-const List<String> Omen = [
+List<String> Omen = [
   "Bite",
   "Book",
   "Crystal Ball",
@@ -183,10 +243,10 @@ const List<String> Omen = [
   "Ring",
   "Skull",
   "Spear",
-  "Spitit Board",
+  "Spirit Board",
 ];
 
-const List<String> ExpansionOmen = [
+List<String> ExpansionOmen = [
   "Bloodstone",
   "Box",
   "Cat",

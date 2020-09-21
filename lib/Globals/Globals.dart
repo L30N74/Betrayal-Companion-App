@@ -11,4 +11,10 @@ TextStyle hauntNameTextStyle = new TextStyle(fontSize: 26, color: Colors.white);
 TextStyle hauntTraitorPropertiesTextStyle = new TextStyle(fontSize: 26, color: Colors.white);
 TextStyle hauntNotRevealedTextStyle = new TextStyle(fontSize: 26, color: Colors.white);
 
-TextStyle hauntDropdownOkCancelTextStyle = new TextStyle(fontSize: 16, color: backgroundColor);
+TextStyle hauntDropdownsTextStyle = new TextStyle(fontSize: 20, color: Colors.white);
+TextStyle hauntTextTextStyle = new TextStyle(fontSize: 24, color: Colors.white);
+
+TextStyle useExpansionCheckboxTextStyle = new TextStyle(fontSize: 24, color: Colors.white);
+
+TextStyle coinflipChoiceTextStyle = new TextStyle(fontSize: 24, color: Colors.black);
+TextStyle coinflipButtonTextStyle = new TextStyle(fontSize: 20, color: Colors.black);

@@ -1,7 +1,6 @@
-import 'package:betrayalcompanionapp/GameLogic/Character.dart';
+import 'package:betrayalcompanionapp/GameLogic/HauntDropdowns.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
-import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/GameLogic/HauntDropdowns.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
 
@@ -73,15 +72,61 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Let the Fun Begin", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
+          Text("Reveal the Haunt", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
           Expanded(
-            child: Column(
-              children: [
-                HauntNameContainer(),
-                HauntPropertiesContainer(),
-              ]
-            ),
+            child: (MainPage.isHauntRevealed)
+                ? HauntRevealedPage()
+                : HauntDormentPage()
           ),
+        ],
+      ),
+    );
+  }
+
+  Container HauntRevealedPage() {
+    return Container(
+      child: Column(
+        children: [
+          HauntNameContainer(),
+          HauntPropertiesContainer()
+        ],
+      ),
+    );
+  }
+
+  Container HauntDormentPage() {
+    bool _checked = false;
+    return Container(
+      margin: EdgeInsets.only(top: 50),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Column(
+                children: [
+                  Text("Which room?", style: hauntTextTextStyle,),
+                  HauntRoomSelection(
+                    width: 200,
+                    height: 60,
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Text("Which Omen?", style: hauntTextTextStyle,),
+                  HauntOmenSelection(
+                    width: 200,
+                    height: 60,
+                  ),
+                ],
+              ),
+            ],
+          ),
+//          CheckboxListTile(
+//            title: Text("Use Widows's Walk Expansion", style: useExpansionCheckboxTextStyle,),
+//
+//          ),
         ],
       ),
     );
@@ -104,26 +149,20 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
             ),
           ),
           Column(
-              children: MainPage.isHauntRevealed
-                  ? [
-                Text(
-                  MainPage.revealedHauntInformation.hauntName,
-                  style: hauntNameTextStyle,
-                ),
-                Text(
-                  "Number " + MainPage.revealedHauntInformation.hauntNumber.toString(),
-                  style: hauntInformationTextStyle,
-                ),
-                Text(
-                  "Page " + MainPage.revealedHauntInformation.pageNumber.toString(),
-                  style: hauntInformationTextStyle,
-                ),
-              ]
-                  : [
-                Text(
-                  "Not yet defined", style: hauntNotRevealedTextStyle,
-                ),
-              ]
+            children: [
+              Text(
+                MainPage.revealedHauntInformation.hauntName,
+                style: hauntNameTextStyle,
+              ),
+              Text(
+                "Number " + MainPage.revealedHauntInformation.hauntNumber.toString(),
+                style: hauntInformationTextStyle,
+              ),
+              Text(
+                "Page " + MainPage.revealedHauntInformation.pageNumber.toString(),
+                style: hauntInformationTextStyle,
+              ),
+            ]
           )
         ],
       ),
@@ -146,42 +185,24 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
             ),
           ),
           Column(
-              children: MainPage.isHauntRevealed
-                  ? [
-                Text(
-                  MainPage.revealedHauntInformation.traitorProperties,
-                  style: hauntTraitorPropertiesTextStyle,
+            children: [
+              Text(
+                MainPage.revealedHauntInformation.traitorProperties,
+                style: hauntTraitorPropertiesTextStyle,
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: FlatButton(
+                  onPressed: () {
+                    setState(() {
+                      MainPage.isHauntRevealed = false;
+                      MainPage.revealedHauntInformation = null;
+                    });
+                  },
+                  child: Text("Reset"),
                 ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        MainPage.isHauntRevealed = false;
-                        MainPage.revealedHauntInformation = null;
-                      });
-                    },
-                    child: Text("Reset"),
-                  ),
-                ),
-              ]
-                  : [
-                Text(
-                  "Not yet revealed",
-                  style: hauntNotRevealedTextStyle,
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        MainPage.CreateHauntDeterminationAlert(context);
-                      });
-                    },
-                    child: Text("Reveal Traitor"),
-                  ),
-                ),
-              ]
+              ),
+            ]
           ),
         ],
       ),

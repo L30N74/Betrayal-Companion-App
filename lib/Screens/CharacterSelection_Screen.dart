@@ -1,6 +1,7 @@
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
+import 'package:betrayalcompanionapp/Screens/CoinFlip_Screen.dart';
 import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/Game_Screen.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +87,7 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
           Text("Age: " + character.age.toString(), style: characterStatsTextStyle),
           SizedBox(height: 20),
           RaisedButton(
-            child: Text("Pick", style: TextStyle(fontSize: 24, color: Colors.black)),
+            child: Text("Select", style: TextStyle(fontSize: 24, color: Colors.black)),
             onPressed: () {
               MainPage.players.add(character);
 
@@ -95,7 +96,11 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
                 controller = PageController(initialPage: 0);
               });
 
-              if(MainPage.players.length == playerCount) {
+              if(playerCount == 2 && MainPage.players.length == 2){
+                //Two-Player mode: Redirect to Coinflip to determine who plays as two characters
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => CoinFlip()));
+              }
+              else if(MainPage.players.length >= playerCount) {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
 //                MainPage.CreateAlertDialog(context);
               }

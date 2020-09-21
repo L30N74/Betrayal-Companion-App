@@ -15,7 +15,7 @@ class Character {
   Character(this.name, this.hobbies, this.age, this.weight, this.height, this.birthday, this.stats, this.color) {
     this.isDead = false;
     var nameSplits = name.split(' ');
-    this.imagePath = "assets/images/" + nameSplits[nameSplits.length-1]  + ".png";
+    this.imagePath = "assets/images/characters/" + nameSplits[nameSplits.length-1]  + ".png";
   }
 }
 

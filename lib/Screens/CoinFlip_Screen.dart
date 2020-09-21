@@ -1,5 +1,11 @@
+import 'dart:math';
+
 import 'package:betrayalcompanionapp/Globals/Header.dart';
+import 'package:betrayalcompanionapp/Screens/CharacterSelection_Screen.dart';
+import 'package:betrayalcompanionapp/Screens/Game_Screen.dart';
+import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
+import 'package:betrayalcompanionapp/Globals/Globals.dart';
 
 class CoinFlip extends StatelessWidget {
   @override
@@ -18,6 +24,11 @@ class CoinFlipWidget extends StatefulWidget {
 }
 
 class _CoinFlipWidgetState extends State<CoinFlipWidget> {
+  List<String> choices = ["Heads", "Tails"];
+  String playerOneChoice = "Heads";
+  String playerTwoChoice = "Tails";
+  String result = "Heads";
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,10 +43,159 @@ class _CoinFlipWidgetState extends State<CoinFlipWidget> {
             child: Column(
               children: [
                 Header("FLIP A COIN"),
+                Expanded(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 30,),
+                      CoinContainer(),
+                      SizedBox(height: 30,),
+                      PlayerChoicesContainer(),
+                      RaisedButton(
+                        child: Text("Flip", style: TextStyle(fontSize: 26, color: Colors.black),),
+                        onPressed: () {
+                          setState(() {
+                            FlipCoin();
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           )
       )
+    );
+  }
+
+  void FlipCoin() {
+    Random random = new Random();
+    int randNumber = random.nextInt(100);
+
+    result = (randNumber < 50) ? "Heads" : "Tails";
+
+    CreateResultDialog(playerOneChoice == result ? 1 : 2);
+  }
+
+  Container CoinContainer() {
+    return Container(
+      child: Column(
+        children: [
+          Container(
+            height: 300,
+            width: 300,
+            child: (result == "Heads") ? Image(image: AssetImage("assets/images/coin_heads.png"),) : Image(image: AssetImage("assets/images/coin_tails.png"),),
+          )
+        ],
+      ),
+    );
+  }
+
+  Container PlayerChoicesContainer() {
+    return Container(
+      width: 300,
+      height: 150,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            child: Row(
+              children: [
+                Text("Player 1: ", style: TextStyle(fontSize: 24, color: Colors.black),),
+                DropdownButton(
+                  value: playerOneChoice,
+                  icon: Icon(Icons.keyboard_arrow_down),
+                  onChanged: (String newChoice) {
+                    setState(() {
+                      playerOneChoice = newChoice;
+                      //Reverse what player one has
+                      if(newChoice == "Heads") {
+                        playerTwoChoice = "Tails";
+                      }
+                      else {
+                        playerTwoChoice = "Heads";
+                      }
+                    });
+                  },
+                  items: choices.map<DropdownMenuItem<String>>((choice) => DropdownMenuItem<String>(
+                    value: choice,
+                    child: Text(
+                      choice,
+                      style: coinflipChoiceTextStyle,
+                    ),
+                  )).toList(),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            child: Row(
+              children: [
+                Text("Player 2: ", style: TextStyle(fontSize: 24, color: Colors.black),),
+                DropdownButton(
+                  value: playerTwoChoice,
+                  icon: Icon(Icons.keyboard_arrow_down),
+                  onChanged: (String newChoice) {
+                    setState(() {
+                      playerTwoChoice = newChoice;
+                      //Reverse what player one has
+                      if(newChoice == "Heads") {
+                        playerOneChoice = "Tails";
+                      }
+                      else {
+                        playerOneChoice = "Heads";
+                      }
+                    });
+                  },
+                  items: choices.map<DropdownMenuItem<String>>((choice) => DropdownMenuItem<String>(
+                    value: choice,
+                    child: Text(
+                      choice,
+                      style: coinflipChoiceTextStyle,
+                    ),
+                  )).toList(),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  CreateResultDialog(int number) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Result", style: TextStyle(fontSize: 16, color: Colors.black), textAlign: TextAlign.center,),
+          content: Container(
+            height: 250,
+            child: Column(
+              children: [
+                Text(
+                  "Player #$number gets to play two characters.",
+                  style: TextStyle(fontSize: 28, decoration: TextDecoration.underline),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 20,),
+                RaisedButton(
+                  child: Text("Give me a random Character", style: coinflipButtonTextStyle,),
+                  onPressed: () {
+                    MainPage.RandomizePlayers(1);
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
+                  },
+                ),
+                SizedBox(height: 30,),
+                RaisedButton(
+                  child: Text("I want to choose myself", style: coinflipButtonTextStyle,),
+                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => CharacterSelection_Screen(1))),
+                ),
+              ],
+            ),
+          ),
+        );
+      }
     );
   }
 }
