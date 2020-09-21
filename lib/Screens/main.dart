@@ -1,11 +1,14 @@
+import 'package:betrayalcompanionapp/GameLogic/Database.dart';
+import 'package:betrayalcompanionapp/GameLogic/HauntDropdowns.dart';
+import 'package:betrayalcompanionapp/Globals/Globals.dart';
+import 'package:betrayalcompanionapp/Screens/Game_Screen.dart';
+import 'package:betrayalcompanionapp/GameLogic/Haunt.dart';
 import 'package:flutter/material.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
 import 'package:betrayalcompanionapp/GameLogic/Stats.dart';
-import 'package:betrayalcompanionapp/Globals/BottomBar.dart';
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'package:betrayalcompanionapp/Screens/NewGame_Screen.dart';
-import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/Game_Screen.dart';
-import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/CoinFlip_Screen.dart';
+import 'package:betrayalcompanionapp/GameLogic/HauntInformation.dart';
 
 void main() => runApp(MainPage());
 
@@ -18,6 +21,17 @@ class MainPage extends StatelessWidget {
 
   static bool startingPlayerDetermined = false;
   static int omenInPlay = 0;
+
+  static bool isHauntRevealed = false;
+  static bool useExpansion = true;
+
+  static HauntInformation revealedHauntInformation = new HauntInformation(
+    hauntName: "The Mind's eye",
+    pageNumber: 55,
+    hauntNumber: 12,
+    traitor: characters[1],
+    traitorProperties: "Lowest Sanity",
+  );
 
   bool currentGameButtonDisabled;
 
@@ -95,7 +109,7 @@ class MainPage extends StatelessWidget {
     );
   }
 
-  StartNewGame(context) {
+  void StartNewGame(context) {
     InitializeCharacterLists();
     players = new List<Character>();
 
@@ -297,7 +311,87 @@ class MainPage extends StatelessWidget {
     );
   }
 
-  CreateNewGameConfirmationAlert(BuildContext context) {
+  static HauntInformation DetermineHaunt(String room, String omen) {
+//    SQLiteDbProvider.db.
+//    getHaunts().then(
+//            (haunts) {
+//              debugPrint("Got all haunts");
+//              Map<int, Haunt> map = haunts.asMap();
+//
+//              map.forEach((key, value) {
+//                debugPrint(key.toString() + ": " + value.room + ", " + value.omen + ", " + value.traitorProperties);
+//              });
+//
+////        debugPrint(haunt.traitorProperties + "; " + haunt.hauntName);
+//          return null;
+////        return new HauntInformation(
+////          hauntName: haunt.hauntName,
+////          hauntNumber: haunt.hauntNumber,
+////          traitorProperties: haunt.traitorProperties
+////        );
+//        })
+//        .catchError((onError) {
+//      print(onError);
+//      throw new Exception("No haunts found: " + onError);
+//    });
+    SQLiteDbProvider.db.
+    getHauntByRoomOmen(room, omen).then(
+      (haunt) {
+        return new HauntInformation(
+          hauntName: haunt.hauntName,
+          hauntNumber: haunt.hauntNumber,
+          traitorProperties: haunt.traitorProperties
+        );
+      })
+    .catchError((onError) {
+      print(onError);
+      throw new Exception("No haunt with in room $room and with omen $omen");
+    });
+  }
+
+  static Future CreateHauntDeterminationAlert(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Select Room and Omen"),
+          content: Container(
+            height: 200,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    HauntRoomSelection(),
+                    HauntOmenSelection(),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    FlatButton(
+                      child: Text("Cancel", style: hauntDropdownOkCancelTextStyle,),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    FlatButton(
+                      child: Text("Ok", style: hauntDropdownOkCancelTextStyle,),
+                      onPressed: () {
+                        DetermineHaunt(revealedHauntInformation.room, revealedHauntInformation.omen);
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        );
+      }
+    );
+  }
+
+  Future CreateNewGameConfirmationAlert(BuildContext context) {
     return showDialog(
       context: context,
       builder: (context) {

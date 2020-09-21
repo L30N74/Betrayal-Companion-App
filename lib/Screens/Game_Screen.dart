@@ -1,7 +1,7 @@
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
-import 'package:betrayalcompanionapp/HauntDropdowns.dart';
+import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/GameLogic/HauntDropdowns.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
 
@@ -48,7 +48,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
               ),
               child: Column(
                 children: [
-                  Header("Betrayal At House On The Hill"),
+                  Header("Betrayal At House\nOn The Hill"),
                   SizedBox(height: 20),
                   Expanded(
                     child: TabBarView(
@@ -77,24 +77,111 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
           Expanded(
             child: Column(
               children: [
-                Container(
-                  child: Column(
-                    children: [
-                      Text("Which Room?", style: TextStyle(fontSize: 26, color: Colors.white),),
-//                      HauntRoomDropdown(),
-                    ],
-                  ),
-                ),
-                Container(
-                  child: Column(
-                    children: [
-                      Text("Which Omen?", style: TextStyle(fontSize: 26),),
-//                      HauntOmenDropdown(),
-                    ],
-                  ),
-                ),
-              ],
+                HauntNameContainer(),
+                HauntPropertiesContainer(),
+              ]
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container HauntNameContainer() {
+    return Container(
+      height: MainPage.isHauntRevealed ? 150 : 120,
+      width: double.infinity,
+      margin: EdgeInsets.only(top: 30, left: 20, right: 20),
+      color: darkGreyColor,
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              "Haunt",
+              style: TextStyle(fontSize: 24, color: Colors.white),
+              textAlign: TextAlign.left,
+            ),
+          ),
+          Column(
+              children: MainPage.isHauntRevealed
+                  ? [
+                Text(
+                  MainPage.revealedHauntInformation.hauntName,
+                  style: hauntNameTextStyle,
+                ),
+                Text(
+                  "Number " + MainPage.revealedHauntInformation.hauntNumber.toString(),
+                  style: hauntInformationTextStyle,
+                ),
+                Text(
+                  "Page " + MainPage.revealedHauntInformation.pageNumber.toString(),
+                  style: hauntInformationTextStyle,
+                ),
+              ]
+                  : [
+                Text(
+                  "Not yet defined", style: hauntNotRevealedTextStyle,
+                ),
+              ]
+          )
+        ],
+      ),
+    );
+  }
+
+  Container HauntPropertiesContainer() {
+    return Container(
+      height: MainPage.isHauntRevealed ? 150 : 120,
+      width: double.infinity,
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+      color: darkGreyColor,
+      child: Column(
+        children: [
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              "Traitor",
+              style: TextStyle(fontSize: 24, color: Colors.white),
+            ),
+          ),
+          Column(
+              children: MainPage.isHauntRevealed
+                  ? [
+                Text(
+                  MainPage.revealedHauntInformation.traitorProperties,
+                  style: hauntTraitorPropertiesTextStyle,
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        MainPage.isHauntRevealed = false;
+                        MainPage.revealedHauntInformation = null;
+                      });
+                    },
+                    child: Text("Reset"),
+                  ),
+                ),
+              ]
+                  : [
+                Text(
+                  "Not yet revealed",
+                  style: hauntNotRevealedTextStyle,
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        MainPage.CreateHauntDeterminationAlert(context);
+                      });
+                    },
+                    child: Text("Reveal Traitor"),
+                  ),
+                ),
+              ]
           ),
         ],
       ),
@@ -129,7 +216,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                   setState(() {
                     MainPage.omenInPlay++;
                   });
-                  },
+                },
               ),
             ),
           ),
@@ -179,11 +266,11 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                      child:  Text(("\t")*5 + (index+1).toString(), style: TextStyle(fontSize: 26, color: Colors.white), textAlign: TextAlign.center)
-                  ),
-                  Container(
-                      child:  Text(MainPage.players[index].name, style: TextStyle(fontSize: 26, color: Colors.white), textAlign: TextAlign.center)
+//                  Container(
+//                      child:  Text(("\t")*5 + (index+1).toString(), style: TextStyle(fontSize: 26, color: Colors.white), textAlign: TextAlign.center)
+//                  ),
+                  Center(
+                    child: Text(("\t")*7 + MainPage.players[index].name, style: TextStyle(fontSize: 26, color: Colors.white), textAlign: TextAlign.center),
                   ),
                   Container(
                       child:  Image(image: AssetImage(MainPage.players[index].imagePath), width: 100, height: 100)

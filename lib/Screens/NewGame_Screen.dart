@@ -157,7 +157,6 @@ class NewGameWidgetState extends State<NewGameWidget> {
 
   ChoosePlayersButton() {
     return RaisedButton(
-
       child: Text("I want to choose", style: TextStyle(fontSize: 40)),
       onPressed: (){
         Navigator.push(context, MaterialPageRoute(builder: (context) => CharacterSelection_Screen(playerCount)));
