@@ -48,7 +48,6 @@ class SQLiteDbProvider {
       onOpen: (db) {},
       onCreate: (Database db, int version) async {
         await db.execute("DROP TABLE IF EXISTS Haunts;");
-        debugPrint("Initializing database");
 
         await db.execute(
           "CREATE TABLE Haunts("
@@ -59,8 +58,6 @@ class SQLiteDbProvider {
           "traitorProperties TEXT,"
           "hauntName TEXT);"
         );
-
-        debugPrint("Table Created");
 
         await CreateAbandonedRoomEntries(db);
         await CreateBalconyEntries(db);
@@ -81,8 +78,6 @@ class SQLiteDbProvider {
         await CreateServantsQuartersEntries(db);
         await CreateStudyEntries(db);
         await CreateTheaterEntries(db);
-
-        debugPrint("Table filled");
       }
     );
   }

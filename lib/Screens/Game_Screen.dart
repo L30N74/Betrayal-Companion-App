@@ -73,7 +73,14 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Reveal the Haunt", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
+          Text(
+              "Reveal the Haunt",
+              style: TextStyle(
+                  fontSize: 54,
+                  color: Colors.white,
+                  decoration: TextDecoration.underline
+              )
+          ),
           Expanded(
             child: (MainPage.isHauntRevealed)
                 ? HauntRevealedPage()
@@ -96,38 +103,46 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
   }
 
   Container HauntDormentPage() {
-    bool _checked = false;
     return Container(
-      margin: EdgeInsets.only(top: 50),
+      margin: EdgeInsets.only(top: 20),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          Column(
             children: [
-              Column(
-                children: [
-                  Text("Which room?", style: hauntTextTextStyle,),
-                  HauntRoomSelection(
-                    width: 200,
-                    height: 60,
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text("Which Omen?", style: hauntTextTextStyle,),
-                  HauntOmenSelection(
-                    width: 200,
-                    height: 60,
-                  ),
-                ],
+              Text("Which room?", style: hauntTextTextStyle,),
+              HauntRoomSelection(
+                width: 200,
+                height: 60,
               ),
             ],
           ),
-//          CheckboxListTile(
-//            title: Text("Use Widows's Walk Expansion", style: useExpansionCheckboxTextStyle,),
-//
-//          ),
+          Divider(),
+          Column(
+            children: [
+              Text("Which Omen?", style: hauntTextTextStyle,),
+              HauntOmenSelection(
+                width: 200,
+                height: 60,
+              ),
+            ],
+          ),
+          CheckboxListTile(
+            title: Text("Use Widows's Walk Expansion", style: useExpansionCheckboxTextStyle,),
+            value: MainPage.useExpansion,
+            onChanged: (bool value) {
+              setState(() {
+                MainPage.useExpansion = value;
+              });
+            },
+          ),
+          RaisedButton(
+            child: Text("Reveal"),
+            onPressed: () {
+              setState(() {
+                MainPage.DetermineHaunt();
+              });
+            },
+          ),
         ],
       ),
     );
@@ -210,20 +225,21 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
     );
   }
 
-  Container DiceRollPage() {
-    return Container(
-      child: Column(
-        children: [
-          Text("Roll The Dice", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
-          Text("Coming Up", style: TextStyle(fontSize: 80, color: Colors.white),),
-        ],
-      ),
-    );
-  }
+//  Container DiceRollPage() {
+//    return Container(
+//      child: Column(
+//        children: [
+//          Text("Roll The Dice", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
+//          Text("Coming Up", style: TextStyle(fontSize: 80, color: Colors.white),),
+//        ],
+//      ),
+//    );
+//  }
 
   Container HauntCountPage() {
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text("Omen In Play", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
           Text(MainPage.omenInPlay.toString(), style: TextStyle(fontSize: 48),),

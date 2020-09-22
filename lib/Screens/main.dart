@@ -36,6 +36,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     currentGameButtonDisabled = (players.length == 0);
+    revealedHauntInformation = new HauntInformation();
 
     return MaterialApp(
       home: Builder(
@@ -309,37 +310,22 @@ class MainPage extends StatelessWidget {
     );
   }
 
-  static HauntInformation DetermineHaunt(String room, String omen) {
-//    SQLiteDbProvider.db.
-//    getHaunts().then(
-//            (haunts) {
-//              debugPrint("Got all haunts");
-//              Map<int, Haunt> map = haunts.asMap();
-//
-//              map.forEach((key, value) {
-//                debugPrint(key.toString() + ": " + value.room + ", " + value.omen + ", " + value.traitorProperties);
-//              });
-//
-////        debugPrint(haunt.traitorProperties + "; " + haunt.hauntName);
-//          return null;
-////        return new HauntInformation(
-////          hauntName: haunt.hauntName,
-////          hauntNumber: haunt.hauntNumber,
-////          traitorProperties: haunt.traitorProperties
-////        );
-//        })
-//        .catchError((onError) {
-//      print(onError);
-//      throw new Exception("No haunts found: " + onError);
-//    });
+  static HauntInformation DetermineHaunt() {
+    String room = revealedHauntInformation.room;
+    String omen = revealedHauntInformation.omen;
+
     SQLiteDbProvider.db.
     getHauntByRoomOmen(room, omen).then(
       (haunt) {
-        return new HauntInformation(
+        HauntInformation info = HauntInformation(
           hauntName: haunt.hauntName,
           hauntNumber: haunt.hauntNumber,
           traitorProperties: haunt.traitorProperties
         );
+
+        isHauntRevealed = true;
+
+        return info;
       })
     .catchError((onError) {
       print(onError);
