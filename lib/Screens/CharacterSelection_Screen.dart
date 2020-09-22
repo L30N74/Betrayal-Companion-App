@@ -38,7 +38,7 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
             child: Column(
               children: [
                 Header("CHARACTER SELECTION"),
-                SizedBox(height: 10),
+                Divider(),
                 Expanded(
                   child: PageView(
                     controller: controller,
@@ -83,9 +83,7 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
                   style: characterStatsTextStyle),
             ],
           ),
-          SizedBox(height: 20),
           Text("Age: " + character.age.toString(), style: characterStatsTextStyle),
-          SizedBox(height: 20),
           RaisedButton(
             child: Text("Select", style: TextStyle(fontSize: 24, color: Colors.black)),
             onPressed: () {

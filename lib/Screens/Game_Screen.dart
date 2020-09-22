@@ -264,37 +264,38 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
         padding: const EdgeInsets.only(top: 20, bottom: 80),
         itemCount: MainPage.players.length,
         itemBuilder: (BuildContext context, int index) {
-          return InkWell(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => CharacterDetails(MainPage.players[index]))),
-            child: Container(
-              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              decoration: BoxDecoration(
-                color: darkGreyColor,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(50),
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(50)
+          return Container(
+            width: MediaQuery.of(context).size.width - 20,
+            alignment: Alignment.centerLeft,
+            child: InkWell(
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => CharacterDetails(MainPage.players[index]))),
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                decoration: BoxDecoration(
+                  color: darkGreyColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(50),
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(50)
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 15
+                    )
+                  ]
                 ),
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 15
-                  )
-                ]
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-//                  Container(
-//                      child:  Text(("\t")*5 + (index+1).toString(), style: TextStyle(fontSize: 26, color: Colors.white), textAlign: TextAlign.center)
-//                  ),
-                  Center(
-                    child: Text(("\t")*7 + MainPage.players[index].name, style: TextStyle(fontSize: 26, color: Colors.white), textAlign: TextAlign.center),
-                  ),
-                  Container(
-                      child:  Image(image: AssetImage(MainPage.players[index].imagePath), width: 100, height: 100)
-                  ),
-                ],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Center(
+                      child: Text(("\t")*5 + MainPage.players[index].name, style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.center),
+                    ),
+                    Container(
+                        child:  Image(image: AssetImage(MainPage.players[index].imagePath), width: 100, height: 100)
+                    ),
+                  ],
+                ),
               ),
             ),
           );
