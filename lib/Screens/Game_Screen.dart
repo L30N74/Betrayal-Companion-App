@@ -1,6 +1,7 @@
 import 'package:betrayalcompanionapp/GameLogic/HauntDropdowns.dart';
 import 'package:betrayalcompanionapp/Globals/Globals.dart';
 import 'package:betrayalcompanionapp/Globals/Header.dart';
+import 'package:betrayalcompanionapp/Screens/Character_Details.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
 
@@ -264,10 +265,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
         itemCount: MainPage.players.length,
         itemBuilder: (BuildContext context, int index) {
           return InkWell(
-            onTap: () => {
-              // TODO: Redirect to Character Details Page
-              print(MainPage.players[index].name + " was tapped")
-            },
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => CharacterDetails(MainPage.players[index]))),
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               decoration: BoxDecoration(

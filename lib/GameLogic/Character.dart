@@ -17,6 +17,11 @@ class Character {
     var nameSplits = name.split(' ');
     this.imagePath = "assets/images/characters/" + nameSplits[nameSplits.length-1]  + ".png";
   }
+
+  void Reset() {
+    this.isDead = false;
+    this.stats.Reset();
+  }
 }
 
 enum CharacterColor {

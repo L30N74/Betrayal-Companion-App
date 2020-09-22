@@ -25,30 +25,66 @@ class Stats {
     this.knowledgeDefaultIndex = _knowledgeStartIndex;
   }
 
-  void increaseSpeed(){ speedIndex++; }
-  void decreaseSpeed(){ speedIndex--; }
-  int getSpeed() { return knowledge[speedIndex]; }
-  void resetSpeed() { knowledgeIndex = knowledgeDefaultIndex; }
-
-  void increaseMight(){ mightIndex++; }
-  void decreaseMight(){ mightIndex--; }
-  int getMight() { return knowledge[mightIndex]; }
-  void resetMight() { knowledgeIndex = knowledgeDefaultIndex; }
-
-  void increaseSanity(){ sanityIndex++; }
-  void decreaseSanity(){ sanityIndex--; }
-  int getSanity() { return knowledge[sanityIndex]; }
-  void resetSanity() { knowledgeIndex = knowledgeDefaultIndex; }
-
-  void increaseKnowledge(){ knowledgeIndex++; }
-  void decreaseKnowledge(){ knowledgeIndex--; }
-  int getKnowledge() { return knowledge[knowledgeIndex]; }
+  void resetMight() { mightIndex = mightDefaultIndex; }
+  void resetSpeed() { speedIndex = speedDefaultIndex; }
+  void resetSanity() { sanityIndex = sanityDefaultIndex; }
   void resetKnowledge() { knowledgeIndex = knowledgeDefaultIndex; }
 
-  void resetAll(){
+  void Reset(){
     resetSpeed();
     resetMight();
     resetSanity();
     resetKnowledge();
+  }
+
+  void DieFromStat(String stat) {
+    switch(stat) {
+      case "Might":
+        mightIndex = 0;
+        break;
+      case "Speed":
+        speedIndex = 0;
+        break;
+      case "Sanity":
+        sanityIndex = 0;
+        break;
+      case "Knowledge":
+        knowledgeIndex = 0;
+        break;
+    }
+  }
+
+  bool IsCurrentIndex(String stat, int index) {
+    switch(stat) {
+      case "Might":
+        return (mightIndex == index);
+        break;
+      case "Speed":
+        return (speedIndex == index);
+        break;
+      case "Sanity":
+        return (sanityIndex == index);
+        break;
+      case "Knowledge":
+        return (knowledgeIndex == index);
+        break;
+    }
+  }
+
+  void SetStatIndex(String stat, int index) {
+    switch(stat) {
+      case "Might":
+        mightIndex = index;
+        break;
+      case "Speed":
+        speedIndex = index;
+        break;
+      case "Sanity":
+        sanityIndex = index;
+        break;
+      case "Knowledge":
+        knowledgeIndex = index;
+        break;
+    }
   }
 }
