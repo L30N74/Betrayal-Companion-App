@@ -99,10 +99,74 @@ class _CharacterDetailsState extends State<CharacterDetails> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          GetStatButtonRow("Might"),
-          GetStatButtonRow("Speed"),
-          GetStatButtonRow("Sanity"),
-          GetStatButtonRow("Knowledge"),
+          Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  SizedBox(
+                    width: 60,
+                    child: Text(
+                      "Might",
+                      style: TextStyle(color: Colors.white),
+                      textAlign: TextAlign.center,
+                    )
+                  ),
+                  Container(
+                    child: GetStatButtonRow("Might"),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  SizedBox(
+                      width: 60,
+                      child: Text(
+                        "Speed",
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
+                      )
+                  ),
+                  Container(
+                    child: GetStatButtonRow("Speed"),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  SizedBox(
+                      width: 60,
+                      child: Text(
+                        "Sanity",
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.center,
+                      )
+                  ),
+                  Container(
+                    child: GetStatButtonRow("Sanity"),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  SizedBox(
+                      width: 60,
+                      child: Text(
+                        "Knowledge",
+                        style: TextStyle(fontSize: 10, color: Colors.white),
+                        textAlign: TextAlign.center,
+                      )
+                  ),
+                  Container(
+                    child: GetStatButtonRow("Knowledge"),
+                  ),
+                ],
+              ),
+            ],
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -164,7 +228,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
     List<Container> buttons = new List<Container>();
     buttons.add(Container(
       margin: EdgeInsets.only(bottom: 10),
-      width: 40,
+      width: 30,
       height: 50,
       decoration: (character.isDead)
           ? BoxDecoration(
@@ -174,11 +238,13 @@ class _CharacterDetailsState extends State<CharacterDetails> {
           border: null
       ),
       child: MaterialButton(
-        child: Icon(Icons.close, size: 16,),
+        child: Align(
+            alignment: Alignment.center,
+            child: Icon(Icons.close, size: 16,)
+        ),
         onPressed: () {
           setState(() {
-            character.stats.DieFromStat(statListString);
-            character.isDead = true;
+            character.DieFromStat(statListString);
           });
         },
       ),
@@ -188,7 +254,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
       Color color = (key == defaultIndex) ? Color(0xff57C138) : Colors.white;
       buttons.add(Container(
         margin: EdgeInsets.only(bottom: 10),
-        width: 40,
+        width: 30,
         height: 50,
         decoration: (character.stats.IsCurrentIndex(statListString, key) && !character.isDead)
             ? BoxDecoration(
@@ -198,7 +264,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
           border: null
         ),
         child: MaterialButton(
-          child: Text(value.toString(), style: TextStyle(fontSize: 14, color: color,),),
+          child: Text(value.toString(), style: TextStyle(fontSize: 14, color: color,), textAlign: TextAlign.center,),
           onPressed: () {
             setState(() {
               character.stats.SetStatIndex(statListString, key);

@@ -22,6 +22,11 @@ class Character {
     this.isDead = false;
     this.stats.Reset();
   }
+
+  void DieFromStat(String statName) {
+    stats.DieFromStat(statName);
+    isDead = true;
+  }
 }
 
 enum CharacterColor {
