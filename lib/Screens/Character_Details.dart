@@ -229,7 +229,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
     buttons.add(Container(
       margin: EdgeInsets.only(bottom: 10),
       width: 30,
-      height: 50,
+      height: 40,
       decoration: (character.isDead)
           ? BoxDecoration(
         border: Border.all(width: 2, color: Colors.grey.withOpacity(0.9)),
@@ -237,11 +237,9 @@ class _CharacterDetailsState extends State<CharacterDetails> {
           : BoxDecoration(
           border: null
       ),
-      child: MaterialButton(
-        child: Align(
-            alignment: Alignment.center,
-            child: Icon(Icons.close, size: 16,)
-        ),
+      child: IconButton(
+        padding: EdgeInsets.all(0),
+        icon: Icon(Icons.close, size: 16,),
         onPressed: () {
           setState(() {
             character.DieFromStat(statListString);
@@ -255,7 +253,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
       buttons.add(Container(
         margin: EdgeInsets.only(bottom: 10),
         width: 30,
-        height: 50,
+        height: 40,
         decoration: (character.stats.IsCurrentIndex(statListString, key) && !character.isDead)
             ? BoxDecoration(
           border: Border.all(width: 2, color: Colors.grey.withOpacity(0.9)),
@@ -264,7 +262,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
           border: null
         ),
         child: MaterialButton(
-          child: Text(value.toString(), style: TextStyle(fontSize: 14, color: color,), textAlign: TextAlign.center,),
+          child: Text(value.toString(), style: TextStyle(fontSize: 16, color: color,), textAlign: TextAlign.center,),
           onPressed: () {
             setState(() {
               character.stats.SetStatIndex(statListString, key);
@@ -275,7 +273,6 @@ class _CharacterDetailsState extends State<CharacterDetails> {
     });
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: buttons,
     );
   }

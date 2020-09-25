@@ -65,7 +65,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                 ],
               ),
             ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.home),
             backgroundColor: darkGreyColor,

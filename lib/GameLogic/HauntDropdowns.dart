@@ -39,6 +39,8 @@ class _HauntOmenSelectionState extends State<HauntOmenSelection> {
       omen.addAll(ExpansionOmen);
       omen.sort();
     }
+    else
+      ExpansionOmen.forEach((expansionOmen) => omen.remove(expansionOmen));
 
     return new HauntListView(
       listName: "Omen",
@@ -85,6 +87,8 @@ class _HauntRoomSelectionState extends State<HauntRoomSelection> {
       rooms.addAll(ExpansionRooms);
       rooms.sort();
     }
+    else
+      ExpansionRooms.forEach((expansionRoom) => rooms.remove(expansionRoom));
 
     return new HauntListView(
       listName: "Rooms",
