@@ -136,7 +136,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
             ],
           ),
           CheckboxListTile(
-            title: Text("Use Widows's Walk Expansion", style: useExpansionCheckboxTextStyle, textAlign: TextAlign.right,),
+            title: Text("Use Widow's Walk Expansion", style: useExpansionCheckboxTextStyle, textAlign: TextAlign.right,),
             value: Logic.useExpansion,
             onChanged: (bool value) {
               setState(() {
