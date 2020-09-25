@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:betrayalcompanionapp/Globals/Globals.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 
 class BottomBar extends StatelessWidget {
   Widget child;

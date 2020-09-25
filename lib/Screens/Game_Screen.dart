@@ -1,6 +1,6 @@
 import 'package:betrayalcompanionapp/GameLogic/HauntDropdowns.dart';
-import 'package:betrayalcompanionapp/Globals/Globals.dart';
-import 'package:betrayalcompanionapp/Globals/Header.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/Screens/Character_Details.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
@@ -174,10 +174,6 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                 "Number " + MainPage.revealedHauntInformation.hauntNumber.toString(),
                 style: hauntInformationTextStyle,
               ),
-              Text(
-                "Page " + MainPage.revealedHauntInformation.pageNumber.toString(),
-                style: hauntInformationTextStyle,
-              ),
             ]
           )
         ],
@@ -304,11 +300,22 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    Text(
+                      ("\t")*5 + (index+1).toString() + ":\t",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
                     Center(
-                      child: Text(("\t")*5 + MainPage.players[index].name, style: TextStyle(fontSize: 20, color: Colors.white), textAlign: TextAlign.center),
+                      child: Text(
+                        MainPage.players[index].name,
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        textAlign: TextAlign.center),
                     ),
                     Container(
-                        child:  Image(image: AssetImage(MainPage.players[index].imagePath), width: 100, height: 100)
+                        child:  Image(
+                          image: AssetImage(MainPage.players[index].imagePath),
+                          width: 90,
+                          height: 90
+                        )
                     ),
                   ],
                 ),

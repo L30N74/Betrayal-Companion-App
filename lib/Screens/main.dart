@@ -23,13 +23,7 @@ class MainPage extends StatelessWidget {
   static bool isHauntRevealed = false;
   static bool useExpansion = false;
 
-  static HauntInformation revealedHauntInformation = new HauntInformation(
-    hauntName: "The Mind's eye",
-    pageNumber: 55,
-    hauntNumber: 12,
-    traitor: characters[1],
-    traitorProperties: "Lowest Sanity",
-  );
+  static HauntInformation revealedHauntInformation;
 
   @override
   Widget build(BuildContext context) {

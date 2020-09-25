@@ -1,11 +1,11 @@
 import 'dart:math';
 
-import 'package:betrayalcompanionapp/Globals/Header.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/Screens/CharacterSelection_Screen.dart';
 import 'package:betrayalcompanionapp/Screens/Game_Screen.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
-import 'package:betrayalcompanionapp/Globals/Globals.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 
 class CoinFlip extends StatelessWidget {
   @override

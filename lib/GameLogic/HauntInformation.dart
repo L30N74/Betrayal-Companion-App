@@ -7,8 +7,7 @@ class HauntInformation {
   final String hauntName;
   final String traitorProperties;
   final int hauntNumber;
-  final int pageNumber;
   final Character traitor;
 
-  HauntInformation({this.hauntName, this.hauntNumber, this.pageNumber, this.traitor, this.traitorProperties});
+  HauntInformation({this.hauntName, this.hauntNumber, this.traitor, this.traitorProperties});
 }

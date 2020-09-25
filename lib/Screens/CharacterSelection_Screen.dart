@@ -1,6 +1,6 @@
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
-import 'package:betrayalcompanionapp/Globals/Header.dart';
-import 'package:betrayalcompanionapp/Globals/Globals.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/Screens/CoinFlip_Screen.dart';
 import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/Game_Screen.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';

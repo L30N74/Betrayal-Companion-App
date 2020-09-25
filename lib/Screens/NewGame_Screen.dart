@@ -2,8 +2,8 @@ import 'package:betrayalcompanionapp/Screens/CoinFlip_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';
-import 'package:betrayalcompanionapp/Globals/Header.dart';
-import 'package:betrayalcompanionapp/Globals/Globals.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/Game_Screen.dart';
 import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/CharacterSelection_Screen.dart';
 

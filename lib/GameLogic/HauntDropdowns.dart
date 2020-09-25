@@ -1,5 +1,5 @@
 import 'package:betrayalcompanionapp/GameLogic/Database.dart';
-import 'package:betrayalcompanionapp/Globals/Globals.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
 
