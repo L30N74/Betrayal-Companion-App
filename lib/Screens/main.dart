@@ -288,7 +288,7 @@ class MainPage extends StatelessWidget {
                   Container(
                     child: Text(
                         "The starting player is \n" + startingPlayer.name,
-                        style: TextStyle(fontSize: 26),
+                        style: TextStyle(fontSize: 22),
                         textAlign: TextAlign.center
                     ),
                   ),
