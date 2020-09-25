@@ -1,4 +1,5 @@
 import 'package:betrayalcompanionapp/GameLogic/Database.dart';
+import 'package:betrayalcompanionapp/GameLogic/HauntInformation.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
 import 'package:flutter/material.dart';
@@ -140,12 +141,12 @@ class _HauntListViewState extends State<HauntListView> {
             switch(listName) {
               case "Omen":
                 setState(() {
-                  Logic.revealedHauntInformation.omen = Omen[value];
+                  Logic.revealedHauntInformation.omen = list[value];
                 });
                 break;
               case "Rooms":
                 setState(() {
-                  Logic.revealedHauntInformation.room = Rooms[value];
+                  Logic.revealedHauntInformation.room = list[value];
                 });
                 break;
             }
@@ -184,7 +185,7 @@ class _HauntListViewState extends State<HauntListView> {
 }
 
 Future<List<String>> GetRoomsList() async {
-  await SQLiteDbProvider.db.getHaunts().then(
+  await SQLiteDbProvider.db.getAllHaunts().then(
       (haunts) {
     List<String> rooms = new List();
     haunts.forEach((element) => rooms.add(element.room));
@@ -195,8 +196,7 @@ Future<List<String>> GetRoomsList() async {
 }
 
 Future<List<String>> GetOmenList() async {
-
-  await SQLiteDbProvider.db.getHaunts().then(
+  await SQLiteDbProvider.db.getAllHaunts().then(
     (haunts) {
       List<String> omen = new List();
       haunts.forEach((element) => omen.add(element.omen));

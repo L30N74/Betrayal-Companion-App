@@ -2,7 +2,6 @@ import 'package:betrayalcompanionapp/Screens/Game_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
-import 'package:betrayalcompanionapp/Screens/NewGame_Screen.dart';
 import 'package:betrayalcompanionapp/GameLogic/HauntInformation.dart';
 
 void main() => runApp(MainPage());
@@ -11,8 +10,6 @@ void main() => runApp(MainPage());
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Logic.revealedHauntInformation = new HauntInformation();
-
     return MaterialApp(
       home: Builder(
         builder: (context) => Scaffold(
@@ -53,7 +50,7 @@ class MainPage extends StatelessWidget {
                       if(Logic.players.length > 0)
                         Logic.CreateNewGameConfirmationAlert(context);
                       else {
-                        StartNewGame(context);
+                        Logic.StartNewGame(context);
                       }
                     },
                     elevation: 10,
@@ -81,13 +78,5 @@ class MainPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  static void StartNewGame(context) {
-    Logic.InitializeCharacterLists();
-
-    Logic.startingPlayerDetermined = false;
-
-    Navigator.push(context, MaterialPageRoute(builder: (context) => NewGame_Screen()));
   }
 }

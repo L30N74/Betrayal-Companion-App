@@ -1,8 +1,10 @@
 import 'package:betrayalcompanionapp/GameLogic/HauntDropdowns.dart';
+import 'package:betrayalcompanionapp/GameLogic/HauntInformation.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/Screens/Character_Details.dart';
 import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
+import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
 
 class Game extends StatelessWidget {
@@ -63,6 +65,12 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                 ],
               ),
             ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.home),
+            backgroundColor: darkGreyColor,
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => MainPage())),
+          ),
           bottomNavigationBar: GetBottomNavBar(),
         ),
     );
@@ -79,7 +87,8 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                   fontSize: 54,
                   color: Colors.white,
                   decoration: TextDecoration.underline
-              )
+              ),
+            textAlign: TextAlign.center,
           ),
           Expanded(
             child: (Logic.isHauntRevealed)
@@ -127,7 +136,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
             ],
           ),
           CheckboxListTile(
-            title: Text("Use Widows's Walk Expansion", style: useExpansionCheckboxTextStyle,),
+            title: Text("Use Widows's Walk Expansion", style: useExpansionCheckboxTextStyle, textAlign: TextAlign.right,),
             value: Logic.useExpansion,
             onChanged: (bool value) {
               setState(() {
@@ -135,13 +144,21 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
               });
             },
           ),
-          RaisedButton(
-            child: Text("Reveal"),
-            onPressed: () {
-              setState(() {
-                Logic.DetermineHaunt();
-              });
-            },
+          SizedBox(height: 20,),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Container(
+              height: 50,
+              width: 160,
+              child: RaisedButton(
+                child: Text("Reveal", style: TextStyle(fontSize: 20),),
+                onPressed: () {
+                  setState(() {
+                    Logic.DetermineHaunt();
+                  });
+                },
+              ),
+            ),
           ),
         ],
       ),
@@ -183,7 +200,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
 
   Container HauntPropertiesContainer() {
     return Container(
-      height: Logic.isHauntRevealed ? 150 : 120,
+      height: 150,
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
       color: darkGreyColor,
@@ -198,9 +215,12 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
           ),
           Column(
             children: [
-              Text(
-                Logic.revealedHauntInformation.traitorProperties,
-                style: hauntTraitorPropertiesTextStyle,
+              Center(
+                child: Text(
+                  Logic.revealedHauntInformation.traitorProperties,
+                  style: hauntTraitorPropertiesTextStyle,
+                  textAlign: TextAlign.center,
+                ),
               ),
               Align(
                 alignment: Alignment.bottomRight,
@@ -208,10 +228,13 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                   onPressed: () {
                     setState(() {
                       Logic.isHauntRevealed = false;
-                      Logic.revealedHauntInformation = null;
+                      Logic.revealedHauntInformation = new HauntInformation.empty();
                     });
                   },
-                  child: Text("Reset"),
+                  child: Text(
+                    "Reset",
+                    style: TextStyle(fontSize: 12, color: Colors.white),
+                  ),
                 ),
               ),
             ]

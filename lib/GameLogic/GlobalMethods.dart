@@ -1,9 +1,9 @@
 import 'dart:math';
 
+import 'package:betrayalcompanionapp/Screens/NewGame_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:betrayalcompanionapp/GameLogic/Stats.dart';
 import 'package:betrayalcompanionapp/GameLogic/Database.dart';
-import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
 import 'package:betrayalcompanionapp/GameLogic/HauntInformation.dart';
 
@@ -177,7 +177,41 @@ class Logic {
     return starter;
   }
 
-  static CreateStartingCharacterAlert(BuildContext context) {
+  static void DetermineHaunt() {
+    String room = revealedHauntInformation.room;
+    String omen = revealedHauntInformation.omen;
+
+    SQLiteDbProvider.db.
+    getHauntByRoomAndOmen(room, omen).then(
+      (haunt) {
+        revealedHauntInformation = HauntInformation(
+          hauntName: haunt.hauntName,
+          hauntNumber: haunt.hauntNumber,
+          traitorProperties: haunt.traitorProperties
+        );
+
+        isHauntRevealed = true;
+      }
+    )
+    .catchError((onError) {
+      throw new Exception("No haunt with in room $room and with omen $omen");
+    });
+  }
+
+  static void RandomizePlayers(int amount) {
+    //Select x amount of characters
+    for(int i = 0; i < amount; i++) {
+      // Choose character
+      Random rand = new Random();
+      Character character = Logic.characters[rand.nextInt(Logic.characters.length)];
+      Logic.players.add(character);
+
+      // Remove characters from list
+      RemoveCharacterPairFromList(character.color);
+    }
+  }
+
+  static Future CreateStartingCharacterAlert(BuildContext context) {
     Character startingPlayer = DetermineStartingPlayer();
     return showDialog(
         context: context,
@@ -214,42 +248,6 @@ class Logic {
     );
   }
 
-  static HauntInformation DetermineHaunt() {
-    String room = revealedHauntInformation.room;
-    String omen = revealedHauntInformation.omen;
-
-    SQLiteDbProvider.db.
-    getHauntByRoomOmen(room, omen).then(
-            (haunt) {
-          HauntInformation info = HauntInformation(
-              hauntName: haunt.hauntName,
-              hauntNumber: haunt.hauntNumber,
-              traitorProperties: haunt.traitorProperties
-          );
-
-          isHauntRevealed = true;
-
-          return info;
-        })
-        .catchError((onError) {
-      print(onError);
-      throw new Exception("No haunt with in room $room and with omen $omen");
-    });
-  }
-
-  static void RandomizePlayers(int amount) {
-    //Select x amount of characters
-    for(int i = 0; i < amount; i++) {
-      // Choose character
-      Random rand = new Random();
-      Character character = Logic.characters[rand.nextInt(Logic.characters.length)];
-      Logic.players.add(character);
-
-      // Remove characters from list
-      RemoveCharacterPairFromList(character.color);
-    }
-  }
-
   static Future CreateNewGameConfirmationAlert(BuildContext context) {
     return showDialog(
         context: context,
@@ -281,7 +279,7 @@ class Logic {
                           style: TextStyle(fontSize: 24),
                           textAlign: TextAlign.center,
                         ),
-                        onPressed: () => MainPage.StartNewGame(context),
+                        onPressed: () => Logic.StartNewGame(context),
                       ),
                       RaisedButton(
                         child: Text(
@@ -299,5 +297,17 @@ class Logic {
           );
         }
     );
+  }
+
+  static void StartNewGame(context) {
+    InitializeCharacterLists();
+    isHauntRevealed = false;
+    revealedHauntInformation = new HauntInformation.empty();
+
+//    SQLiteDbProvider.db.database;
+
+    startingPlayerDetermined = false;
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) => NewGame_Screen()));
   }
 }
