@@ -2,7 +2,7 @@ import 'package:betrayalcompanionapp/GameLogic/HauntDropdowns.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/Screens/Character_Details.dart';
-import 'package:betrayalcompanionapp/Screens/main.dart';
+import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
 import 'package:flutter/material.dart';
 
 class Game extends StatelessWidget {
@@ -29,9 +29,9 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
     _controller = TabController(vsync: this, length: 3, initialIndex: 0);
     super.initState();
 
-    if(!MainPage.startingPlayerDetermined)
+    if(!Logic.startingPlayerDetermined)
       WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await MainPage.CreateStartingCharacterAlert(context);
+        await Logic.CreateStartingCharacterAlert(context);
       });
   }
 
@@ -82,7 +82,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
               )
           ),
           Expanded(
-            child: (MainPage.isHauntRevealed)
+            child: (Logic.isHauntRevealed)
                 ? HauntRevealedPage()
                 : HauntDormentPage()
           ),
@@ -128,10 +128,10 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
           ),
           CheckboxListTile(
             title: Text("Use Widows's Walk Expansion", style: useExpansionCheckboxTextStyle,),
-            value: MainPage.useExpansion,
+            value: Logic.useExpansion,
             onChanged: (bool value) {
               setState(() {
-                MainPage.useExpansion = value;
+                Logic.useExpansion = value;
               });
             },
           ),
@@ -139,7 +139,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
             child: Text("Reveal"),
             onPressed: () {
               setState(() {
-                MainPage.DetermineHaunt();
+                Logic.DetermineHaunt();
               });
             },
           ),
@@ -150,7 +150,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
 
   Container HauntNameContainer() {
     return Container(
-      height: MainPage.isHauntRevealed ? 150 : 120,
+      height: Logic.isHauntRevealed ? 150 : 120,
       width: double.infinity,
       margin: EdgeInsets.only(top: 30, left: 20, right: 20),
       color: darkGreyColor,
@@ -167,11 +167,11 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
           Column(
             children: [
               Text(
-                MainPage.revealedHauntInformation.hauntName,
+                Logic.revealedHauntInformation.hauntName,
                 style: hauntNameTextStyle,
               ),
               Text(
-                "Number " + MainPage.revealedHauntInformation.hauntNumber.toString(),
+                "Number " + Logic.revealedHauntInformation.hauntNumber.toString(),
                 style: hauntInformationTextStyle,
               ),
             ]
@@ -183,7 +183,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
 
   Container HauntPropertiesContainer() {
     return Container(
-      height: MainPage.isHauntRevealed ? 150 : 120,
+      height: Logic.isHauntRevealed ? 150 : 120,
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
       color: darkGreyColor,
@@ -199,7 +199,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
           Column(
             children: [
               Text(
-                MainPage.revealedHauntInformation.traitorProperties,
+                Logic.revealedHauntInformation.traitorProperties,
                 style: hauntTraitorPropertiesTextStyle,
               ),
               Align(
@@ -207,8 +207,8 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                 child: FlatButton(
                   onPressed: () {
                     setState(() {
-                      MainPage.isHauntRevealed = false;
-                      MainPage.revealedHauntInformation = null;
+                      Logic.isHauntRevealed = false;
+                      Logic.revealedHauntInformation = null;
                     });
                   },
                   child: Text("Reset"),
@@ -238,7 +238,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text("Omen In Play", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
-          Text(MainPage.omenInPlay.toString(), style: TextStyle(fontSize: 48),),
+          Text(Logic.omenInPlay.toString(), style: TextStyle(fontSize: 48),),
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: SizedBox(
@@ -248,7 +248,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                 child: Icon(Icons.add),
                 onPressed: () {
                   setState(() {
-                    MainPage.omenInPlay++;
+                    Logic.omenInPlay++;
                   });
                 },
               ),
@@ -274,13 +274,13 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
     return Expanded(
       child: ListView.builder(
         padding: const EdgeInsets.only(top: 20, bottom: 80),
-        itemCount: MainPage.players.length,
+        itemCount: Logic.players.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
             width: MediaQuery.of(context).size.width - 20,
             alignment: Alignment.centerLeft,
             child: InkWell(
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => CharacterDetails(MainPage.players[index]))),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => CharacterDetails(Logic.players[index]))),
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                 decoration: BoxDecoration(
@@ -306,13 +306,13 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                     ),
                     Center(
                       child: Text(
-                        MainPage.players[index].name,
+                        Logic.players[index].name,
                         style: TextStyle(fontSize: 20, color: Colors.white),
                         textAlign: TextAlign.center),
                     ),
                     Container(
                         child:  Image(
-                          image: AssetImage(MainPage.players[index].imagePath),
+                          image: AssetImage(Logic.players[index].imagePath),
                           width: 90,
                           height: 90
                         )

@@ -1,6 +1,6 @@
 import 'package:betrayalcompanionapp/GameLogic/Database.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
-import 'package:betrayalcompanionapp/Screens/main.dart';
+import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
 import 'package:flutter/material.dart';
 
 class HauntOmenSelection extends StatefulWidget {
@@ -34,7 +34,7 @@ class _HauntOmenSelectionState extends State<HauntOmenSelection> {
   Widget build(BuildContext context) {
     List<String> omen = Omen;
 
-    if(MainPage.useExpansion) {
+    if(Logic.useExpansion) {
       omen.addAll(ExpansionOmen);
       omen.sort();
     }
@@ -80,7 +80,7 @@ class _HauntRoomSelectionState extends State<HauntRoomSelection> {
   Widget build(BuildContext context) {
     List<String> rooms = Rooms;
 
-    if(MainPage.useExpansion) {
+    if(Logic.useExpansion) {
       rooms.addAll(ExpansionRooms);
       rooms.sort();
     }
@@ -140,12 +140,12 @@ class _HauntListViewState extends State<HauntListView> {
             switch(listName) {
               case "Omen":
                 setState(() {
-                  MainPage.revealedHauntInformation.omen = Omen[value];
+                  Logic.revealedHauntInformation.omen = Omen[value];
                 });
                 break;
               case "Rooms":
                 setState(() {
-                  MainPage.revealedHauntInformation.room = Rooms[value];
+                  Logic.revealedHauntInformation.room = Rooms[value];
                 });
                 break;
             }

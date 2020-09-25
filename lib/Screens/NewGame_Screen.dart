@@ -1,7 +1,7 @@
 import 'package:betrayalcompanionapp/Screens/CoinFlip_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:betrayalcompanionapp/Screens/main.dart';
+import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/Game_Screen.dart';
@@ -166,7 +166,7 @@ class NewGameWidgetState extends State<NewGameWidget> {
     return RaisedButton(
       child: Text("Randomize", style: TextStyle(fontSize: 40)),
       onPressed: (){
-        MainPage.RandomizePlayers(playerCount);
+        Logic.RandomizePlayers(playerCount);
 
         // Check if 2 Players was selected
         if(playerCount == 2){
@@ -192,7 +192,7 @@ class NewGameWidgetState extends State<NewGameWidget> {
 //        // TODO: Choose a third player
 //      }
 //      else {
-//        //                    MainPage.CreateAlertDialog(context);
+//        //                    Logic.CreateAlertDialog(context);
 //      }
 //
 //      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));

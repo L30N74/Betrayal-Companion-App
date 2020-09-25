@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/Screens/CharacterSelection_Screen.dart';
 import 'package:betrayalcompanionapp/Screens/Game_Screen.dart';
-import 'package:betrayalcompanionapp/Screens/main.dart';
+import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
 import 'package:flutter/material.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 
@@ -182,7 +182,7 @@ class _CoinFlipWidgetState extends State<CoinFlipWidget> {
                 RaisedButton(
                   child: Text("Give me a random Character", style: coinflipButtonTextStyle,),
                   onPressed: () {
-                    MainPage.RandomizePlayers(1);
+                    Logic.RandomizePlayers(1);
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
                   },
                 ),

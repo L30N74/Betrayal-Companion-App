@@ -1,9 +1,9 @@
 import 'package:betrayalcompanionapp/GameLogic/Character.dart';
+import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/Screens/CoinFlip_Screen.dart';
 import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/Game_Screen.dart';
-import 'package:betrayalcompanionapp/Screens/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -42,7 +42,7 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
                 Expanded(
                   child: PageView(
                     controller: controller,
-                    children: MainPage.characters.map((player) => CreateCharacterPage(player)).toList()
+                    children: Logic.characters.map((player) => CreateCharacterPage(player)).toList()
                   ),
                 ),
               ],
@@ -87,20 +87,20 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
           RaisedButton(
             child: Text("Select", style: TextStyle(fontSize: 24, color: Colors.black)),
             onPressed: () {
-              MainPage.players.add(character);
+              Logic.players.add(character);
 
               setState(() {
-                MainPage.RemoveCharacterPairFromList(character.color);
+                Logic.RemoveCharacterPairFromList(character.color);
                 controller = PageController(initialPage: 0);
               });
 
-              if(playerCount == 2 && MainPage.players.length == 2){
+              if(playerCount == 2 && Logic.players.length == 2){
                 //Two-Player mode: Redirect to Coinflip to determine who plays as two characters
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => CoinFlip()));
               }
-              else if(MainPage.players.length >= playerCount) {
+              else if(Logic.players.length >= playerCount) {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
-//                MainPage.CreateAlertDialog(context);
+//                Logic.CreateAlertDialog(context);
               }
             })
         ],
