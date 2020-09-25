@@ -31,11 +31,8 @@ class MainPage extends StatelessWidget {
     traitorProperties: "Lowest Sanity",
   );
 
-  bool currentGameButtonDisabled;
-
   @override
   Widget build(BuildContext context) {
-    currentGameButtonDisabled = (players.length == 0);
     revealedHauntInformation = new HauntInformation();
 
     return MaterialApp(
@@ -86,15 +83,15 @@ class MainPage extends StatelessWidget {
                   Divider(),
                   RaisedButton(
                     child: Text(
-                      currentGameButtonDisabled ? "No Game yet" : "Current Game",
+                      players.length == 0 ? "No Game yet" : "Current Game",
                       style: TextStyle(
                         fontSize: 36,
                         fontFamily: 'Shadows',
                         fontWeight: FontWeight.bold,
-                        color: currentGameButtonDisabled ? Colors.white : Colors.black
+                        color: players.length == 0 ? Colors.white : Colors.black
                       )
                     ),
-                    onPressed: currentGameButtonDisabled ? null : () {
+                    onPressed: players.length == 0 ? null : () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => Game()));
                     },
                     elevation: 10,
