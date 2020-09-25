@@ -23,6 +23,8 @@ class Stats {
     this.sanityDefaultIndex = _sanityStartIndex;
     this.knowledge = _knowledge;
     this.knowledgeDefaultIndex = _knowledgeStartIndex;
+
+    Reset();
   }
 
   void resetMight() { mightIndex = mightDefaultIndex; }
