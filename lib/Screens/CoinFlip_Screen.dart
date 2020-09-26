@@ -72,7 +72,7 @@ class _CoinFlipWidgetState extends State<CoinFlipWidget> {
     Random random = new Random();
     int randNumber = random.nextInt(100);
 
-    result = (randNumber < 50) ? "Heads" : "Tails";
+    result = (randNumber %2 == 0) ? "Heads" : "Tails";
 
     CreateResultDialog(playerOneChoice == result ? 1 : 2);
   }
