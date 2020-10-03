@@ -2,7 +2,7 @@ class Haunt {
   final int id;
   final String room;
   final String omen;
-  final int hauntNumber;
+  final String hauntNumber;
   final String traitorProperties;
   final String hauntName;
   static final columns = ["id", "room", "omen", "number", "traitorProperties", "hauntName"];

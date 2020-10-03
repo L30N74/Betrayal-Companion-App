@@ -54,7 +54,7 @@ class SQLiteDbProvider {
           "id INTEGER PRIMARY KEY,"
           "room TEXT,"
           "omen TEXT,"
-          "hauntNumber INTEGER,"
+          "hauntNumber TEXT,"
           "traitorProperties TEXT,"
           "hauntName TEXT);"
         );
@@ -86,1549 +86,1549 @@ class SQLiteDbProvider {
   CreateAbandonedRoomEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Bite", 18, "Left of the haunt revealer", "Offspring"]
+        ["Abandoned Room", "Bite", "18", "Haunt revealer", "United We Stand"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Bloodstone", 96, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Abandoned Room", "Bloodstone", "96", "Left of the haunt revealer", "House Of Leavings"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Book", 7, "Father Rhinehardt gardening expert) or highest Sanity", "Carnivorous Ivy"]
+        ["Abandoned Room", "Book", "7", "Father Rhinehardt (Gardening) or highest Sanity", "Carnivorous Ivy"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Box", 63, "Haunt revealer", "[Hauntname missing]"]
+        ["Abandoned Room", "Box", "63", "Haunt revealer", "Shush"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Cat",88, "Haunt revealer", "[Hauntname missing]"]
+        ["Abandoned Room", "Cat", "88", "Haunt revealer", "Cry, Babylon!"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Crystal Ball", 11, "None", "Fleshwalkers"]
+        ["Abandoned Room", "Crystal Ball", "12", "None", "Fleshwalkers"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Dog", 38, "Lowest Knowledge (except for the haunt revealer)", "Hellbeasts"]
+        ["Abandoned Room", "Dog", "38", "Lowest Knowledge (except for the haunt revealer)", "Hellbeasts"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Girl", 1, "Haunt Revealer", "The Mummy Walks"]
+        ["Abandoned Room", "Girl", "1", "Haunt Revealer", "The Mummy Walks"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Holy Symbol", 9, "None (at first)", "The Dance of Death"]
+        ["Abandoned Room", "Holy Symbol", "9", "None (at first)", "The Dance of Death"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Key", 96, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Abandoned Room", "Key", "96", "Left of the haunt revealer", "House Of Leavings"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Letter", 100, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Abandoned Room", "Letter", "100", "None (see Secrets of Survival)", "Let's Play A Game"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Madman", 45, "Highest Knowledge (except for the haunt revealer)", "Tick, Tick, Tick"]
+        ["Abandoned Room", "Madman", "45", "Highest Knowledge (except for the haunt revealer)", "Tick, Tick, Tick"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Mask", 42, "Highest Might", "Comes the Hero"]
+        ["Abandoned Room", "Mask", "42", "Highest Might", "Comes the Hero"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Medallion", 49, "Heather Granville or highest Knowledge", "You Wear It Well"]
+        ["Abandoned Room", "Medallion", "49", "Heather Granville or highest Knowledge", "You Wear It Well"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Photograph", 96, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Abandoned Room", "Photograph", "96", "Left of the haunt revealer", "House Of Leavings"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Ring", 28, "Highest Knowledge (except for the haunt revealer)", "Ring of King Solomon"]
+        ["Abandoned Room", "Ring", "28", "Highest Knowledge (except for the haunt revealer)", "Ring of King Solomon"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Rope",86, "Haunt revealer", "[Hauntname missing]"]
+        ["Abandoned Room", "Rope", "86", "Haunt revealer", "The Woods In The Cabin"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Skull", 34, "Professor Longfellow drama) or highest Speed", "Mad, Mad World"]
+        ["Abandoned Room", "Skull", "34", "Hidden traitor (See Secrets of Survival)", "Guillotines"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Spear", 43, "Haunt revealer", "A Gathering of Shadows"]
+        ["Abandoned Room", "Spear", "43", "Hidden traitor (See Secrets of Survival)", "The Star Sickness"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Spirit Board", 48, "Left of the haunt revealer", "Stacked Like Cordwood"]
+        ["Abandoned Room", "Spirit Board", "48", "Left of the haunt revealer", "Stacked Like Cordwood"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Abandoned Room", "Vial", 96, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Abandoned Room", "Vial", "96", "Left of the haunt revealer", "House Of Leavings"]
     );
   }
   CreateBalconyEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Bite", 24, " Brandon Jaspers (camping) or lowest Speed", "Fly Away Home"]
+        ["Balcony", "Bite", "24", " Brandon Jaspers (camping) or lowest Speed", "Fly Away Home"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Bloodstone", 67, "Peter Akimoto (Basketball) or highest Speed", "[Hauntname missing]"]
+        ["Balcony", "Bloodstone", "67", "Peter Akimoto (Basketball) or highest Speed", "Murderball"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Book", 7, "Father Rhinehardt gardening expert) or highest Sanity", "Carnivorous Ivy"]
+        ["Balcony", "Book", "7", "Father Rhinehardt (Gardening) or highest Sanity", "Carnivorous Ivy"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Box", 63, "Haunt revealer", "[Hauntname missing]"]
+        ["Balcony", "Box", "63", "Haunt revealer", "Shush"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Cat",88, "Haunt revealer", "[Hauntname missing]"]
+        ["Balcony", "Cat", "88", "Haunt revealer", "Cry, Babylon!"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Crystal Ball", 32, "Highest Sanity", "Lost"]
+        ["Balcony", "Crystal Ball", "32", "Highest Sanity", "Lost"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Dog", 5, "Haunt revealer", "I Was a Teenage Lycanthrope"]
+        ["Balcony", "Dog", "5", "Haunt revealer", "I Was a Teenage Lycanthrope"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Girl", 16, "Left of the haunt revealer", "The Phantom’s Embrace"]
+        ["Balcony", "Girl", "16","Left of the haunt revealer", "The Phantom’s Embrace"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Holy Symbol", 6, "Lowest Sanity", "The Floating Eye"]
+        ["Balcony", "Holy Symbol", "6", "Lowest Sanity", "The Floating Eye"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Key",90, "Haunt revealer", "[Hauntname missing]"]
+        ["Balcony", "Key", "90", "Haunt revealer", "Internal Conflict"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Letter", 87, "Youngest explorer", "[Hauntname missing]"]
+        ["Balcony", "Letter", "87", "Youngest explorer", "Sibling Rivalry"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Madman", 11, "Haunt revealer", "Let Them In"]
+        ["Balcony", "Madman", "11", "Haunt revealer", "Let Them In"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Mask", 25, "Zoe Ingstrom (dolls) or highest Knowledge", "Voodoo"]
+        ["Balcony", "Mask", "25", "Zoe Ingstrom (dolls) or highest Knowledge", "Voodoo"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Medallion", 49, "Heather Granville or highest Knowledge", "You Wear It Well"]
+        ["Balcony", "Medallion", "49", "Heather Granville or highest Knowledge", "You Wear It Well"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Photograph", 89, "Lowest Sanity", "[Hauntname missing]"]
+        ["Balcony", "Photograph", "89", "Lowest Sanity", "One Of The Master's Affairs"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Ring", 20, "Vivian Lopez (old movies) or highest Knowledge", "Ghost Bride"]
+        ["Balcony", "Ring", "20", "Vivian Lopez (Old Movies) or left of the haunt revealer", "Ghost Bride"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Rope", 71, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Balcony", "Rope", "71", "Left of the haunt revealer", "The Other Side"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Skull", 47, "Haunt revealer", "Worm Ouroboros"]
+        ["Balcony", "Skull", "47", "Haunt revealer", "Worm Ouroboros"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Spear", 39, " Highest Speed (except for the haunt revealer)", "The Heir"]
+        ["Balcony", "Spear", "39", " Highest Speed (except for the haunt revealer)", "The Heir"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Spirit Board", 2, "Haunt Revealer", "The Séance"]
+        ["Balcony", "Spirit Board", "2", "Haunt Revealer", "The Séance"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Balcony", "Vial", 70, "Oldest explorer", "[Hauntname missing]"]
+        ["Balcony", "Vial", "70", "Oldest explorer", "To Reach The Cosmos"]
     );
   }
   CreateCatacombsEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Bite", 4, "Highest Might (except for the haunt revealer)", "The Web of Destiny"]
+        ["Catacombs", "Bite", "4", "Highest Might (except for the haunt revealer)", "The Web of Destiny"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Bloodstone", 59, "Haunt revealer", "[Hauntname missing]"]
+        ["Catacombs", "Bloodstone", "59", "Haunt revealer", "The Fleshchild's Alchemical Mandate"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Book", 7, "Father Rhinehardt gardening expert) or highest Sanity", "Carnivorous Ivy"]
+        ["Catacombs", "Book", "7", "Father Rhinehardt (Gardening) or highest Sanity", "Carnivorous Ivy"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Box", 61, "Haunt revealer", "[Hauntname missing]"]
+        ["Catacombs", "Box", "61", "Haunt revealer", "Captain Sting's Revenge"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Cat",88, "Haunt revealer", "[Hauntname missing]"]
+        ["Catacombs", "Cat", "88", "Haunt revealer", "Cry, Babylon!"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Crystal Ball", 23, "Left of the haunt revealer", "Tentacled Horror"]
+        ["Catacombs", "Crystal Ball", "23", "Left of the haunt revealer", "Tentacled Horror"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Dog", 46, "Madame Zostra (cooking) or lowest Speed", "The Feast"]
+        ["Catacombs", "Dog", "46", "Madame Zostra (cooking) or lowest Speed", "The Feast"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Girl", 1, "Haunt Revealer", "The Mummy Walks"]
+        ["Catacombs", "Girl", "1", "Haunt Revealer", "The Mummy Walks"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Holy Symbol", 13, "Lowest Sanity (except for the haunt revealer)", "Perchance to Dream"]
+        ["Catacombs", "Holy Symbol", "13","Lowest Sanity (except for the haunt revealer)", "Perchance to Dream"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Key", 53, "Haunt revealer", "[Hauntname missing]"]
+        ["Catacombs", "Key", "53", "Haunt revealer", "Till morning light"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Letter", 83, "None (see Secrets of Survival)", "[Haunname missing]"]
+        ["Catacombs", "Letter", "83", "None (see Secrets of Survival)", "In The Details"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Madman", 10, "Haunt revealer", "Family Gathering"]
+        ["Catacombs", "Madman", "10", "Haunt revealer", "Family Gathering"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Mask", 25, "Zoe Ingstrom (dolls) or highest Knowledge", "Voodoo"]
+        ["Catacombs", "Mask", "25", "Zoe Ingstrom (dolls) or highest Knowledge", "Voodoo"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Medallion", 49, "Heather Granville or highest Knowledge", "You Wear It Well"]
+        ["Catacombs", "Medallion", "49", "Heather Granville or highest Knowledge", "You Wear It Well"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Photograph", 94, "Explorer with the most items that can be stolen or traded", "[Hauntname missing]"]
+        ["Catacombs", "Photograph", "94", "Explorer with the most items that can be stolen or traded", "Last Will And Tournament"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Ring", 41, "Haunt revealer", "Invisible Traitor"]
+        ["Catacombs", "Ring", "41", "Haunt revealer", "Invisible Traitor"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Rope", 69, "Haunt revealer", "[Hauntname missing]"]
+        ["Catacombs", "Rope", "69", "Haunt revealer", "No Noose Is Good News"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Skull", 37, "Lowest Might", "Checkmate"]
+        ["Catacombs", "Skull", "37", "Lowest Might", "Checkmate"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Spear", 43, "Haunt revealer", "A Gathering of Shadows"]
+        ["Catacombs", "Spear", "43", "Hidden traitor (See Secrets of Survival)", "The Star Sickness"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Spirit Board", 48, "Left of the haunt revealer", "Stacked Like Cordwood"]
+        ["Catacombs", "Spirit Board", "48", "Left of the haunt revealer", "Stacked Like Cordwood"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Catacombs", "Vial", 91, "Lowest Sanity", "[Hauntname missing]"]
+        ["Catacombs", "Vial", 91, "Lowest Sanity", "Burn Out The Darkness"]
     );
   }
   CreateCharredRoomEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Bite", 24, " Brandon Jaspers (camping) or lowest Speed", "Fly Away Home"]
+        ["Charred Room", "Bite", "24", " Brandon Jaspers (camping) or lowest Speed", "Fly Away Home"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Bloodstone", 79, "Left and right of the haunt revealer", "[Hauntname missing]"]
+        ["Charred Room", "Bloodstone", "79", "Left and right of the haunt revealer", "The Twins"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Book", 33, "Highest Speed (except for the haunt revealer)", "Creature from the Lake"]
+        ["Charred Room", "Book", "33", "Haunt revealer", "An Invocation Of Darkness"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Box", 63, "Haunt revealer", "[Hauntname missing]"]
+        ["Charred Room", "Box", "63", "Haunt revealer", "Shush"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Cat", 0, "Refer to the chart after haunt 100 in Secrets of Survival. If all of your explorers have played haunts 57, 75, 86, and 93, there is no traitor in this scenario. Proceed to the next page in Secrets of Survival, If they have not, ignore the haunt roll", "[Hauntname missing]"]
+        ["Charred Room", "Cat", "★", "Refer to the chart after haunt 100 in Secrets of Survival. If all of your explorers have played haunts 57, 75, 86, and 93, there is no traitor in this scenario. Proceed to the next page in Secrets of Survival, If they have not, ignore the haunt roll", "Seasons Of The Witch"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Crystal Ball", 23, "Left of the haunt revealer", "Tentacled Horror"]
+        ["Charred Room", "Crystal Ball", "23", "Left of the haunt revealer", "Tentacled Horror"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Dog", 38, "Lowest Knowledge (except for the haunt revealer)", "Hellbeasts"]
+        ["Charred Room", "Dog", "38", "Lowest Knowledge (except for the haunt revealer)", "Hellbeasts"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Girl", 30, "Haunt revealer", "Tomb of Dracula"]
+        ["Charred Room", "Girl", "30", "Haunt revealer", "Tomb of Dracula"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Holy Symbol", 13, "Lowest Sanity (except for the haunt revealer)", "Perchance to Dream"]
+        ["Charred Room", "Holy Symbol", "13","Lowest Sanity (except for the haunt revealer)", "Perchance to Dream"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Key", 0, "Refer to the chart after haunt 100 in Secrets of Survival. If all of your explorers have played haunts 57, 75, 86, and 93, there is no traitor in this scenario. Proceed to the next page in Secrets of Survival, If they have not, ignore the haunt roll", "[Hauntname missing]"]
+        ["Charred Room", "Key", "★", "Refer to the chart after haunt 100 in Secrets of Survival. If all of your explorers have played haunts 57, 75, 86, and 93, there is no traitor in this scenario. Proceed to the next page in Secrets of Survival, If they have not, ignore the haunt roll", "Seasons Of The Witch"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Letter", 83, "None (see Secrets of Survival)", "[Haunname missing]"]
+        ["Charred Room", "Letter", "83", "None (see Secrets of Survival)", "In The Details"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Madman", 31, "Left of the haunt revealer", "It's Alive!"]
+        ["Charred Room", "Madman", "31", "None (See Secrets of Survival)", "Airborne"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Mask", 48, "Left of the haunt revealer", "Stacked Like Cordwood"]
+        ["Charred Room", "Mask", "48", "Left of the haunt revealer", "Stacked Like Cordwood"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Medallion", 44, "Youngest explorer (except for the haunt revealer)", "Death Doth Find Us All"]
+        ["Charred Room", "Medallion", "44", "Youngest explorer (except for the haunt revealer)", "Death Doth Find Us All"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Photograph", 0, "Refer to the chart after haunt 100 in Secrets of Survival. If all of your explorers have played haunts 57, 75, 86, and 93, there is no traitor in this scenario. Proceed to the next page in Secrets of Survival, If they have not, ignore the haunt roll", "[Hauntname missing]"]
+        ["Charred Room", "Photograph", "★", "Refer to the chart after haunt 100 in Secrets of Survival. If all of your explorers have played haunts 57, 75, 86, and 93, there is no traitor in this scenario. Proceed to the next page in Secrets of Survival, If they have not, ignore the haunt roll", "Seasons Of The Witch"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Ring", 20, "Vivian Lopez (old movies) or highest Knowledge", "Ghost Bride"]
+        ["Charred Room", "Ring", "20", "Vivian Lopez (Old Movies) or left of the haunt revealer", "Ghost Bride"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Rope", 69, "Haunt revealer", "[Hauntname missing]"]
+        ["Charred Room", "Rope", "69", "Haunt revealer", "No Noose Is Good News"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Skull", 47, "Haunt revealer", "Worm Ouroboros"]
+        ["Charred Room", "Skull", "47", "Haunt revealer", "Worm Ouroboros"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Spear", 15, "Lowest Speed (except for the haunt revealer", "Here There Be Dragons"]
+        ["Charred Room", "Spear", "15","Lowest Speed (except for the haunt revealer", "Here There Be Dragons"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Spirit Board", 8, "Haunt revealer", "Wail of the Banshee"]
+        ["Charred Room", "Spirit Board", "8", "Haunt revealer", "Wail of the Banshee"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Charred Room", "Vial", 0, "Refer to the chart after haunt 100 in Secrets of Survival. If all of your explorers have played haunts 57, 75, 86, and 93, there is no traitor in this scenario. Proceed to the next page in Secrets of Survival, If they have not, ignore the haunt roll", "[Hauntname missing]"]
+        ["Charred Room", "Vial", "★", "Refer to the chart after haunt 100 in Secrets of Survival. If all of your explorers have played haunts 57, 75, 86, and 93, there is no traitor in this scenario. Proceed to the next page in Secrets of Survival, If they have not, ignore the haunt roll", "Seasons Of The Witch"]
     );
   }
   CreateDiningRoomEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Bite", 24, " Brandon Jaspers (camping) or lowest Speed", "Fly Away Home"]
+        ["Dining Room", "Bite", "24", " Brandon Jaspers (camping) or lowest Speed", "Fly Away Home"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Bloodstone", 67, "Peter Akimoto (Basketball) or highest Speed", "[Hauntname missing]"]
+        ["Dining Room", "Bloodstone", "67", "Peter Akimoto (Basketball) or highest Speed", "Murderball"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Book", 3, "Lowest Knowledge (Except for the haun revealer)", "Frog-Leg Stew"]
+        ["Dining Room", "Book", "3", "Lowest Knowledge (Except for the haunt revealer)", "Frog-Leg Stew"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Box", 99, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Dining Room", "Box", "99", "None (see Secrets of Survival)", "The Manor Of Your Demise"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Cat", 60, "Haunt revealer", "[Hauntname missing]"]
+        ["Dining Room", "Cat", "60", "Haunt revealer", "Cat O'Clock"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Crystal Ball", 27, "Highest Knowledge (except for the haunt revealer)", "Amok Flesh"]
+        ["Dining Room", "Crystal Ball", "27", "Highest Knowledge (except for the haunt revealer)", "Amok Flesh"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Dog", 5, "Haunt revealer", "I Was a Teenage Lycanthrope"]
+        ["Dining Room", "Dog", "5", "Haunt revealer", "I Was a Teenage Lycanthrope"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Girl", 16, "Left of the haunt revealer", "The Phantom’s Embrace"]
+        ["Dining Room", "Girl", "16","Left of the haunt revealer", "The Phantom’s Embrace"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Holy Symbol", 6, "Lowest Sanity", "The Floating Eye"]
+        ["Dining Room", "Holy Symbol", "6", "Lowest Sanity", "The Floating Eye"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Key",90, "Haunt revealer", "[Hauntname missing]"]
+        ["Dining Room", "Key", "90", "Haunt revealer", "Internal Conflict"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Letter", 54, "Highest Knowledge", "[Hauntname missing]"]
+        ["Dining Room", "Letter", "54", "Highest Knowledge", "Monster Mash"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Madman", 45, "Highest Knowledge (except for the haunt revealer)", "Tick, Tick, Tick"]
+        ["Dining Room", "Madman", "45", "Highest Knowledge (except for the haunt revealer)", "Tick, Tick, Tick"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Mask", 42, "Highest Might", "Comes the Hero"]
+        ["Dining Room", "Mask", "42", "Highest Might", "Comes the Hero"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Medallion", 21, "Oldest explorer (except for the haunt revealer)", "House of the Living Dead"]
+        ["Dining Room", "Medallion", "21", "Oldest explorer (except for the haunt revealer)", "House of the Living Dead"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Photograph", 89, "Lowest Sanity", "[Hauntname missing]"]
+        ["Dining Room", "Photograph", "89", "Lowest Sanity", "One Of The Master's Affairs"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Ring", 20, "Vivian Lopez (old movies) or highest Knowledge", "Ghost Bride"]
+        ["Dining Room", "Ring", "20", "Vivian Lopez (Old Movies) or left of the haunt revealer", "Ghost Bride"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Rope",82, "Haunt revealer", "[Hauntname missing]"]
+        ["Dining Room", "Rope", "82", "Haunt revealer", "Get A Clue"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Skull", 37, "Lowest Might", "Checkmate"]
+        ["Dining Room", "Skull", "37", "Lowest Might", "Checkmate"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Spear", 39, " Highest Speed (except for the haunt revealer)", "The Heir"]
+        ["Dining Room", "Spear", "39", " Highest Speed (except for the haunt revealer)", "The Heir"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Spirit Board", 40, "Left of the haunt revealer", "Buried Alive"]
+        ["Dining Room", "Spirit Board", "40", "Left of the haunt revealer", "Buried Alive"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dining Room", "Vial", 91, "Lowest Sanity", "[Hauntname missing]"]
+        ["Dining Room", "Vial", "91", "Lowest Sanity", "Burn Out The Darkness"]
     );
   }
   CreateDungeonEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Bite", 97, "Hidden traitor (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Dungeon", "Bite", "97", "Hidden traitor (see Secrets of Survival)", "Lambs To The Slaughter"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Bloodstone", 55, "Female explorer closest to the right of the haunt revealer (or, if none, haunt revealer)", "[Hauntname missing]"]
+        ["Dungeon", "Bloodstone", "55", "Female explorer closest to the right of the haunt revealer (or, if none, haunt revealer)", "She Is Not Amused"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Book", 55, "Female explorer closest to the right of the haunt revealer (or, if none, haunt revealer)", "[Hauntname missing]"]
+        ["Dungeon", "Book", "55", "Female explorer closest to the right of the haunt revealer (or, if none, haunt revealer)", "She Is Not Amused"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Box", 61, "Haunt revealer", "[Hauntname missing]"]
+        ["Dungeon", "Box", "61", "Haunt revealer", "Captain Sting's Revenge"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Cat", 55, "Female explorer closest to the right of the haunt revealer (or, if none, haunt revealer)", "[Hauntname missing]"]
+        ["Dungeon", "Cat", "55", "Female explorer closest to the right of the haunt revealer (or, if none, haunt revealer)", "She Is Not Amused"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Crystal Ball", 84, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Dungeon", "Crystal Ball", "84", "Left of the haunt revealer", "Forget To Remember"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Dog",72, "Haunt revealer", "[Hauntname missing]"]
+        ["Dungeon", "Dog", "72", "Haunt revealer", "Man's Worst Enemy"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Girl", 55, "Female explorer closest to the right of the haunt revealer (or, if none, haunt revealer)", "[Hauntname missing]"]
+        ["Dungeon", "Girl", "55", "Female explorer closest to the right of the haunt revealer (or, if none, haunt revealer)", "She Is Not Amused"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Holy Symbol", 66, "Oldest male explorer or, if none, oldest explorer)", "[Hauntname missing]"]
+        ["Dungeon", "Holy Symbol", "66", "Oldest male explorer or, if none, oldest explorer)", "The Cardinal Sins"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Key", 53, "Haunt revealer", "[Hauntname missing]"]
+        ["Dungeon", "Key", "53", "Haunt revealer", "Till Morning Light"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Letter", 100, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Dungeon", "Letter", "100", "None (see Secrets of Survival)", "Let's Play A Game"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Madman", 56, "Explorer with the most total items and omens", "[Hauntname missing]"]
+        ["Dungeon", "Madman", "56", "Explorer with the most total items and omens", "Make America Disintegrate Again"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Mask", 55, "Female explorer closest to the right of the haunt revealer (or, if none, haunt revealer)", "[Hauntname missing]"]
+        ["Dungeon", "Mask", "55", "Female explorer closest to the right of the haunt revealer (or, if none, haunt revealer)", "She Is Not Amused"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Medallion", 77, "Professor Longfellow (Gaelic Music) or highest Speed", "[Hauntname missing]"]
+        ["Dungeon", "Medallion", "77", "Professor Longfellow (Gaelic Music) or highest Speed", "They're Always After Me"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Photograph", 89, "Lowest Sanity", "[Hauntname missing]"]
+        ["Dungeon", "Photograph", "89", "Lowest Sanity", "One Of The Master's Affairs"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Ring", 85, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Dungeon", "Ring", "85", "Left of the haunt revealer", "The Murderer In The Machine"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Rope", 69, "Haunt revealer", "[Hauntname missing]"]
+        ["Dungeon", "Rope", "69", "Haunt revealer", "No Noose Is Good News"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Skull", 73, "Ox Bellows (Shiny Objetcs) or highest Might", "[Hauntname missing]"]
+        ["Dungeon", "Skull", "73", "Ox Bellows (Shiny Objetcs) or highest Might", "Existence Exceeds Essence"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Spear", 65, "Haunt revealer", "[Hauntname missing]"]
+        ["Dungeon", "Spear", "65", "Haunt revealer", "Sushi Night"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Spirit Board", 64, "Everyone except the highest Knowledge", "[Hauntname missing]"]
+        ["Dungeon", "Spirit Board", "64", "Everyone except the highest Knowledge", "Chairman Of The Board"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Dungeon", "Vial", 80, "Highest Knowledge", "[Hauntname missing]"]
+        ["Dungeon", "Vial", "80", "Highest Knowledge", "I, Mutant"]
     );
   }
   CreateFurnaceRoomEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Bite", 4, "Highest Might (except for the haunt revealer)", "The Web of Destiny"]
+        ["Furnace Room", "Bite", "4", "Highest Might (except for the haunt revealer)", "The Web of Destiny"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Bloodstone", 59, "Haunt revealer", "[Hauntname missing]"]
+        ["Furnace Room", "Bloodstone", "59", "Haunt revealer", "The Fleshchild's Alchemical Mandate"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Book", 33, "Highest Speed (except for the haunt revealer)", "Creature from the Lake"]
+        ["Furnace Room", "Book", "33", "Haunt revealer", "An Invocation Of Darkness"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Box", 61, "Haunt revealer", "[Hauntname missing]"]
+        ["Furnace Room", "Box", "61", "Haunt revealer", "Captain Sting's Revenge"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Cat", 75, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Furnace Room", "Cat", "75", "Left of the haunt revealer", "Let It Glow"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Crystal Ball", 32, "Highest Sanity", "Lost"]
+        ["Furnace Room", "Crystal Ball", "32", "Highest Sanity", "Lost"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Dog", 38, "Lowest Knowledge (except for the haunt revealer)", "Hellbeasts"]
+        ["Furnace Room", "Dog", "38", "Lowest Knowledge (except for the haunt revealer)", "Hellbeasts"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Girl", 30, "Haunt revealer", "Tomb of Dracula"]
+        ["Furnace Room", "Girl", "30", "Haunt revealer", "Tomb of Dracula"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Holy Symbol", 13, "Lowest Sanity (except for the haunt revealer)", "Perchance to Dream"]
+        ["Furnace Room", "Holy Symbol", "13","Lowest Sanity (except for the haunt revealer)", "Perchance to Dream"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Key", 75, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Furnace Room", "Key", "75", "Left of the haunt revealer", "Let It Glow"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Letter", 83, "None (see Secrets of Survival)", "[Haunname missing]"]
+        ["Furnace Room", "Letter", "83", "None (see Secrets of Survival)", "In The Details"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Madman", 10, "Haunt revealer", "Family Gathering"]
+        ["Furnace Room", "Madman", "10", "Haunt revealer", "Family Gathering"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Mask", 42, "Highest Might", "Comes the Hero"]
+        ["Furnace Room", "Mask", "42", "Highest Might", "Comes the Hero"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Medallion", 36, "Missy Dubourde swimming) or highest Speed", "Better with Friends"]
+        ["Furnace Room", "Medallion", "36", "Missy Dubourde (swimming) or highest Speed", "Better with Friends"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Photograph", 75, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Furnace Room", "Photograph", "75", "Left of the haunt revealer", "Let It Glow"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Ring", 28, "Highest Knowledge (except for the haunt revealer)", "Ring of King Solomon"]
+        ["Furnace Room", "Ring", "28", "Highest Knowledge (except for the haunt revealer)", "Ring of King Solomon"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Rope", 75, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Furnace Room", "Rope", "75", "Left of the haunt revealer", "Let It Glow"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Skull", 34, "Professor Longfellow drama) or highest Speed", "Mad, Mad World"]
+        ["Furnace Room", "Skull", "34", "Hidden traitor (See Secrets of Survival)", "Guillotines"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Spear", 15, "Lowest Speed (except for the haunt revealer", "Here There Be Dragons"]
+        ["Furnace Room", "Spear", "15","Lowest Speed (except for the haunt revealer", "Here There Be Dragons"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Spirit Board", 2, "Haunt Revealer", "The Séance"]
+        ["Furnace Room", "Spirit Board", "2", "Haunt Revealer", "The Séance"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Furnace Room", "Vial", 91, "Lowest Sanity", "[Hauntname missing]"]
+        ["Furnace Room", "Vial", "91", "Lowest Sanity", "Burn Out The Darkness"]
     );
   }
   CreateGalleryEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Bite", 18, " Left of the haunt revealer", "Offspring"]
+        ["Gallery", "Bite", "18", "Haunt revealer", "United We Stand"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Bloodstone", 79, "Left and right of the haunt revealer", "[Hauntname missing]"]
+        ["Gallery", "Bloodstone", "79", "Left and right of the haunt revealer", "The Twins"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Book", 3, "Lowest Knowledge (Except for the haun revealer)", "Frog-Leg Stew"]
+        ["Gallery", "Book", "3", "Lowest Knowledge (Except for the haunt revealer)", "Frog-Leg Stew"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Box", 52, "Haunt revealer", "[Hauntname missing]"]
+        ["Gallery", "Box", "52", "Haunt revealer", "Prism"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Cat",88, "Haunt revealer", "[Hauntname missing]"]
+        ["Gallery", "Cat", "88", "Haunt revealer", "Cry, Babylon!"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Crystal Ball", 19, "Haunt revealer", "The Beastmaster"]
+        ["Gallery", "Crystal Ball", "19", "Left of the haunt revealer", "A Friend For The Ages"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Dog", 19, "Haunt revealer", "The Beastmaster"]
+        ["Gallery", "Dog", "19", "Left of the haunt revealer", "A Friend For The Ages"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Girl", 19, "Haunt revealer", "The Beastmaster"]
+        ["Gallery", "Girl", "19", "Left of the haunt revealer", "A Friend For The Ages"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Holy Symbol", 22, "Left of the haunt revealer", "The Abyss Gazes Back"]
+        ["Gallery", "Holy Symbol", "22", "Left of the haunt revealer", "The Abyss Gazes Back"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Key", 53, "Haunt revealer", "[Hauntname missing]"]
+        ["Gallery", "Key", "53", "Haunt revealer", "Till Morning Light"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Letter", 54, "Highest Knowledge", "[Hauntname missing]"]
+        ["Gallery", "Letter", "54", "Highest Knowledge", "Monster Mash"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Madman", 10, "Haunt revealer", "Family Gathering"]
+        ["Gallery", "Madman", "10", "Haunt revealer", "Family Gathering"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Mask", 25, "Zoe Ingstrom (dolls) or highest Knowledge", "Voodoo"]
+        ["Gallery", "Mask", "25", "Zoe Ingstrom (dolls) or highest Knowledge", "Voodoo"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Medallion", 36, "Missy Dubourde swimming) or highest Speed", "Better with Friends"]
+        ["Gallery", "Medallion", "36", "Missy Dubourde (swimming) or highest Speed", "Better with Friends"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Photograph", 76, "Oldest explorer", "[Hauntname missing]"]
+        ["Gallery", "Photograph", "76", "Oldest explorer", "Back To The Past"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Ring", 41, "Haunt revealer", "Invisible Traitor"]
+        ["Gallery", "Ring", "41", "Haunt revealer", "Invisible Traitor"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Rope", 71, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Gallery", "Rope", "71", "Left of the haunt revealer", "The Other Side"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Skull", 37, "Lowest Might", "Checkmate"]
+        ["Gallery", "Skull", "37", "Lowest Might", "Checkmate"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Spear", 15, "Lowest Speed (except for the haunt revealer", "Here There Be Dragons"]
+        ["Gallery", "Spear", "15","Lowest Speed (except for the haunt revealer", "Here There Be Dragons"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Spirit Board", 8, "Haunt revealer", "Wail of the Banshee"]
+        ["Gallery", "Spirit Board", "8", "Haunt revealer", "Wail of the Banshee"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gallery", "Vial", 70, "Oldest explorer", "[Hauntname missing]"]
+        ["Gallery", "Vial", "70", "Oldest explorer", "To Reach The Cosmos"]
     );
   }
   CreateGymnasiumEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Bite", 35, "Highest Knowledge", "Small Change"]
+        ["Gymnasium", "Bite", "35", "Highest Knowledge", "Small Change"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Bloodstone", 79, "Left and right of the haunt revealer", "[Hauntname missing]"]
+        ["Gymnasium", "Bloodstone", "79", "Left and right of the haunt revealer", "The Twins"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Book", 29, "Haunt revealer", "Frankenstein’s Legacy"]
+        ["Gymnasium", "Book", "29", "Haunt revealer", "Frankenstein’s Legacy"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Box", 52, "Haunt revealer", "[Hauntname missing]"]
+        ["Gymnasium", "Box", "52", "Haunt revealer", "Prism"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Cat", 92, "None (see Secrets of Survival)", "[Haunname missing]"]
+        ["Gymnasium", "Cat", "92", "None (see Secrets of Survival)", "Ghost At The Finish Line"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Crystal Ball", 11, "None", "Fleshwalkers"]
+        ["Gymnasium", "Crystal Ball", "12", "None", "Fleshwalkers"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Dog", 46, "Madame Zostra (cooking) or lowest Speed", "The Feast"]
+        ["Gymnasium", "Dog", "46", "Madame Zostra (cooking) or lowest Speed", "The Feast"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Girl", 1, "Haunt Revealer", "The Mummy Walks"]
+        ["Gymnasium", "Girl", "1", "Haunt Revealer", "The Mummy Walks"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Holy Symbol", 22, "Left of the haunt revealer", "The Abyss Gazes Back"]
+        ["Gymnasium", "Holy Symbol", "22", "Left of the haunt revealer", "The Abyss Gazes Back"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Key", 92, "None (see Secrets of Survival)", "[Haunname missing]"]
+        ["Gymnasium", "Key", "92", "None (see Secrets of Survival)", "Ghost At The Finish Line"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Letter", 100, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Gymnasium", "Letter", "100", "None (see Secrets of Survival)", "Let's Play A Game"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Madman", 11, "Haunt revealer", "Let Them In"]
+        ["Gymnasium", "Madman", "11", "Haunt revealer", "Let Them In"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Mask", 22, "Left of the haunt revealer", "The Abyss Gazes Back"]
+        ["Gymnasium", "Mask", "22", "Left of the haunt revealer", "The Abyss Gazes Back"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Medallion", 21, "Oldest explorer (except for the haunt revealer)", "House of the Living Dead"]
+        ["Gymnasium", "Medallion", "21", "Oldest explorer (except for the haunt revealer)", "House of the Living Dead"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Photograph", 92, "None (see Secrets of Survival)", "[Haunname missing]"]
+        ["Gymnasium", "Photograph", "92", "None (see Secrets of Survival)", "Ghost At The Finish Line"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Ring", 41, "Haunt revealer", "Invisible Traitor"]
+        ["Gymnasium", "Ring", "41", "Haunt revealer", "Invisible Traitor"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Rope",86, "Haunt revealer", "[Hauntname missing]"]
+        ["Gymnasium", "Rope", "86", "Haunt revealer", "The Woods In The Cabin"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Skull", 47, "Haunt revealer", "Worm Ouroboros"]
+        ["Gymnasium", "Skull", "47", "Haunt revealer", "Worm Ouroboros"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Spear", 43, "Haunt revealer", "A Gathering of Shadows"]
+        ["Gymnasium", "Spear", "43", "Hidden traitor (See Secrets of Survival)", "The Star Sickness"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Spirit Board", 48, "Left of the haunt revealer", "Stacked Like Cordwood"]
+        ["Gymnasium", "Spirit Board", "48", "Left of the haunt revealer", "Stacked Like Cordwood"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Gymnasium", "Vial", 92, "None (see Secrets of Survival)", "[Haunname missing]"]
+        ["Gymnasium", "Vial", "92", "None (see Secrets of Survival)", "Ghost At The Finish Line"]
     );
   }
   CreateJunkRoomEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Bite", 4, "Highest Might (except for the haunt revealer)", "The Web of Destiny"]
+        ["Junk Room", "Bite", "4", "Highest Might (except for the haunt revealer)", "The Web of Destiny"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Bloodstone", 79, "Left and right of the haunt revealer", "[Hauntname missing]"]
+        ["Junk Room", "Bloodstone", "79", "Left and right of the haunt revealer", "The Twins"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Book", 33, "Highest Speed (except for the haunt revealer)", "Creature from the Lake"]
+        ["Junk Room", "Book", "33", "Haunt revealer", "An Invocation Of Darkness"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Box", 52, "Haunt revealer", "[Hauntname missing]"]
+        ["Junk Room", "Box", "52", "Haunt revealer", "Prism"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Cat",88, "Haunt revealer", "[Hauntname missing]"]
+        ["Junk Room", "Cat", "88", "Haunt revealer", "Cry, Babylon!"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Crystal Ball", 27, "Highest Knowledge (except for the haunt revealer)", "Amok Flesh"]
+        ["Junk Room", "Crystal Ball", "27", "Highest Knowledge (except for the haunt revealer)", "Amok Flesh"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Dog", 46, "Madame Zostra (cooking) or lowest Speed", "The Feast"]
+        ["Junk Room", "Dog", "46", "Madame Zostra (cooking) or lowest Speed", "The Feast"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Girl", 1, "Haunt Revealer", "The Mummy Walks"]
+        ["Junk Room", "Girl", "1", "Haunt Revealer", "The Mummy Walks"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Holy Symbol", 9, "None (at first)", "The Dance of Death"]
+        ["Junk Room", "Holy Symbol", "9", "None (at first)", "The Dance of Death"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Key", 68, "Jenny LeClerc (Reading) or highest Knowledge", "[Hauntname missing]"]
+        ["Junk Room", "Key", "68", "Jenny LeClerc (Reading) or highest Knowledge", "He Who Must Not Be Read"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Letter", 100, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Junk Room", "Letter", "100", "None (see Secrets of Survival)", "Let's Play A Game"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Madman", 11, "Haunt revealer", "Let Them In"]
+        ["Junk Room", "Madman", "11", "Haunt revealer", "Let Them In"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Mask", 25, "Zoe Ingstrom (dolls) or highest Knowledge", "Voodoo"]
+        ["Junk Room", "Mask", "25", "Zoe Ingstrom (dolls) or highest Knowledge", "Voodoo"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Medallion", 44, "Youngest explorer (except for the haunt revealer)", "Death Doth Find Us All"]
+        ["Junk Room", "Medallion", "44", "Youngest explorer (except for the haunt revealer)", "Death Doth Find Us All"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Photograph", 76, "Oldest explorer", "[Hauntname missing]"]
+        ["Junk Room", "Photograph", "76", "Oldest explorer", "Back To The Past"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Ring", 17, "Peter Akimoto (bugs) or highest Knowledge", "Bugs"]
+        ["Junk Room", "Ring", "17", "Left of the haunt revealer", "A Breath Of Wind"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Rope", 71, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Junk Room", "Rope", "71", "Left of the haunt revealer", "The Other Side"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Skull", 17, "Peter Akimoto (bugs) or highest Knowledge", "Bugs"]
+        ["Junk Room", "Skull", "17", "Left of the haunt revealer", "A Breath Of Wind"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Spear", 17, "Peter Akimoto (bugs) or highest Knowledge", "Bugs"]
+        ["Junk Room", "Spear", "17", "Left of the haunt revealer", "A Breath Of Wind"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Spirit Board", 40, "Left of the haunt revealer", "Buried Alive"]
+        ["Junk Room", "Spirit Board", "40", "Left of the haunt revealer", "Buried Alive"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Junk Room", "Vial", 91, "Lowest Sanity", "[Hauntname missing]"]
+        ["Junk Room", "Vial", "91", "Lowest Sanity", "Burn Out The Darkness"]
     );
   }
   CreateKitchenEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Bite", 18, " Left of the haunt revealer", "Offspring"]
+        ["Kitchen", "Bite", "18", "Haunt revealer", "United We Stand"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Bloodstone", 67, "Peter Akimoto (Basketball) or highest Speed", "[Hauntname missing]"]
+        ["Kitchen", "Bloodstone", "67", "Peter Akimoto (Basketball) or highest Speed", "Murderball"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Book", 3, "Lowest Knowledge (Except for the haun revealer)", "Frog-Leg Stew"]
+        ["Kitchen", "Book", "3", "Lowest Knowledge (Except for the haunt revealer)", "Frog-Leg Stew"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Box", 99, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Kitchen", "Box", "99", "None (see Secrets of Survival)", "The Manor Of Your Demise"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Cat", 60, "Haunt revealer", "[Hauntname missing]"]
+        ["Kitchen", "Cat", "60", "Haunt revealer", "Cat O'Clock"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Crystal Ball", 23, "Left of the haunt revealer", "Tentacled Horror"]
+        ["Kitchen", "Crystal Ball", "23", "Left of the haunt revealer", "Tentacled Horror"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Dog", 46, "Madame Zostra (cooking) or lowest Speed", "The Feast"]
+        ["Kitchen", "Dog", "46", "Madame Zostra (cooking) or lowest Speed", "The Feast"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Girl", 16, "Left of the haunt revealer", "The Phantom’s Embrace"]
+        ["Kitchen", "Girl", "16","Left of the haunt revealer", "The Phantom’s Embrace"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Holy Symbol", 22, "Left of the haunt revealer", "The Abyss Gazes Back"]
+        ["Kitchen", "Holy Symbol", "22", "Left of the haunt revealer", "The Abyss Gazes Back"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Key", 53, "Haunt revealer", "[Hauntname missing]"]
+        ["Kitchen", "Key", "53", "Haunt revealer", "Till Morning Light"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Letter", 87, "Youngest explorer", "[Hauntname missing]"]
+        ["Kitchen", "Letter", "87", "Youngest explorer", "Sibling Rivalry"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Madman", 31, "Left of the haunt revealer", "It's Alive!"]
+        ["Kitchen", "Madman", "31", "None (See Secrets of Survival)", "Airborne"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Mask", 32, "Highest Sanity", "Lost"]
+        ["Kitchen", "Mask", "32", "Highest Sanity", "Lost"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Medallion", 36, "Missy Dubourde swimming) or highest Speed", "Better with Friends"]
+        ["Kitchen", "Medallion", "36", "Missy Dubourde (swimming) or highest Speed", "Better with Friends"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Photograph", 89, "Lowest Sanity", "[Hauntname missing]"]
+        ["Kitchen", "Photograph", "89", "Lowest Sanity", "One Of The Master's Affairs"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Ring", 41, "Haunt revealer", "Invisible Traitor"]
+        ["Kitchen", "Ring", "41", "Haunt revealer", "Invisible Traitor"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Rope",82, "Haunt revealer", "[Hauntname missing]"]
+        ["Kitchen", "Rope", "82", "Haunt revealer", "Get A Clue"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Skull", 37, "Lowest Might", "Checkmate"]
+        ["Kitchen", "Skull", "37", "Lowest Might", "Checkmate"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Spear", 39, " Highest Speed (except for the haunt revealer)", "The Heir"]
+        ["Kitchen", "Spear", "39", " Highest Speed (except for the haunt revealer)", "The Heir"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Spirit Board", 2, "Haunt Revealer", "The Séance"]
+        ["Kitchen", "Spirit Board", "2", "Haunt Revealer", "The Séance"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Kitchen", "Vial", 80, "Highest Knowledge", "[Hauntname missing]"]
+        ["Kitchen", "Vial", "80", "Highest Knowledge", "I, Mutant"]
     );
   }
   CreateMasterBedroomEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Bite", 35, "Highest Knowledge", "Small Change"]
+        ["Master Bedroom", "Bite", "35", "Highest Knowledge", "Small Change"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Bloodstone",98, "Haunt revealer", "[Hauntname missing]"]
+        ["Master Bedroom", "Bloodstone", "98", "Haunt revealer", "Plastic Fantastic"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Book", 29, "Haunt revealer", "Frankenstein’s Legacy"]
+        ["Master Bedroom", "Book", "29", "Haunt revealer", "Frankenstein’s Legacy"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Box",98, "Haunt revealer", "[Hauntname missing]"]
+        ["Master Bedroom", "Box", "98", "Haunt revealer", "Plastic Fantastic"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Cat",98, "Haunt revealer", "[Hauntname missing]"]
+        ["Master Bedroom", "Cat", "98", "Haunt revealer", "Plastic Fantastic"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Crystal Ball", 27, "Highest Knowledge (except for the haunt revealer)", "Amok Flesh"]
+        ["Master Bedroom", "Crystal Ball", "27", "Highest Knowledge (except for the haunt revealer)", "Amok Flesh"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Dog", 5, "Haunt revealer", "I Was a Teenage Lycanthrope"]
+        ["Master Bedroom", "Dog", "5", "Haunt revealer", "I Was a Teenage Lycanthrope"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Girl", 16, "Left of the haunt revealer", "The Phantom’s Embrace"]
+        ["Master Bedroom", "Girl", "16","Left of the haunt revealer", "The Phantom’s Embrace"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Holy Symbol", 6, "Lowest Sanity", "The Floating Eye"]
+        ["Master Bedroom", "Holy Symbol", "6", "Lowest Sanity", "The Floating Eye"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Key",90, "Haunt revealer", "[Hauntname missing]"]
+        ["Master Bedroom", "Key", "90", "Haunt revealer", "Internal Conflict"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Letter", 54, "Highest Knowledge", "[Hauntname missing]"]
+        ["Master Bedroom", "Letter", "54", "Highest Knowledge", "Monster Mash"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Madman", 10, "Haunt revealer", "Family Gathering"]
+        ["Master Bedroom", "Madman", "10", "Haunt revealer", "Family Gathering"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Mask", 35, "Highest Knowledge", "Small Change"]
+        ["Master Bedroom", "Mask", "35", "Highest Knowledge", "Small Change"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Medallion", 44, "Youngest explorer (except for the haunt revealer)", "Death Doth Find Us All"]
+        ["Master Bedroom", "Medallion", "44", "Youngest explorer (except for the haunt revealer)", "Death Doth Find Us All"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Photograph", 76, "Oldest explorer", "[Hauntname missing]"]
+        ["Master Bedroom", "Photograph", "76", "Oldest explorer", "Back To The Past"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Ring", 20, "Vivian Lopez (old movies) or highest Knowledge", "Ghost Bride"]
+        ["Master Bedroom", "Ring", "20", "Vivian Lopez (Old Movies) or left of the haunt revealer", "Ghost Bride"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Rope",82, "Haunt revealer", "[Hauntname missing]"]
+        ["Master Bedroom", "Rope", "82", "Haunt revealer", "Get A Clue"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Skull", 47, "Haunt revealer", "Worm Ouroboros"]
+        ["Master Bedroom", "Skull", "47", "Haunt revealer", "Worm Ouroboros"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Spear", 43, "Haunt revealer", "A Gathering of Shadows"]
+        ["Master Bedroom", "Spear", "43", "Hidden traitor (See Secrets of Survival)", "The Star Sickness"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Spirit Board", 2, "Haunt Revealer", "The Séance"]
+        ["Master Bedroom", "Spirit Board", "2", "Haunt Revealer", "The Séance"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Master Bedroom", "Vial",98, "Haunt revealer", "[Hauntname missing]"]
+        ["Master Bedroom", "Vial", "98", "Haunt revealer", "Plastic Fantastic"]
     );
   }
   CreateNurseryEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Bite",74, "Haunt revealer", "[Hauntname missing]"]
+        ["Nursery", "Bite", "74", "Haunt revealer", "Couldrophobia"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Bloodstone", 67, "Peter Akimoto (Basketball) or highest Speed", "[Hauntname missing]"]
+        ["Nursery", "Bloodstone", "67", "Peter Akimoto (Basketball) or highest Speed", "Murderball"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Book", 95, "Oldest player (not necessarily oldest explorer)", "[Hauntname missing]"]
+        ["Nursery", "Book", "95", "Oldest player (not necessarily oldest explorer)", "Nanny, Interrupted"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Box", 99, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Nursery", "Box", "99", "None (see Secrets of Survival)", "The Manor Of Your Demise"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Cat",74, "Haunt revealer", "[Hauntname missing]"]
+        ["Nursery", "Cat", "74", "Haunt revealer", "Couldrophobia"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Crystal Ball", 84, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Nursery", "Crystal Ball", "84", "Left of the haunt revealer", "Forget To Remember"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Dog",72, "Haunt revealer", "[Hauntname missing]"]
+        ["Nursery", "Dog", "72", "Haunt revealer", "Man's Worst Enemy"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Girl", 58, "Haunt revealer", "[Hauntname missing]"]
+        ["Nursery", "Girl", "58", "Haunt revealer", "Olly Olly Oxen Free"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Holy Symbol", 66, "Oldest male explorer or, if none, oldest explorer)", "[Hauntname missing]"]
+        ["Nursery", "Holy Symbol", "66", "Oldest male explorer or, if none, oldest explorer)", "The Cardinal Sins"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Key", 68, "Jenny LeClerc (Reading) or highest Knowledge", "[Hauntname missing]"]
+        ["Nursery", "Key", "68", "Jenny LeClerc (Reading) or highest Knowledge", "He Who Must Not Be Read"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Letter", 87, "Youngest explorer", "[Hauntname missing]"]
+        ["Nursery", "Letter", "87", "Youngest explorer", "Sibling Rivalry"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Madman",74, "Haunt revealer", "[Hauntname missing]"]
+        ["Nursery", "Madman", "74", "Haunt revealer", "Couldrophobia"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Mask",74, "Haunt revealer", "[Hauntname missing]"]
+        ["Nursery", "Mask", "74", "Haunt revealer", "Couldrophobia"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Medallion", 95, "Oldest player (not necessarily oldest explorer)", "[Hauntname missing]"]
+        ["Nursery", "Medallion", "95", "Oldest player (not necessarily oldest explorer)", "Nanny, Interrupted"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Photograph", 95, "Oldest player (not necessarily oldest explorer)", "[Hauntname missing]"]
+        ["Nursery", "Photograph", "95", "Oldest player (not necessarily oldest explorer)", "Nanny, Interrupted"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Ring", 85, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Nursery", "Ring", "85", "Left of the haunt revealer", "The Murderer In The Machine"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Rope",86, "Haunt revealer", "[Hauntname missing]"]
+        ["Nursery", "Rope", "86", "Haunt revealer", "The Woods In The Cabin"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Skull", 73, "Ox Bellows (Shiny Objetcs) or highest Might", "[Hauntname missing]"]
+        ["Nursery", "Skull", "73", "Ox Bellows (Shiny Objetcs) or highest Might", "Existence Exceeds Essence"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Spear", 65, "Haunt revealer", "[Hauntname missing]"]
+        ["Nursery", "Spear", "65", "Haunt revealer", "Sushi Night"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Spirit Board", 95, "Oldest player (not necessarily oldest explorer)", "[Hauntname missing]"]
+        ["Nursery", "Spirit Board", "95", "Oldest player (not necessarily oldest explorer)", "Nanny, Interrupted"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Nursery", "Vial", 80, "Highest Knowledge", "[Hauntname missing]"]
+        ["Nursery", "Vial", "80", "Highest Knowledge", "I, Mutant"]
     );
   }
   CreatePentagramChamberEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Bite", 26, "Left of the haunt revealer", "Pay the Piper"]
+        ["Pentagram Chamber", "Bite", "26", "Left of the haunt revealer", "Pay the Piper"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Bloodstone", 59, "Haunt revealer", "[Hauntname missing]"]
+        ["Pentagram Chamber", "Bloodstone", "59", "Haunt revealer", "The Fleshchild's Alchemical Mandate"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Book", 50, "Haunt revealer", "A Little Night Murder"]
+        ["Pentagram Chamber", "Book", "50", "None (See Secrets of Survival)", "Treasure Hunt"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Box", 61, "Haunt revealer", "[Hauntname missing]"]
+        ["Pentagram Chamber", "Box", "61", "Haunt revealer", "Captain Sting's Revenge"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Cat",81, "Haunt revealer", "[Hauntname missing]"]
+        ["Pentagram Chamber", "Cat", "81", "Haunt revealer", "The Canopic Curse"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Crystal Ball", 32, "Highest Sanity", "Lost"]
+        ["Pentagram Chamber", "Crystal Ball", "32", "Highest Sanity", "Lost"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Dog", 50, "Haunt revealer", "A Little Night Murder"]
+        ["Pentagram Chamber", "Dog", "50", "None (See Secrets of Survival)", "Treasure Hunt"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Girl", 26, "Left of the haunt revealer", "Pay the Piper"]
+        ["Pentagram Chamber", "Girl", "26", "Left of the haunt revealer", "Pay the Piper"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Holy Symbol", 26, "Left of the haunt revealer", "Pay the Piper"]
+        ["Pentagram Chamber", "Holy Symbol", "26", "Left of the haunt revealer", "Pay the Piper"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Key",81, "Haunt revealer", "[Hauntname missing]"]
+        ["Pentagram Chamber", "Key", "81", "Haunt revealer", "The Canopic Curse"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Letter", 83, "None (see Secrets of Survival)", "[Haunname missing]"]
+        ["Pentagram Chamber", "Letter", "83", "None (see Secrets of Survival)", "In The Details"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Madman", 45, "Highest Knowledge (except for the haunt revealer)", "Tick, Tick, Tick"]
+        ["Pentagram Chamber", "Madman", "45", "Highest Knowledge (except for the haunt revealer)", "Tick, Tick, Tick"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Mask", 14, "Haunt revealer", "The Stars Are Right"]
+        ["Pentagram Chamber", "Mask", "14","Haunt revealer", "The Stars Are Right"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Medallion", 14, "Haunt revealer", "The Stars Are Right"]
+        ["Pentagram Chamber", "Medallion", "14","Haunt revealer", "The Stars Are Right"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Photograph", 94, "Explorer with the most items that can be stolen or traded", "[Hauntname missing]"]
+        ["Pentagram Chamber", "Photograph", "94", "Explorer with the most items that can be stolen or traded", "Last Will And Tournament"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Ring", 26, "Left of the haunt revealer", "Pay the Piper"]
+        ["Pentagram Chamber", "Ring", "26", "Left of the haunt revealer", "Pay the Piper"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Rope",81, "Haunt revealer", "[Hauntname missing]"]
+        ["Pentagram Chamber", "Rope", "81", "Haunt revealer", "The Canopic Curse"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Skull", 14, "Haunt revealer", "The Stars Are Right"]
+        ["Pentagram Chamber", "Skull", "14","Haunt revealer", "The Stars Are Right"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Spear", 50, "Haunt revealer", "A Little Night Murder"]
+        ["Pentagram Chamber", "Spear", "50", "None (See Secrets of Survival)", "Treasure Hunt"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Spirit Board", 40, "Left of the haunt revealer", "Buried Alive"]
+        ["Pentagram Chamber", "Spirit Board", "40", "Left of the haunt revealer", "Buried Alive"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Pentagram Chamber", "Vial",81, "Haunt revealer", "[Hauntname missing]"]
+        ["Pentagram Chamber", "Vial", "81", "Haunt revealer", "The Canopic Curse"]
     );
   }
   CreateRookeryEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Bite", 97, "Hidden traitor (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Rookery", "Bite", "97", "Hidden traitor (see Secrets of Survival)", "Lambs To The Slaughter"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Bloodstone", 93, "Highest Knowledge", "[Hauntname missing]"]
+        ["Rookery", "Bloodstone", "93", "Highest Knowledge", "Owl's Moving Castle"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Book", 93, "Highest Knowledge", "[Hauntname missing]"]
+        ["Rookery", "Book", "93", "Highest Knowledge", "Owl's Moving Castle"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Box", 57, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Rookery", "Box", "57", "None (see Secrets of Survival)", "The Gathering Storm"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Cat", 57, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Rookery", "Cat", "57", "None (see Secrets of Survival)", "The Gathering Storm"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Crystal Ball", 93, "Highest Knowledge", "[Hauntname missing]"]
+        ["Rookery", "Crystal Ball", "93", "Highest Knowledge", "Owl's Moving Castle"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Dog", 57, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Rookery", "Dog", "57", "None (see Secrets of Survival)", "The Gathering Storm"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Girl", 58, "Haunt revealer", "[Hauntname missing]"]
+        ["Rookery", "Girl", "58", "Haunt revealer", "Olly Olly Oxen Free"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Holy Symbol", 66, "Oldest male explorer or, if none, oldest explorer)", "[Hauntname missing]"]
+        ["Rookery", "Holy Symbol", "66", "Oldest male explorer or, if none, oldest explorer)", "The Cardinal Sins"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Key", 93, "Highest Knowledge", "[Hauntname missing]"]
+        ["Rookery", "Key", "93", "Highest Knowledge", "Owl's Moving Castle"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Letter", 87, "Youngest explorer", "[Hauntname missing]"]
+        ["Rookery", "Letter", "87", "Youngest explorer", "Sibling Rivalry"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Madman", 56, "Explorer with the most total items and omens", "[Hauntname missing]"]
+        ["Rookery", "Madman", "56", "Explorer with the most total items and omens", "Make America Disintegrate Again"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Mask", 57, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Rookery", "Mask", "57", "None (see Secrets of Survival)", "The Gathering Storm"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Medallion", 77, "Professor Longfellow (Gaelic Music) or highest Speed", "[Hauntname missing]"]
+        ["Rookery", "Medallion", "77", "Professor Longfellow (Gaelic Music) or highest Speed", "They're Always After Me"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Photograph", 94, "Explorer with the most items that can be stolen or traded", "[Hauntname missing]"]
+        ["Rookery", "Photograph", "94", "Explorer with the most items that can be stolen or traded", "Last Will And Tournament"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Ring", 85, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Rookery", "Ring", "85", "Left of the haunt revealer", "The Murderer In The Machine"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Rope",86, "Haunt revealer", "[Hauntname missing]"]
+        ["Rookery", "Rope", "86", "Haunt revealer", "The Woods In The Cabin"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Skull", 73, "Ox Bellows (Shiny Objetcs) or highest Might", "[Hauntname missing]"]
+        ["Rookery", "Skull", "73", "Ox Bellows (Shiny Objetcs) or highest Might", "Existence Exceeds Essence"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Spear", 65, "Haunt revealer", "[Hauntname missing]"]
+        ["Rookery", "Spear", "65", "Haunt revealer", "Sushi Night"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Spirit Board", 64, "Everyone except the highest Knowledge", "[Hauntname missing]"]
+        ["Rookery", "Spirit Board", "64", "Everyone except the highest Knowledge", "Chairman Of The Board"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Rookery", "Vial", 70, "Oldest explorer", "[Hauntname missing]"]
+        ["Rookery", "Vial", "70", "Oldest explorer", "To Reach The Cosmos"]
     );
   }
   CreateServantsQuartersEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Bite", 35, "Highest Knowledge", "Small Change"]
+        ["Servant's Quarters", "Bite", "35", "Highest Knowledge", "Small Change"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Bloodstone", 59, "Haunt revealer", "[Hauntname missing]"]
+        ["Servant's Quarters", "Bloodstone", "59", "Haunt revealer", "The Fleshchild's Alchemical Mandate"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Book", 29, "Haunt revealer", "Frankenstein’s Legacy"]
+        ["Servant's Quarters", "Book", "29", "Haunt revealer", "Frankenstein’s Legacy"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Box", 52, "Haunt revealer", "[Hauntname missing]"]
+        ["Servant's Quarters", "Box", "52", "Haunt revealer", "Prism"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Cat", 60, "Haunt revealer", "[Hauntname missing]"]
+        ["Servant's Quarters", "Cat", "60", "Haunt revealer", "Cat O'Clock"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Crystal Ball", 11, "None", "Fleshwalkers"]
+        ["Servant's Quarters", "Crystal Ball", "12", "None", "Fleshwalkers"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Dog", 5, "Haunt revealer", "I Was a Teenage Lycanthrope"]
+        ["Servant's Quarters", "Dog", "5", "Haunt revealer", "I Was a Teenage Lycanthrope"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Girl", 30, "Haunt revealer", "Tomb of Dracula"]
+        ["Servant's Quarters", "Girl", "30", "Haunt revealer", "Tomb of Dracula"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Holy Symbol", 9, "None (at first)", "The Dance of Death"]
+        ["Servant's Quarters", "Holy Symbol", "9", "None (at first)", "The Dance of Death"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Key", 68, "Jenny LeClerc (Reading) or highest Knowledge", "[Hauntname missing]"]
+        ["Servant's Quarters", "Key", "68", "Jenny LeClerc (Reading) or highest Knowledge", "He Who Must Not Be Read"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Letter", 54, "Highest Knowledge", "[Hauntname missing]"]
+        ["Servant's Quarters", "Letter", "54", "Highest Knowledge", "Monster Mash"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Madman", 31, "Left of the haunt revealer", "It's Alive!"]
+        ["Servant's Quarters", "Madman", "31", "None (See Secrets of Survival)", "Airborne"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Mask", 42, "Highest Might", "Comes the Hero"]
+        ["Servant's Quarters", "Mask", "42", "Highest Might", "Comes the Hero"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Medallion", 21, "Oldest explorer (except for the haunt revealer)", "House of the Living Dead"]
+        ["Servant's Quarters", "Medallion", "21", "Oldest explorer (except for the haunt revealer)", "House of the Living Dead"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Photograph", 94, "Explorer with the most items that can be stolen or traded", "[Hauntname missing]"]
+        ["Servant's Quarters", "Photograph", "94", "Explorer with the most items that can be stolen or traded", "Last Will And Tournament"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Ring", 28, "Highest Knowledge (except for the haunt revealer)", "Ring of King Solomon"]
+        ["Servant's Quarters", "Ring", "28", "Highest Knowledge (except for the haunt revealer)", "Ring of King Solomon"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Rope", 71, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Servant's Quarters", "Rope", "71", "Left of the haunt revealer", "The Other Side"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Skull", 34, "Professor Longfellow drama) or highest Speed", "Mad, Mad World"]
+        ["Servant's Quarters", "Skull", "34", "Hidden traitor (See Secrets of Survival)", "Guillotines"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Spear", 15, "Lowest Speed (except for the haunt revealer", "Here There Be Dragons"]
+        ["Servant's Quarters", "Spear", "15","Lowest Speed (except for the haunt revealer", "Here There Be Dragons"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Spirit Board", 8, "Haunt revealer", "Wail of the Banshee"]
+        ["Servant's Quarters", "Spirit Board", "8", "Haunt revealer", "Wail of the Banshee"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Servant's Quarters", "Vial", 80, "Highest Knowledge", "[Hauntname missing]"]
+        ["Servant's Quarters", "Vial", "80", "Highest Knowledge", "I, Mutant"]
     );
   }
   CreateStudyEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Bite", 97, "Hidden traitor (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Study", "Bite", "97", "Hidden traitor (see Secrets of Survival)", "Lambs To The Slaughter"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Bloodstone", 59, "Haunt revealer", "[Hauntname missing]"]
+        ["Study", "Bloodstone", "59", "Haunt revealer", "The Fleshchild's Alchemical Mandate"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Book", 78, "Lowest Sanity (except for the haunt revealer)", "[Hauntname missing]"]
+        ["Study", "Book", "78", "Lowest Sanity (except for the haunt revealer)", "The Devil's Name"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Box", 99, "None (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Study", "Box", "99", "None (see Secrets of Survival)", "The Manor Of Your Demise"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Cat", 79, "Left and right of the haunt revealer", "[Hauntname missing]"]
+        ["Study", "Cat", "79", "Left and right of the haunt revealer", "The Twins"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Crystal Ball", 84, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Study", "Crystal Ball", "84", "Left of the haunt revealer", "Forget To Remember"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Dog",72, "Haunt revealer", "[Hauntname missing]"]
+        ["Study", "Dog", "72", "Haunt revealer", "Man's Worst Enemy"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Girl", 58, "Haunt revealer", "[Hauntname missing]"]
+        ["Study", "Girl", "58", "Haunt revealer", "Olly Olly Oxen Free"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Holy Symbol", 78, "Lowest Sanity (except for the haunt revealer)", "[Hauntname missing]"]
+        ["Study", "Holy Symbol", "78", "Lowest Sanity (except for the haunt revealer)", "The Devil's Name"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Key",90, "Haunt revealer", "[Hauntname missing]"]
+        ["Study", "Key", "90", "Haunt revealer", "Internal Conflict"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Letter", 78, "Lowest Sanity (except for the haunt revealer)", "[Hauntname missing]"]
+        ["Study", "Letter", "78", "Lowest Sanity (except for the haunt revealer)", "The Devil's Name"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Madman", 56, "Explorer with the most total items and omens", "[Hauntname missing]"]
+        ["Study", "Madman", "56", "Explorer with the most total items and omens", "Make America Disintegrate Again"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Mask", 78, "Lowest Sanity (except for the haunt revealer)", "[Hauntname missing]"]
+        ["Study", "Mask", "78", "Lowest Sanity (except for the haunt revealer)", "The Devil's Name"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Medallion", 77, "Professor Longfellow (Gaelic Music) or highest Speed", "[Hauntname missing]"]
+        ["Study", "Medallion", "77", "Professor Longfellow (Gaelic Music) or highest Speed", "They're Always After Me"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Photograph", 76, "Oldest explorer", "[Hauntname missing]"]
+        ["Study", "Photograph", "76", "Oldest explorer", "Back To The Past"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Ring", 85, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Study", "Ring", "85", "Left of the haunt revealer", "The Murderer In The Machine"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Rope",82, "Haunt revealer", "[Hauntname missing]"]
+        ["Study", "Rope", "82", "Haunt revealer", "Get A Clue"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Skull", 73, "Ox Bellows (Shiny Objetcs) or highest Might", "[Hauntname missing]"]
+        ["Study", "Skull", "73", "Ox Bellows (Shiny Objetcs) or highest Might", "Existence Exceeds Essence"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Spear", 65, "Haunt revealer", "[Hauntname missing]"]
+        ["Study", "Spear", "65", "Haunt revealer", "Sushi Night"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Spirit Board", 64, "Everyone except the highest Knowledge", "[Hauntname missing]"]
+        ["Study", "Spirit Board", "64", "Everyone except the highest Knowledge", "Chairman Of The Board"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Study", "Vial", 70, "Oldest explorer", "[Hauntname missing]"]
+        ["Study", "Vial", "70", "Oldest explorer", "To Reach The Cosmos"]
     );
   }
   CreateTheaterEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Bite", 97, "Hidden traitor (see Secrets of Survival)", "[Hauntname missing]"]
+        ["Theater", "Bite", "97", "Hidden traitor (see Secrets of Survival)", "Lambs To The Slaughter"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Bloodstone", 62, "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "[Hauntname missing]"]
+        ["Theater", "Bloodstone", "62", "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "Rosencrantz And All Of You Are Dead"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Book", 51, "Everyone except the haunt revealer", "[Hauntname missing]"]
+        ["Theater", "Book", "51", "Everyone except the haunt revealer", "Director's Cut"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Box", 63, "Haunt revealer", "[Hauntname missing]"]
+        ["Theater", "Box", "63", "Haunt revealer", "Shush"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Cat", 60, "Haunt revealer", "[Hauntname missing]"]
+        ["Theater", "Cat", "60", "Haunt revealer", "Cat O'Clock"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Crystal Ball", 84, "Left of the haunt revealer", "[Hauntname missing]"]
+        ["Theater", "Crystal Ball", "84", "Left of the haunt revealer", "Forget To Remember"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Dog",72, "Haunt revealer", "[Hauntname missing]"]
+        ["Theater", "Dog", "72", "Haunt revealer", "Man's Worst Enemy"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Girl", 58, "Haunt revealer", "[Hauntname missing]"]
+        ["Theater", "Girl", "58", "Haunt revealer", "Olly Olly Oxen Free"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Holy Symbol", 66, "Oldest male explorer or, if none, oldest explorer)", "[Hauntname missing]"]
+        ["Theater", "Holy Symbol", "66", "Oldest male explorer or, if none, oldest explorer)", "The Cardinal Sins"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Key", 68, "Jenny LeClerc (Reading) or highest Knowledge", "[Hauntname missing]"]
+        ["Theater", "Key", "68", "Jenny LeClerc (Reading) or highest Knowledge", "He Who Must Not Be Read"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Letter", 51, "Everyone except the haunt revealer", "[Hauntname missing]"]
+        ["Theater", "Letter", "51", "Everyone except the haunt revealer", "Director's Cut"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Madman", 56, "Explorer with the most total items and omens", "[Hauntname missing]"]
+        ["Theater", "Madman", "56", "Explorer with the most total items and omens", "Make America Disintegrate Again"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Mask", 62, "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "[Hauntname missing]"]
+        ["Theater", "Mask", "62", "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "Rosencrantz And All Of You Are Dead"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Medallion", 77, "Professor Longfellow (Gaelic Music) or highest Speed", "[Hauntname missing]"]
+        ["Theater", "Medallion", "77", "Professor Longfellow (Gaelic Music) or highest Speed", "They're Always After Me"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Photograph", 51, "Everyone except the haunt revealer", "[Hauntname missing]"]
+        ["Theater", "Photograph", "51", "Everyone except the haunt revealer", "Director's Cut"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Ring", 51, "Everyone except the haunt revealer", "[Hauntname missing]"]
+        ["Theater", "Ring", "51", "Everyone except the haunt revealer", "Director's Cut"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Rope", 69, "Haunt revealer", "[Hauntname missing]"]
+        ["Theater", "Rope", "69", "Haunt revealer", "No Noose Is Good News"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Skull", 62, "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "[Hauntname missing]"]
+        ["Theater", "Skull", "62", "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "Rosencrantz And All Of You Are Dead"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Spear", 62, "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "[Hauntname missing]"]
+        ["Theater", "Spear", "62", "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "Rosencrantz And All Of You Are Dead"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Spirit Board", 64, "Everyone except the highest Knowledge", "[Hauntname missing]"]
+        ["Theater", "Spirit Board", "64", "Everyone except the highest Knowledge", "Chairman Of The Board"]
     );
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
-        ["Theater", "Vial", 62, "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "[Hauntname missing]"]
+        ["Theater", "Vial", "62", "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "Rosencrantz And All Of You Are Dead"]
     );
   }
 }

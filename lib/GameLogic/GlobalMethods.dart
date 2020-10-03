@@ -194,7 +194,7 @@ class Logic {
       }
     )
     .catchError((onError) {
-      throw new Exception("No haunt with in room $room and with omen $omen");
+      throw new Exception("No haunt with in room $room and with omen $omen\n\n---------------------" + onError.toString() + "\n----------------------------");
     });
   }
 
