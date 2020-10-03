@@ -66,7 +66,7 @@ class Logic {
         [3, 4, 5, 5, 6, 7, 7, 8], 4,
         [1, 3, 3, 4, 5, 6, 6, 8], 3);
 
-    String hobbies_Rheinhardt = "Hobby 1, Hobby 2";
+    String hobbies_Rheinhardt = "Fencing, Gardening";
 
     Stats stats_Longfellow = new Stats([2, 3, 3, 4, 5, 6, 7, 7], 2,
         [1, 2, 2, 4, 4, 5, 5, 7], 2,
@@ -80,7 +80,7 @@ class Logic {
         [3, 3, 3, 4, 5, 6, 6, 6], 2,
         [2, 3, 3, 4, 5, 6, 7, 8], 4);
 
-    String hobbies_Granville = "Hobby 1, Hobby 2";
+    String hobbies_Granville = "Television, Shopping";
 
     Stats stats_LeClerc = new Stats([2, 3, 4, 4, 4, 5, 6, 8], 3,
         [3, 4, 4, 4, 4, 5, 6, 8], 2,
@@ -101,14 +101,14 @@ class Logic {
         [4, 4, 4, 5, 6, 7, 8, 8], 2,
         [1, 3, 4, 4, 4, 5, 6, 6], 3);
 
-    String hobbies_Zostra = "Hobby 1, Hobby 2";
+    String hobbies_Zostra = "Astrology, Cooking, Baseball";
 
     Stats stats_Akimoto = new Stats([3, 3, 3, 4, 6, 6, 7, 7], 3,
         [2, 3, 3, 4, 5, 5, 6, 8], 2,
         [3, 4, 4, 4, 5, 6, 6, 7], 3,
         [3, 4, 4, 5, 6, 7, 7, 8], 2);
 
-    String hobbies_Akimoto = "Hobby 1, Hobby 2";
+    String hobbies_Akimoto = "Bugs, Basketball";
 
     Stats stats_Jaspers = new Stats([3, 4, 4, 4, 5, 6, 7, 8], 2,
         [2, 3, 3, 4, 5, 6, 6, 7], 3,
@@ -129,14 +129,14 @@ class Logic {
         [1, 2, 3, 4, 5, 5, 6, 7], 2,
         [2, 3, 4, 4, 5, 6, 6, 6], 3);
 
-    String hobbies_Dubourde = "Hobby 1, Hobby 2";
+    String hobbies_Dubourde = "Swimming, Medicine";
 
     Stats stats_Williams = new Stats([4, 4, 4, 5, 6, 7, 7, 8], 4,
         [2, 3, 3, 4, 5, 6, 6, 7], 2,
         [1, 2, 3, 4, 5, 5, 5, 7], 2,
         [2, 3, 3, 4, 5, 5, 5, 7], 2);
 
-    String hobbies_Williams = "Hobby 1, Hobby 2";
+    String hobbies_Williams = "Track, Music, Shakespearean Literature";
 
     Stats stats_Bellows = new Stats([2, 2, 2, 3, 4, 5, 5, 6], 4,
         [4, 5, 5, 6, 6, 7, 8, 8], 2,
