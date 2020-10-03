@@ -299,6 +299,45 @@ class Logic {
     );
   }
 
+  static Future CreateTraitorTieAlert(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              "Traitor Tie",
+              style: TextStyle(),
+              textAlign: TextAlign.center,
+            ),
+            content: Container(
+              height: 200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "If two explorers tie, and one of them is the haunt revealer, choose the haunt revealer.\n"
+                          "If neither player is the haunt revealer, choose the one who's closest to the left of the haunt revealer.",
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ),
+                  RaisedButton(
+                    child: Text(
+                      "Thanks",
+                      style: TextStyle(fontSize: 24),
+                      textAlign: TextAlign.center,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(),
+                  )
+                ],
+              ),
+            ),
+          );
+        }
+    );
+  }
+
   static void StartNewGame(context) {
     InitializeCharacterLists();
     isHauntRevealed = false;

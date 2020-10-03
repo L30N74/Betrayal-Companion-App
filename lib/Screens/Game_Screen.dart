@@ -105,7 +105,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
       child: Column(
         children: [
           HauntNameContainer(),
-          HauntPropertiesContainer()
+          HauntPropertiesContainer(),
         ],
       ),
     );
@@ -167,7 +167,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
 
   Container HauntNameContainer() {
     return Container(
-      height: Logic.isHauntRevealed ? 150 : 120,
+      height: 120,
       width: double.infinity,
       margin: EdgeInsets.only(top: 30, left: 20, right: 20),
       color: darkGreyColor,
@@ -202,7 +202,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
     return Container(
       height: 150,
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
       color: darkGreyColor,
       child: Column(
         children: [
@@ -214,30 +214,39 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
             ),
           ),
           Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                width: double.infinity,
-                child: Text(
-                  Logic.revealedHauntInformation.traitorProperties,
-                  style: (Logic.revealedHauntInformation.hauntNumber != "★")
-                      ? hauntTraitorPropertiesTextStyle
-                      : hauntTraitorPropertiesTextStyle_Small,
-                  textAlign: TextAlign.center,
-                ),
+              Text(
+                Logic.revealedHauntInformation.traitorProperties,
+                style: (Logic.revealedHauntInformation.hauntNumber != "★")
+                    ? hauntTraitorPropertiesTextStyle
+                    : hauntTraitorPropertiesTextStyle_Small,
+                textAlign: TextAlign.center,
               ),
               Align(
-                alignment: Alignment.bottomRight,
-                child: FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      Logic.isHauntRevealed = false;
-                      Logic.revealedHauntInformation = new HauntInformation.empty();
-                    });
-                  },
-                  child: Text(
-                    "Reset",
-                    style: TextStyle(fontSize: 12, color: Colors.white),
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    FlatButton(
+                      onPressed: () {
+                        setState(() {
+                          Logic.isHauntRevealed = false;
+                          Logic.revealedHauntInformation = new HauntInformation.empty();
+                        });
+                      },
+                      child: Text(
+                        "Reset",
+                        style: TextStyle(fontSize: 14, color: Colors.white),
+                      ),
+                    ),
+                    FlatButton(
+                      child: Text(
+                        "Tie?",
+                        style: TextStyle(fontSize: 14, color: Colors.white),
+                      ),
+                      onPressed: () => Logic.CreateTraitorTieAlert(context),
+                    ),
+                  ],
                 ),
               ),
             ]
