@@ -215,10 +215,13 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
           ),
           Column(
             children: [
-              Center(
+              SizedBox(
+                width: double.infinity,
                 child: Text(
                   Logic.revealedHauntInformation.traitorProperties,
-                  style: hauntTraitorPropertiesTextStyle,
+                  style: (Logic.revealedHauntInformation.hauntNumber != "★")
+                      ? hauntTraitorPropertiesTextStyle
+                      : hauntTraitorPropertiesTextStyle_Small,
                   textAlign: TextAlign.center,
                 ),
               ),

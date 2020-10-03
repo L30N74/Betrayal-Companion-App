@@ -14,7 +14,7 @@ class MainPage extends StatelessWidget {
       home: Builder(
         builder: (context) => Scaffold(
           backgroundColor: Color.fromRGBO(128, 128, 128, 100),
-          body: HomeMenu(context, "Betrayal Companion App"),
+          body: HomeMenu(context, "Betrayal Companion\nApp"),
         ),
       ),
     );

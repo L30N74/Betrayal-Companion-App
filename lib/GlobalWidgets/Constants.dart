@@ -9,6 +9,7 @@ TextStyle characterStatsTextStyle = new TextStyle(fontSize: 20, color: Colors.wh
 TextStyle hauntInformationTextStyle = new TextStyle(fontSize: 20, color: Colors.white);
 TextStyle hauntNameTextStyle = new TextStyle(fontSize: 26, color: Colors.white);
 TextStyle hauntTraitorPropertiesTextStyle = new TextStyle(fontSize: 22, color: Colors.white);
+TextStyle hauntTraitorPropertiesTextStyle_Small = new TextStyle(fontSize: 12, color: Colors.white);
 TextStyle hauntNotRevealedTextStyle = new TextStyle(fontSize: 26, color: Colors.white);
 
 TextStyle hauntDropdownsTextStyle = new TextStyle(fontSize: 20, color: Colors.white);
