@@ -3,6 +3,7 @@ import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/Screens/CoinFlip_Screen.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'file:///D:/Anderes/Projekte/betrayal_companion_app/lib/Screens/Game_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -22,6 +23,8 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
 
   _CharacterSelection_ScreenState(this.playerCount);
 
+  CarouselController carouselController = new CarouselController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,9 +43,19 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
                 Header("CHARACTER SELECTION"),
                 Divider(),
                 Expanded(
-                  child: PageView(
-                    controller: controller,
-                    children: Logic.characters.map((player) => CreateCharacterPage(player)).toList()
+                  child: ListView(
+                    children: <Widget>[
+                      CarouselSlider(
+                        options: CarouselOptions(
+                          height: MediaQuery.of(context).size.height,
+                          enlargeCenterPage: true,
+                          autoPlay: false,
+                          enableInfiniteScroll: true,
+                        ),
+                        carouselController: carouselController,
+                        items: Logic.characters.map((player) => CreateCharacterPage(player)).toList(),
+                      )
+                    ],
                   ),
                 ),
               ],
@@ -55,10 +68,9 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
 
   Container CreateCharacterPage(Character character) {
     return Container(
-      width: MediaQuery.of(context).size.width,
       child: Column(
         children: [
-          Image(image: AssetImage(character.imagePath), height: 200, width: 200),
+          Image(image: AssetImage(character.imagePath), height: 180, width: 180),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -6,6 +6,7 @@ Color darkGreyColor = Color(0xFF212128);
 Color buttonColor;
 
 TextStyle characterStatsTextStyle = new TextStyle(fontSize: 20, color: Colors.white);
+
 TextStyle hauntInformationTextStyle = new TextStyle(fontSize: 20, color: Colors.white);
 TextStyle hauntNameTextStyle = new TextStyle(fontSize: 26, color: Colors.white);
 TextStyle hauntTraitorPropertiesTextStyle = new TextStyle(fontSize: 22, color: Colors.white);
