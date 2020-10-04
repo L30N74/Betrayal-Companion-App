@@ -375,9 +375,9 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
         child: TabBar(
           controller: _controller,
           tabs: [
-            Tab(icon: Icon(Icons.account_box)),
-            Tab(icon: Icon(Icons.print)),
-            Tab(icon: Icon(Icons.close)),
+            Tab(icon: Icon(Icons.account_box, color: Colors.white,)),
+            Tab(icon: Image.asset("assets/images/raven.png", color: Colors.white, height: 25,)),
+            Tab(icon: Image.asset("assets/images/haunt.png", color: Colors.white, height: 25,)),
 //            Tab(icon: Icon(Icons.menu)),
           ],
         )
