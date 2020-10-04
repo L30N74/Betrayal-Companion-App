@@ -18,5 +18,5 @@ TextStyle hauntTextTextStyle = new TextStyle(fontSize: 24, color: Colors.white);
 
 TextStyle useExpansionCheckboxTextStyle = new TextStyle(fontSize: 14, color: Colors.white);
 
-TextStyle coinflipChoiceTextStyle = new TextStyle(fontSize: 24, color: Colors.black);
+TextStyle coinflipChoiceTextStyle = new TextStyle(fontSize: 24, color: Colors.white);
 TextStyle coinflipButtonTextStyle = new TextStyle(fontSize: 20, color: Colors.black);

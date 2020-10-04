@@ -239,7 +239,11 @@ class _CharacterDetailsState extends State<CharacterDetails> {
       ),
       child: IconButton(
         padding: EdgeInsets.all(0),
-        icon: Icon(Icons.close, size: 16,),
+        icon: Icon(
+          Icons.close,
+          size: 16,
+          color: Colors.white,
+        ),
         onPressed: () {
           setState(() {
             character.DieFromStat(statListString);

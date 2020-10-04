@@ -43,6 +43,14 @@ class _CoinFlipWidgetState extends State<CoinFlipWidget> {
             child: Column(
               children: [
                 Header("FLIP A COIN"),
+                Padding(
+                  padding: EdgeInsets.only(top: 15),
+                  child: Text(
+                    "Determine which player plays as two",
+                    style: TextStyle(fontSize: 20, color: Colors.white, decoration: TextDecoration.underline),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
                 Expanded(
                   child: Column(
                     children: [
@@ -101,29 +109,34 @@ class _CoinFlipWidgetState extends State<CoinFlipWidget> {
           Container(
             child: Row(
               children: [
-                Text("Player 1: ", style: TextStyle(fontSize: 24, color: Colors.black),),
-                DropdownButton(
-                  value: playerOneChoice,
-                  icon: Icon(Icons.keyboard_arrow_down),
-                  onChanged: (String newChoice) {
-                    setState(() {
-                      playerOneChoice = newChoice;
-                      //Reverse what player one has
-                      if(newChoice == "Heads") {
-                        playerTwoChoice = "Tails";
-                      }
-                      else {
-                        playerTwoChoice = "Heads";
-                      }
-                    });
-                  },
-                  items: choices.map<DropdownMenuItem<String>>((choice) => DropdownMenuItem<String>(
-                    value: choice,
-                    child: Text(
-                      choice,
-                      style: coinflipChoiceTextStyle,
-                    ),
-                  )).toList(),
+                Text("Player 1: ", style: TextStyle(fontSize: 24, color: Colors.white),),
+                Theme(
+                  data: Theme.of(context).copyWith(
+                    canvasColor: darkGreyColor,
+                  ),
+                  child: DropdownButton(
+                    value: playerOneChoice,
+                    icon: Icon(Icons.arrow_drop_down, color: Colors.white),
+                    onChanged: (String newChoice) {
+                      setState(() {
+                        playerOneChoice = newChoice;
+                        //Reverse what player one has
+                        if(newChoice == "Heads") {
+                          playerTwoChoice = "Tails";
+                        }
+                        else {
+                          playerTwoChoice = "Heads";
+                        }
+                      });
+                    },
+                    items: choices.map<DropdownMenuItem<String>>((choice) => DropdownMenuItem<String>(
+                      value: choice,
+                      child: Text(
+                        choice,
+                        style: coinflipChoiceTextStyle,
+                      ),
+                    )).toList(),
+                  ),
                 ),
               ],
             ),
@@ -131,29 +144,34 @@ class _CoinFlipWidgetState extends State<CoinFlipWidget> {
           Container(
             child: Row(
               children: [
-                Text("Player 2: ", style: TextStyle(fontSize: 24, color: Colors.black),),
-                DropdownButton(
-                  value: playerTwoChoice,
-                  icon: Icon(Icons.keyboard_arrow_down),
-                  onChanged: (String newChoice) {
-                    setState(() {
-                      playerTwoChoice = newChoice;
-                      //Reverse what player one has
-                      if(newChoice == "Heads") {
-                        playerOneChoice = "Tails";
-                      }
-                      else {
-                        playerOneChoice = "Heads";
-                      }
-                    });
-                  },
-                  items: choices.map<DropdownMenuItem<String>>((choice) => DropdownMenuItem<String>(
-                    value: choice,
-                    child: Text(
-                      choice,
-                      style: coinflipChoiceTextStyle,
-                    ),
-                  )).toList(),
+                Text("Player 2: ", style: TextStyle(fontSize: 24, color: Colors.white),),
+                Theme(
+                  data: Theme.of(context).copyWith(
+                    canvasColor: darkGreyColor,
+                  ),
+                  child: DropdownButton(
+                    value: playerTwoChoice,
+                    icon: Icon(Icons.arrow_drop_down, color: Colors.white,),
+                    onChanged: (String newChoice) {
+                      setState(() {
+                        playerTwoChoice = newChoice;
+                        //Reverse what player one has
+                        if(newChoice == "Heads") {
+                          playerOneChoice = "Tails";
+                        }
+                        else {
+                          playerOneChoice = "Heads";
+                        }
+                      });
+                    },
+                    items: choices.map<DropdownMenuItem<String>>((choice) => DropdownMenuItem<String>(
+                      value: choice,
+                      child: Text(
+                        choice,
+                        style: coinflipChoiceTextStyle,
+                      ),
+                    )).toList(),
+                  ),
                 ),
               ],
             ),

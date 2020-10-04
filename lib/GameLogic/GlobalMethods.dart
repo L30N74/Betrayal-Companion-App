@@ -33,7 +33,7 @@ class Logic {
     switch(color) {
       case CharacterColor.White:
         characters.remove(Logic.GetCharacterByName("Professor Longfellow"));
-        characters.remove(Logic.GetCharacterByName("Father Rheinhardt"));
+        characters.remove(Logic.GetCharacterByName("Father Rhinehardt"));
         break;
       case CharacterColor.Red:
         characters.remove(Logic.GetCharacterByName("Ox Bellows"));
@@ -342,8 +342,7 @@ class Logic {
     InitializeCharacterLists();
     isHauntRevealed = false;
     revealedHauntInformation = new HauntInformation.empty();
-
-//    SQLiteDbProvider.db.database;
+    omenInPlay = 0;
 
     startingPlayerDetermined = false;
 

@@ -272,8 +272,14 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text("Omen In Play", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
-          Text(Logic.omenInPlay.toString(), style: TextStyle(fontSize: 48),),
+          Text(
+            "Omen In Play",
+            style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline),
+          ),
+          Text(
+            Logic.omenInPlay.toString(),
+            style: TextStyle(fontSize: 48, color: Colors.white),
+          ),
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: SizedBox(
