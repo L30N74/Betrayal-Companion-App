@@ -4,7 +4,7 @@ import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/Screens/Character_Details.dart';
 import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
-import 'package:betrayalcompanionapp/Screens/main.dart';
+import 'package:betrayalcompanionapp/main.dart';
 import 'package:flutter/material.dart';
 
 class Game extends StatelessWidget {
