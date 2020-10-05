@@ -33,11 +33,14 @@ class _HauntOmenSelectionState extends State<HauntOmenSelection> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> omen = Omen;
+    List<String> omen = Omen;//new List<String>();
+    //Omen.forEach((o) => omen.add(o));
 
     if(Logic.useExpansion) {
-      omen.addAll(ExpansionOmen);
-      omen.sort();
+      if(!omen.contains("Bloodstone")) {
+        omen.addAll(ExpansionOmen);
+        omen.sort();
+      }
     }
     else
       ExpansionOmen.forEach((expansionOmen) => omen.remove(expansionOmen));
@@ -81,11 +84,14 @@ class _HauntRoomSelectionState extends State<HauntRoomSelection> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> rooms = Rooms;
+    List<String> rooms = new List<String>();
+    Rooms.forEach((room) => rooms.add(room));
 
     if(Logic.useExpansion) {
-      rooms.addAll(ExpansionRooms);
-      rooms.sort();
+      if(!rooms.contains("Dungeon")) {
+        rooms.addAll(ExpansionRooms);
+        rooms.sort();
+      }
     }
     else
       ExpansionRooms.forEach((expansionRoom) => rooms.remove(expansionRoom));
