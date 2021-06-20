@@ -43,13 +43,13 @@ class SQLiteDbProvider {
   Future<List<String>> getAllOmen() async {
     final db = await database;
 
-    List<Map> results = await db.query("Omen", columns: ["name", "isExpansion"], orderBy: "id ASC");
+    List<Map> results = await db.query("Omen", orderBy: "id ASC");
 
     List<String> omens = new List();
     results.forEach((element) {
       Omen omen = Omen.fromMap(element);
 
-      if(!omen.isExpansion || (omen.isExpansion && Logic.useExpansion))
+      if(!omen.isExpansion || (Logic.useExpansion && omen.isExpansion))
         omens.add(omen.name);
     });
 
@@ -59,13 +59,13 @@ class SQLiteDbProvider {
   Future<List<String>> getAllRooms() async {
     final db = await database;
 
-    List<Map> results = await db.query("Rooms", columns: ["name", "isExpansion"], orderBy: "id ASC");
+    List<Map> results = await db.query("Rooms", orderBy: "id ASC");
 
     List<String> rooms = new List();
     results.forEach((element) {
       Room room = Room.fromMap(element);
 
-      if(!room.isExpansion || (room.isExpansion && Logic.useExpansion))
+      if(!room.isExpansion || (Logic.useExpansion && room.isExpansion))
         rooms.add(room.name);
     });
 
@@ -1734,10 +1734,6 @@ class SQLiteDbProvider {
     );
     await db.execute(
         "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
-        ["Dungeon", 1]
-    );
-    await db.execute(
-        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
         ["Furnace Room", 0]
     );
     await db.execute(
@@ -1762,19 +1758,23 @@ class SQLiteDbProvider {
     );
     await db.execute(
         "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
-        ["Nursery", 1]
-    );
-    await db.execute(
-        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
         ["Pentagram Chamber", 0]
     );
     await db.execute(
         "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
-        ["Rookery", 1]
+        ["Servants Quarters", 0]
     );
     await db.execute(
         "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
-        ["Servants Quarters", 0]
+        ["Dungeon", 1]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Nursery", 1]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Rookery", 1]
     );
     await db.execute(
         "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",

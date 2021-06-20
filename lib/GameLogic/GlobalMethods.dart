@@ -11,7 +11,6 @@ class Logic {
   static List<Character> characters;
   static List<Character> players = new List<Character>(); //Characters the players chose
 
-  static bool startingPlayerDetermined = false;
   static int omenInPlay = 0;
 
   static bool isHauntRevealed = false;
@@ -184,7 +183,7 @@ class Logic {
     SQLiteDbProvider.db.
     getHauntByRoomAndOmen(room, omen).then(
       (haunt) {
-        revealedHauntInformation = HauntInformation(
+        revealedHauntInformation = new HauntInformation(
           hauntName: haunt.hauntName,
           hauntNumber: haunt.hauntNumber,
           traitorProperties: haunt.traitorProperties
@@ -194,7 +193,7 @@ class Logic {
       }
     )
     .catchError((onError) {
-      throw new Exception("No haunt in room $room and with omen $omen\n\n---------------------" + onError.toString() + "\n----------------------------");
+      throw new Exception("No haunt in room $room and with omen $omen\n--------------------- ${onError.toString()} + \n----------------------------");
     });
   }
 
@@ -225,7 +224,7 @@ class Logic {
                 children: [
                   Container(
                     child: Text(
-                        "The starting player is \n" + startingPlayer.name,
+                        "The starting player is \n ${startingPlayer.name}",
                         style: TextStyle(fontSize: 22),
                         textAlign: TextAlign.center
                     ),
@@ -234,7 +233,6 @@ class Logic {
                       alignment: Alignment.center,
                       child: RaisedButton(
                         onPressed: () {
-                          startingPlayerDetermined = true;
                           Navigator.of(context).pop();
                         },
                         child: Text("Got it"),
@@ -343,8 +341,6 @@ class Logic {
     isHauntRevealed = false;
     revealedHauntInformation = new HauntInformation.empty();
     omenInPlay = 0;
-
-    startingPlayerDetermined = false;
 
     Navigator.push(context, MaterialPageRoute(builder: (context) => NewGame_Screen()));
   }
