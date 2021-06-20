@@ -1,11 +1,12 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+import 'GlobalMethods.dart';
 import 'Haunt.dart';
+import 'Room.dart';
+import 'Omen.dart';
 
 class SQLiteDbProvider {
   SQLiteDbProvider._();
@@ -27,6 +28,7 @@ class SQLiteDbProvider {
 
   Future<List<Haunt>> getAllHaunts() async {
     final db = await database;
+
     List<Map> results = await db.query("Haunts", columns: ["room", "omen", "traitorProperties"], orderBy: "id ASC");
 
     List<Haunt> haunts = new List();
@@ -38,51 +40,128 @@ class SQLiteDbProvider {
     return haunts;
   }
 
+  Future<List<String>> getAllOmen() async {
+    final db = await database;
+
+    List<Map> results = await db.query("Omen", columns: ["name", "isExpansion"], orderBy: "id ASC");
+
+    List<String> omens = new List();
+    results.forEach((element) {
+      Omen omen = Omen.fromMap(element);
+
+      if(!omen.isExpansion || (omen.isExpansion && Logic.useExpansion))
+        omens.add(omen.name);
+    });
+
+    return omens;
+  }
+
+  Future<List<String>> getAllRooms() async {
+    final db = await database;
+
+    List<Map> results = await db.query("Rooms", columns: ["name", "isExpansion"], orderBy: "id ASC");
+
+    List<String> rooms = new List();
+    results.forEach((element) {
+      Room room = Room.fromMap(element);
+
+      if(!room.isExpansion || (room.isExpansion && Logic.useExpansion))
+        rooms.add(room.name);
+    });
+
+    return rooms;
+  }
+
   initDB() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "HauntsDB.db");
+    String path = join(documentsDirectory.path, "BetrayalAppDB.db");
 
     return await openDatabase(
       path,
       version: 1,
-      onOpen: (db) {},
+      onOpen: (db) {
+        // Check if tables exist
+        Future<List<Map<String, dynamic>>> haunts = db.query("Haunts");
+        Future<List<Map<String, dynamic>>> omen = db.query("Omen");
+        Future<List<Map<String, dynamic>>> rooms = db.query("Rooms");
+
+        // If there are no entries in the table, create them
+        haunts.then((entries) async => entries.length == 0 ? await HandleHauntEntries(db) : null);
+        omen.then((entries) async => entries.length == 0 ? await HandleOmenEntries(db) : null);
+        rooms.then((entries) async => entries.length == 0 ? await HandleRoomEntries(db) : null);
+      },
       onCreate: (Database db, int version) async {
-        await db.execute("DROP TABLE IF EXISTS Haunts;");
 
-        await db.execute(
-          "CREATE TABLE Haunts("
-          "id INTEGER PRIMARY KEY,"
-          "room TEXT,"
-          "omen TEXT,"
-          "hauntNumber TEXT,"
-          "traitorProperties TEXT,"
-          "hauntName TEXT);"
-        );
+        await HandleHauntEntries(db);
 
-        await CreateAbandonedRoomEntries(db);
-        await CreateBalconyEntries(db);
-        await CreateCatacombsEntries(db);
-        await CreateCharredRoomEntries(db);
-        await CreateDiningRoomEntries(db);
-        await CreateDungeonEntries(db);
-        await CreateFurnaceRoomEntries(db);
-        await CreateGalleryEntries(db);
-        await CreateGymnasiumEntries(db);
-        await CreateJunkRoomEntries(db);
-        await CreateJunkRoomEntries(db);
-        await CreateKitchenEntries(db);
-        await CreateMasterBedroomEntries(db);
-        await CreateNurseryEntries(db);
-        await CreatePentagramChamberEntries(db);
-        await CreateRookeryEntries(db);
-        await CreateServantsQuartersEntries(db);
-        await CreateStudyEntries(db);
-        await CreateTheaterEntries(db);
+        await HandleOmenEntries(db);
+
+        await HandleRoomEntries(db);
       }
     );
   }
 
   //Helpers
+  HandleHauntEntries(Database db) async {
+    await db.execute("DROP TABLE IF EXISTS Haunts;");
+
+    await db.execute(
+        "CREATE TABLE Haunts("
+          "id INTEGER PRIMARY KEY,"
+          "room TEXT,"
+          "omen TEXT,"
+          "hauntNumber TEXT,"
+          "traitorProperties TEXT,"
+          "hauntName TEXT"
+        ");"
+    );
+
+    await CreateAbandonedRoomEntries(db);
+    await CreateBalconyEntries(db);
+    await CreateCatacombsEntries(db);
+    await CreateCharredRoomEntries(db);
+    await CreateDiningRoomEntries(db);
+    await CreateDungeonEntries(db);
+    await CreateFurnaceRoomEntries(db);
+    await CreateGalleryEntries(db);
+    await CreateGymnasiumEntries(db);
+    await CreateJunkRoomEntries(db);
+    await CreateKitchenEntries(db);
+    await CreateMasterBedroomEntries(db);
+    await CreateNurseryEntries(db);
+    await CreatePentagramChamberEntries(db);
+    await CreateRookeryEntries(db);
+    await CreateServantsQuartersEntries(db);
+    await CreateStudyEntries(db);
+    await CreateTheaterEntries(db);
+  }
+  HandleOmenEntries(Database db) async {
+    await db.execute("DROP TABLE IF EXISTS Omen;");
+
+    await db.execute(
+        "CREATE TABLE Omen("
+          "id INTEGER PRIMARY KEY,"
+          "name TEXT,"
+          "isExpansion INTEGER"
+        ");"
+    );
+
+    await PopulateOmenTable(db);
+  }
+  HandleRoomEntries(Database db) async {
+    await db.execute("DROP TABLE IF EXISTS Rooms;");
+
+    await db.execute(
+        "CREATE TABLE  Rooms("
+          "id INTEGER PRIMARY KEY,"
+          "name TEXT,"
+          "isExpansion INTEGER"
+        ");"
+    );
+
+    await PopulateRoomsTable(db);
+  }
+
   CreateAbandonedRoomEntries(Database db) async {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
@@ -1629,6 +1708,167 @@ class SQLiteDbProvider {
     await db.execute(
         "INSERT INTO Haunts ('room', 'omen', 'hauntNumber', 'traitorProperties', 'hauntName') values(?,?,?,?,?)",
         ["Theater", "Vial", "62", "Darrin “Flash” Williams (Shakespearean Literature) or highest Knowledge", "Rosencrantz And All Of You Are Dead"]
+    );
+  }
+
+  PopulateRoomsTable(Database db) async {
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Abandoned Room", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Balcony", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Catacombs", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Charred Room", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Dining Room", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Dungeon", 1]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Furnace Room", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Gallery", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Gymnasium", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Junk Room", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Kitchen", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Master Bedroom", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Nursery", 1]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Pentagram Chamber", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Rookery", 1]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Servants Quarters", 0]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Study", 1]
+    );
+    await db.execute(
+        "INSERT INTO Rooms ('name', 'isExpansion') values(?,?)",
+        ["Theater", 1]
+    );
+  }
+  PopulateOmenTable(Database db) async {
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Bite", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Book", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Crystal Ball", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Dog", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Girl", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Holy Symbol", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Madman", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Mask", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Medallion", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Ring", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Skull", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Spear", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Spirit Board", 0]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Bloodstone", 1]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Box", 1]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Cat", 1]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Key", 1]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Letter", 1]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Photograph", 1]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Rope", 1]
+    );
+    await db.execute(
+        "INSERT INTO Omen ('name', 'isExpansion') values(?,?)",
+        ["Vial", 1]
     );
   }
 }

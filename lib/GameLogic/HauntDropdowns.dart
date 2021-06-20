@@ -1,7 +1,8 @@
-import 'package:betrayalcompanionapp/GameLogic/Database.dart';
-import 'package:betrayalcompanionapp/GameLogic/HauntInformation.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
+import 'package:betrayalcompanionapp/GameLogic/Database.dart';
+import 'package:betrayalcompanionapp/GameLogic/Room.dart';
+import 'package:betrayalcompanionapp/GameLogic/Omen.dart';
 import 'package:flutter/material.dart';
 
 class HauntOmenSelection extends StatefulWidget {
@@ -33,17 +34,12 @@ class _HauntOmenSelectionState extends State<HauntOmenSelection> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> omen = Omen;//new List<String>();
-    //Omen.forEach((o) => omen.add(o));
+    List<String> omen = new List<String>();
+    GetOmenList().then(
+            (onValue) => onValue.forEach((e) => omen.add(e))).catchError((onError) {
+      throw new Exception(onError);
+    });
 
-    if(Logic.useExpansion) {
-      if(!omen.contains("Bloodstone")) {
-        omen.addAll(ExpansionOmen);
-        omen.sort();
-      }
-    }
-    else
-      ExpansionOmen.forEach((expansionOmen) => omen.remove(expansionOmen));
 
     return new HauntListView(
       listName: "Omen",
@@ -84,17 +80,13 @@ class _HauntRoomSelectionState extends State<HauntRoomSelection> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> rooms = new List<String>();
-    Rooms.forEach((room) => rooms.add(room));
 
-    if(Logic.useExpansion) {
-      if(!rooms.contains("Dungeon")) {
-        rooms.addAll(ExpansionRooms);
-        rooms.sort();
-      }
-    }
-    else
-      ExpansionRooms.forEach((expansionRoom) => rooms.remove(expansionRoom));
+    List<String> rooms = new List<String>();
+    GetRoomsList().then(
+            (onValue) => onValue.forEach((e) => rooms.add(e))).catchError((onError) {
+      throw new Exception(onError);
+    });
+
 
     return new HauntListView(
       listName: "Rooms",
@@ -195,74 +187,19 @@ class _HauntListViewState extends State<HauntListView> {
 }
 
 Future<List<String>> GetRoomsList() async {
-  await SQLiteDbProvider.db.getAllHaunts().then(
-      (haunts) {
-    List<String> rooms = new List();
-    haunts.forEach((element) => rooms.add(element.room));
-    return rooms;
-  }).catchError((onError) {
+  List<String> rooms = await SQLiteDbProvider.db.getAllRooms().catchError((onError) {
     throw new Exception(onError);
   });
+
+  rooms.sort();
+  return rooms;
 }
 
 Future<List<String>> GetOmenList() async {
-  await SQLiteDbProvider.db.getAllHaunts().then(
-    (haunts) {
-      List<String> omen = new List();
-      haunts.forEach((element) => omen.add(element.omen));
-      return omen;
-    }).catchError((onError) {
-      throw new Exception(onError);
+  List<String> omen = await SQLiteDbProvider.db.getAllOmen().catchError((onError) {
+    throw new Exception(onError);
   });
+
+  omen.sort();
+  return omen;
 }
-
-List<String> Rooms = [
-  "Abandoned Room",
-  "Balcony",
-  "Catacombs",
-  "Charred Room",
-  "Dining Room",
-  "Furnace Room",
-  "Gallery",
-  "Gymnasium",
-  "Junk Room",
-  "Kitchen",
-  "Master Bedroom",
-  "Pentagram Chamber",
-  "Servant's Quarters",
-];
-
-List<String> ExpansionRooms = [
-  "Dungeon",
-  "Nursery",
-  "Rookery",
-  "Study",
-  "Theater",
-];
-
-List<String> Omen = [
-  "Bite",
-  "Book",
-  "Crystal Ball",
-  "Dog",
-  "Girl",
-  "Holy Symbol",
-  "Madman",
-  "Mask",
-  "Medallion",
-  "Ring",
-  "Skull",
-  "Spear",
-  "Spirit Board",
-];
-
-List<String> ExpansionOmen = [
-  "Bloodstone",
-  "Box",
-  "Cat",
-  "Key",
-  "Letter",
-  "Photograph",
-  "Rope",
-  "Vial"
-];

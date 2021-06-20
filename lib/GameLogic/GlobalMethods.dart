@@ -145,7 +145,7 @@ class Logic {
 
     String hobbies_Bellows = "Football, Shiny Objects";
     int currentYear = DateTime.now().year;
-    characters = [
+    Logic.characters = [
       new Character("Father Rhinehardt", hobbies_Rheinhardt, 52, 60, 5.9, new DateTime.utc(currentYear, DateTime.april, 29), stats_Rheinhardt, CharacterColor.White),
       new Character("Professor Longfellow", hobbies_Longfellow, 52, 153, 5.11, new DateTime.utc(currentYear, DateTime.july, 27), stats_Longfellow, CharacterColor.White),
       new Character("Heather Granville", hobbies_Granville, 18, 153, 5.2, new DateTime.utc(currentYear, DateTime.august, 2), stats_Granville, CharacterColor.Purple),
@@ -194,7 +194,7 @@ class Logic {
       }
     )
     .catchError((onError) {
-      throw new Exception("No haunt with in room $room and with omen $omen\n\n---------------------" + onError.toString() + "\n----------------------------");
+      throw new Exception("No haunt in room $room and with omen $omen\n\n---------------------" + onError.toString() + "\n----------------------------");
     });
   }
 
