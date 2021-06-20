@@ -30,11 +30,6 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
   void initState() {
     _controller = TabController(vsync: this, length: 3, initialIndex: 0);
     super.initState();
-
-    if(!Logic.startingPlayerDetermined)
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await Logic.CreateStartingCharacterAlert(context);
-      });
   }
 
   @override
@@ -306,6 +301,18 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
         children: [
           Text("Players", style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline)),
           CreatePlayerBanners(),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30),
+            child: Container(
+              height: 50,
+              width: 200,
+              color: Colors.black,
+              child: RaisedButton(
+                child: Text("Starting Player", style: TextStyle(fontSize: 20, color: Colors.black), textAlign: TextAlign.center,),
+                onPressed: () => ShowStartingPlayer(),
+              ),
+            ),
+          ),
         ]
       ),
     );
@@ -382,6 +389,10 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
           ],
         )
     );
+  }
+
+  ShowStartingPlayer() {
+    Logic.CreateStartingCharacterAlert(context);
   }
 }
 
