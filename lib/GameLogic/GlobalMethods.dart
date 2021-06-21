@@ -167,8 +167,8 @@ class Logic {
   }
 
   static void DetermineHaunt() {
-    String room = revealedHauntInformation.room;
-    String omen = revealedHauntInformation.omen;
+    String room = revealedHauntInformation.room.name;
+    String omen = revealedHauntInformation.omen.name;
 
     SQLiteDbProvider.db.
     getHauntByRoomAndOmen(room, omen).then(

@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'Room.dart';
+import 'Omen.dart';
 
 class HauntInformation {
-  String omen;
-  String room;
+  Omen omen;
+  Room room;
   String hauntName;
   String traitorProperties;
   String hauntNumber;
@@ -10,8 +11,8 @@ class HauntInformation {
   HauntInformation({this.hauntName, this.hauntNumber, this.traitorProperties});
 
   HauntInformation.empty() {
-    omen = "Bite";
-    room = "Abandoned Room";
+    omen = new Omen.custom("Bite");
+    room = new Room.custom("Abandoned Room");
     hauntName = "[Not yet defined]";
     hauntNumber = "0";
     traitorProperties = "[Not yet defined]";

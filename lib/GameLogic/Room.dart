@@ -1,10 +1,27 @@
 class Room {
-  final int id;
-  final String name;
-  final bool isExpansion;
+  int id;
+  String name;
+  bool isExpansion;
   static final columns = ["id", "name", "isExpansion"];
 
   Room(this.id, this.name, this.isExpansion);
+
+  Room.custom(name) {
+    this.name = name;
+
+    switch(name) {
+      case "Dungeon":
+      case "Nursery":
+      case "Rookery":
+      case "Study":
+      case "Theater":
+        this.isExpansion = true;
+        break;
+      default:
+        this.isExpansion = false;
+        break;
+    }
+  }
 
   factory Room.fromMap(Map<String, dynamic> data) {
     return Room(

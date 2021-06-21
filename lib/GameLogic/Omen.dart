@@ -1,10 +1,30 @@
 class Omen {
-  final int id;
-  final String name;
-  final bool isExpansion;
+  int id;
+  String name;
+  bool isExpansion;
   static final columns = ["id", "name", "isExpansion"];
 
   Omen(this.id, this.name, this.isExpansion);
+
+  Omen.custom(name) {
+    this.name = name;
+
+    switch(name) {
+      case "Bloodstone":
+      case "Box":
+      case "Cat":
+      case "Key":
+      case "Letter":
+      case "Photograph":
+      case "Rope":
+      case "Vial":
+        this.isExpansion = true;
+        break;
+      default:
+        this.isExpansion = false;
+        break;
+    }
+  }
 
   factory Omen.fromMap(Map<String, dynamic> data) {
     return Omen(

@@ -1,4 +1,6 @@
 import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
+import 'Room.dart';
+import 'package:betrayalcompanionapp/GameLogic/Omen.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/GameLogic/Database.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +28,19 @@ class _HauntDropDownState extends State<HauntDropdown> {
     Future future = listName == HauntDecisions.Room ? GetRoomsList() : GetOmenList();
     Text hintText = new Text(listName == HauntDecisions.Room ? "Which Room?" : "Which Omen?" , style: hauntDropdownsTextStyle,);
 
+    if(listName == HauntDecisions.Room) {
+      if(Logic.revealedHauntInformation.room.isExpansion && !Logic.useExpansion) {
+        _selected = "Abandoned Room";
+        Logic.revealedHauntInformation.room = new Room.custom(_selected);
+      }
+    }
+    if(listName == HauntDecisions.Omen) {
+      if(Logic.revealedHauntInformation.omen.isExpansion && !Logic.useExpansion) {
+        _selected = "Bite";
+        Logic.revealedHauntInformation.room = new Room.custom(_selected);
+      }
+    }
+
     return Container(
       width: 300,
       height: 40,
@@ -50,8 +65,9 @@ class _HauntDropDownState extends State<HauntDropdown> {
                 onChanged: (newValue) =>
                     setState(() {
                       _selected = newValue;
-                      if(listName == HauntDecisions.Room) Logic.revealedHauntInformation.room = newValue;
-                      else Logic.revealedHauntInformation.omen = newValue;
+
+                      if(listName == HauntDecisions.Room) Logic.revealedHauntInformation.room = new Room.custom(newValue);
+                      else Logic.revealedHauntInformation.omen = new Omen.custom(newValue);
                     }),
                 items: snapshot.data.map<DropdownMenuItem<String>>((String item) {
                   return DropdownMenuItem<String>(

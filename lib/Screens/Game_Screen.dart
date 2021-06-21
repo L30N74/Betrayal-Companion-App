@@ -1,5 +1,7 @@
 import 'package:betrayalcompanionapp/GameLogic/HauntDropdowns.dart';
 import 'package:betrayalcompanionapp/GameLogic/HauntInformation.dart';
+import 'package:betrayalcompanionapp/GameLogic/Omen.dart';
+import 'package:betrayalcompanionapp/GameLogic/Room.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/Screens/Character_Details.dart';
