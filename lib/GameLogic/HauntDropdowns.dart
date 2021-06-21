@@ -1,190 +1,74 @@
-import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
+import 'package:betrayalcompanionapp/GlobalWidgets/Constants.dart';
 import 'package:betrayalcompanionapp/GameLogic/Database.dart';
-import 'package:betrayalcompanionapp/GameLogic/Room.dart';
-import 'package:betrayalcompanionapp/GameLogic/Omen.dart';
 import 'package:flutter/material.dart';
 
-class HauntOmenSelection extends StatefulWidget {
-  double width;
-  double height;
-  EdgeInsets margin;
+class HauntDropdown extends StatefulWidget {
+  final HauntDecisions listName;
 
-  HauntOmenSelection({this.width, this.height, this.margin});
+  HauntDropdown(this.listName);
 
   @override
-  _HauntOmenSelectionState createState() => _HauntOmenSelectionState(width, height, margin);
+  _HauntDropDownState createState() => _HauntDropDownState(this.listName);
+
 }
 
-class _HauntOmenSelectionState extends State<HauntOmenSelection> {
-  double width;
-  double height;
-  EdgeInsets margin;
+class _HauntDropDownState extends State<HauntDropdown> {
+  final HauntDecisions listName;
 
-  _HauntOmenSelectionState(this.width, this.height, this.margin);
+  String _selected;
 
-  PageController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = PageController(initialPage: 0);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    List<String> omen = new List<String>();
-    GetOmenList().then(
-            (onValue) => onValue.forEach((e) => omen.add(e))).catchError((onError) {
-      throw new Exception(onError);
-    });
-
-
-    return new HauntListView(
-      listName: "Omen",
-      list: omen,
-      controller: _controller,
-      width: width,
-      height: height,
-    );
-  }
-}
-
-class HauntRoomSelection extends StatefulWidget {
-  double width;
-  double height;
-  EdgeInsets margin;
-
-  HauntRoomSelection({this.width, this.height, this.margin});
-
-  @override
-  _HauntRoomSelectionState createState() => _HauntRoomSelectionState(width, height, margin);
-}
-
-class _HauntRoomSelectionState extends State<HauntRoomSelection> {
-  final double width;
-  final double height;
-  final EdgeInsets margin;
-
-  _HauntRoomSelectionState(this.width, this.height, this.margin);
-
-  PageController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = PageController(initialPage: 0);
-  }
+  _HauntDropDownState(this.listName);
 
   @override
   Widget build(BuildContext context) {
 
-    List<String> rooms = new List<String>();
-    GetRoomsList().then(
-            (onValue) => onValue.forEach((e) => rooms.add(e))).catchError((onError) {
-      throw new Exception(onError);
-    });
+    Future future = listName == HauntDecisions.Room ? GetRoomsList() : GetOmenList();
+    Text hintText = new Text(listName == HauntDecisions.Room ? "Which Room?" : "Which Omen?" , style: hauntDropdownsTextStyle,);
 
-
-    return new HauntListView(
-      listName: "Rooms",
-      list: rooms,
-      controller: _controller,
-      width: width,
-      height: height,
-    );
-  }
-}
-
-class HauntListView extends StatefulWidget {
-  final String listName;
-  final List<String> list;
-  final PageController controller;
-  final double height;
-  final double width;
-  final EdgeInsets margin;
-
-  HauntListView({this.listName, this.list, this.controller, this.height, this.width, this.margin});
-
-  @override
-  _HauntListViewState createState() => _HauntListViewState(
-    listName: listName,
-    list: list,
-    controller: controller,
-    height: height,
-    width: width
-  );
-}
-
-class _HauntListViewState extends State<HauntListView> {
-  final String listName;
-  final List<String> list;
-  final PageController controller;
-  final double height;
-  final double width;
-  final EdgeInsets margin;
-
-  _HauntListViewState({this.listName, this.list, this.controller, this.height, this.width, this.margin});
-
-  @override
-  Widget build(BuildContext context) {
     return Container(
-      margin: margin,
-      width: width,
-      height: height*1.5,
-      child: PageView.builder(
-        controller: controller,
-        scrollDirection: Axis.vertical,
-        itemCount: list.length,
-        onPageChanged: (value) {
-          setState(() {
-            switch(listName) {
-              case "Omen":
-                setState(() {
-                  Logic.revealedHauntInformation.omen = list[value];
-                });
-                break;
-              case "Rooms":
-                setState(() {
-                  Logic.revealedHauntInformation.room = list[value];
-                });
-                break;
-            }
-          });
-        },
-        itemBuilder: (context, index) {
-          return new AnimatedBuilder(
-            animation: controller,
-            builder: (context, child) {
-              double value = 1.0;
-              if(controller.position.haveDimensions) {
-                value = controller.page - index;
-                value = (1 - (value.abs() * 0.5)).clamp(0.0, 1.0);
-              }
-              return new Center(
-                child: new SizedBox(
-                  height: Curves.easeOut.transform(value) * 50,
-                  width: Curves.easeOut.transform(value) * 200,
-                  child: child,
-                ),
-              );
-            },
-            child: new Container(
-              decoration: BoxDecoration(
-                color: darkGreyColor,
-                borderRadius: BorderRadius.all(Radius.circular(50),
-                ),
+      width: 300,
+      height: 40,
+      child: FutureBuilder<List<String>>(
+        future: future,
+        builder: (context, snapshot) {
+          if(snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          else if(snapshot.hasData) {
+            return Theme(
+              data: Theme.of(context).copyWith(
+                canvasColor: darkGreyColor,
               ),
-              child: Center(child: Text(list[index], style: hauntDropdownsTextStyle)),
-            ),
-          );
+              child: DropdownButton(
+                hint: Center(child: hintText),
+                value: _selected,
+                icon: const Icon(Icons.keyboard_arrow_down),
+                iconSize: 24,
+                elevation: 16,
+                isExpanded: true,
+                onChanged: (newValue) =>
+                    setState(() {
+                      _selected = newValue;
+                      if(listName == HauntDecisions.Room) Logic.revealedHauntInformation.room = newValue;
+                      else Logic.revealedHauntInformation.omen = newValue;
+                    }),
+                items: snapshot.data.map<DropdownMenuItem<String>>((String item) {
+                  return DropdownMenuItem<String>(
+                    value: item,
+                    child: Center(child: Text(item, style: hauntDropdownsTextStyle, textAlign: TextAlign.center,)),
+                  );
+                }).toList(),
+              ),
+            );
+          }
+          return CircularProgressIndicator();
         },
       ),
     );
   }
 }
+
 
 Future<List<String>> GetRoomsList() async {
   List<String> rooms = await SQLiteDbProvider.db.getAllRooms().catchError((onError) {
@@ -202,4 +86,9 @@ Future<List<String>> GetOmenList() async {
 
   omen.sort();
   return omen;
+}
+
+enum HauntDecisions {
+  Room,
+  Omen
 }

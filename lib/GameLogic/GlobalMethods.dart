@@ -40,18 +40,18 @@ class Logic {
         break;
       case CharacterColor.Yellow:
         characters.remove(Logic.GetCharacterByName("Zoe Ingstrom"));
-        characters.remove(Logic.GetCharacterByName("Brandon Jaspers"));
+        characters.remove(Logic.GetCharacterByName("Missy Dubourde"));
         break;
       case CharacterColor.Green:
         characters.remove(Logic.GetCharacterByName("Peter Akimoto"));
-        characters.remove(Logic.GetCharacterByName("Missy Dubourde"));
+        characters.remove(Logic.GetCharacterByName("Brandon Jaspers"));
         break;
       case CharacterColor.Purple:
         characters.remove(Logic.GetCharacterByName("Heather Granville"));
-        characters.remove(Logic.GetCharacterByName("Vivian Lopez"));
+        characters.remove(Logic.GetCharacterByName("Jenny LeClerc"));
         break;
       case CharacterColor.Blue:
-        characters.remove(Logic.GetCharacterByName("Jenny LeClerc"));
+        characters.remove(Logic.GetCharacterByName("Vivian Lopez"));
         characters.remove(Logic.GetCharacterByName("Madame Zostra"));
         break;
     }
@@ -64,85 +64,75 @@ class Logic {
         [1, 2, 2, 4, 4, 5, 5, 7], 2,
         [3, 4, 5, 5, 6, 7, 7, 8], 4,
         [1, 3, 3, 4, 5, 6, 6, 8], 3);
-
     String hobbies_Rheinhardt = "Fencing, Gardening";
 
     Stats stats_Longfellow = new Stats([2, 3, 3, 4, 5, 6, 7, 7], 2,
         [1, 2, 2, 4, 4, 5, 5, 7], 2,
         [3, 4, 5, 5, 6, 7, 7, 8], 4,
         [1, 3, 3, 4, 5, 6, 6, 8], 3);
-
     String hobbies_Longfellow = "Gaelic Music, Drama, Fine Wines";
 
     Stats stats_Granville = new Stats([3, 3, 4, 5, 6, 6, 7, 8], 2,
         [3, 3, 3, 4, 5, 6, 7, 8], 2,
         [3, 3, 3, 4, 5, 6, 6, 6], 2,
         [2, 3, 3, 4, 5, 6, 7, 8], 4);
-
     String hobbies_Granville = "Television, Shopping";
 
     Stats stats_LeClerc = new Stats([2, 3, 4, 4, 4, 5, 6, 8], 3,
         [3, 4, 4, 4, 4, 5, 6, 8], 2,
         [1, 1, 2, 4, 4, 4, 5, 6], 4,
         [2, 3, 3, 4, 4, 5, 6, 8], 2);
-
     String hobbies_LeClerc = "Reading, Soccer";
 
     Stats stats_Lopez = new Stats([3, 4, 4, 4, 4, 6, 7, 8], 3,
         [2, 2, 2, 4, 4, 5, 6, 6], 2,
         [4, 4, 4, 5, 6, 7, 8, 8], 2,
         [4, 5, 5, 5, 5, 6, 6, 7], 3);
-
     String hobbies_Lopez = "Old Movies, Horses";
 
     Stats stats_Zostra = new Stats([2, 3, 3, 5, 5, 6, 6, 7], 2,
         [2, 3, 3, 4, 5, 5, 5, 6], 3,
         [4, 4, 4, 5, 6, 7, 8, 8], 2,
         [1, 3, 4, 4, 4, 5, 6, 6], 3);
-
     String hobbies_Zostra = "Astrology, Cooking, Baseball";
 
     Stats stats_Akimoto = new Stats([3, 3, 3, 4, 6, 6, 7, 7], 3,
         [2, 3, 3, 4, 5, 5, 6, 8], 2,
         [3, 4, 4, 4, 5, 6, 6, 7], 3,
         [3, 4, 4, 5, 6, 7, 7, 8], 2);
-
     String hobbies_Akimoto = "Bugs, Basketball";
 
     Stats stats_Jaspers = new Stats([3, 4, 4, 4, 5, 6, 7, 8], 2,
         [2, 3, 3, 4, 5, 6, 6, 7], 3,
         [3, 3, 3, 4, 5, 6, 7, 8], 3,
         [1, 3, 3, 5, 5, 6, 6, 7], 2);
-
     String hobbies_Jaspers = "Computers, Camping, Hockey";
 
     Stats stats_Ingstrom = new Stats([4, 4, 4, 4, 5, 6, 8, 8], 3,
         [2, 2, 3, 3, 4, 4, 6, 7], 3,
         [3, 4, 5, 5, 6, 6, 7, 8], 2,
         [1, 2, 3, 4, 4, 5, 5, 5], 2);
-
     String hobbies_Ingstrom = "Dolls, Music";
 
     Stats stats_Dubourde = new Stats([3, 4, 5, 6, 6, 6, 7, 7], 2,
         [2, 3, 3, 3, 4, 5, 6, 7], 3,
         [1, 2, 3, 4, 5, 5, 6, 7], 2,
         [2, 3, 4, 4, 5, 6, 6, 6], 3);
-
     String hobbies_Dubourde = "Swimming, Medicine";
 
     Stats stats_Williams = new Stats([4, 4, 4, 5, 6, 7, 7, 8], 4,
         [2, 3, 3, 4, 5, 6, 6, 7], 2,
         [1, 2, 3, 4, 5, 5, 5, 7], 2,
         [2, 3, 3, 4, 5, 5, 5, 7], 2);
-
     String hobbies_Williams = "Track, Music, Shakespearean Literature";
 
     Stats stats_Bellows = new Stats([2, 2, 2, 3, 4, 5, 5, 6], 4,
         [4, 5, 5, 6, 6, 7, 8, 8], 2,
         [2, 2, 3, 4, 5, 5, 6, 7], 2,
         [2, 2, 3, 3, 5, 5, 6, 6], 2);
-
     String hobbies_Bellows = "Football, Shiny Objects";
+
+
     int currentYear = DateTime.now().year;
     Logic.characters = [
       new Character("Father Rhinehardt", hobbies_Rheinhardt, 52, 60, 5.9, new DateTime.utc(currentYear, DateTime.april, 29), stats_Rheinhardt, CharacterColor.White),

@@ -13,7 +13,7 @@ TextStyle hauntTraitorPropertiesTextStyle = new TextStyle(fontSize: 22, color: C
 TextStyle hauntTraitorPropertiesTextStyle_Small = new TextStyle(fontSize: 12, color: Colors.white);
 TextStyle hauntNotRevealedTextStyle = new TextStyle(fontSize: 26, color: Colors.white);
 
-TextStyle hauntDropdownsTextStyle = new TextStyle(fontSize: 20, color: Colors.white);
+TextStyle hauntDropdownsTextStyle = new TextStyle(fontSize: 25, color: Colors.white);
 TextStyle hauntTextTextStyle = new TextStyle(fontSize: 24, color: Colors.white);
 
 TextStyle useExpansionCheckboxTextStyle = new TextStyle(fontSize: 14, color: Colors.white);

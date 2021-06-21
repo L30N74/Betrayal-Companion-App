@@ -110,26 +110,11 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
     return Container(
       margin: EdgeInsets.only(top: 20),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Column(
-            children: [
-              Text("Which room?", style: hauntTextTextStyle,),
-              HauntRoomSelection(
-                width: 200,
-                height: 60,
-              ),
-            ],
-          ),
+          HauntDropdown(HauntDecisions.Room),
           Divider(),
-          Column(
-            children: [
-              Text("Which Omen?", style: hauntTextTextStyle,),
-              HauntOmenSelection(
-                width: 200,
-                height: 60,
-              ),
-            ],
-          ),
+          HauntDropdown(HauntDecisions.Omen),
           CheckboxListTile(
             title: Text("Use Widow's Walk Expansion", style: useExpansionCheckboxTextStyle, textAlign: TextAlign.right,),
             value: Logic.useExpansion,
