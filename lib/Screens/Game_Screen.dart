@@ -264,24 +264,29 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          DropdownButton(
-            icon: const Icon(Icons.arrow_drop_down),
-            iconSize: 50,
-            iconEnabledColor: Colors.black,
-            value: _selectedPage,
-            items: pages.map((String text) {
-              return DropdownMenuItem(
-                value: text,
-                child: (text == pages.first)
-                    ? Center(child: Text(text, style: TextStyle(fontSize: 40, color: Colors.black),))
-                    : Center(child: Text(text, style: TextStyle(fontSize: 30, color: Colors.black),)),
-              );
-            }).toList(),
-            onChanged: (newValue) {
-              setState(() {
-                _selectedPage = newValue;
-              });
-            },
+          Theme(
+            data: Theme.of(context).copyWith(
+              canvasColor: darkGreyColor,
+            ),
+            child: DropdownButton(
+              icon: const Icon(Icons.arrow_drop_down),
+              iconSize: 50,
+              iconEnabledColor: Colors.white,
+              value: _selectedPage,
+              items: pages.map((String text) {
+                return DropdownMenuItem(
+                  value: text,
+                  child: (text == pages.first)
+                      ? Center(child: Text(text, style: TextStyle(fontSize: 40, color: Colors.white),))
+                      : Center(child: Text(text, style: TextStyle(fontSize: 30, color: Colors.white),)),
+                );
+              }).toList(),
+              onChanged: (newValue) {
+                setState(() {
+                  _selectedPage = newValue;
+                });
+              },
+            ),
           ),
           Container(
             child: (_selectedPage == pages.first)
