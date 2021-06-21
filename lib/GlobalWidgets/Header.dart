@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
-  String text;
+  final String text;
 
   Header(this.text);
 

@@ -59,7 +59,8 @@ class _HauntDropDownState extends State<HauntDropdown> {
                 hint: Center(child: hintText),
                 value: _selected,
                 icon: const Icon(Icons.keyboard_arrow_down),
-                iconSize: 24,
+                iconSize: 32,
+                iconEnabledColor: Colors.white,
                 elevation: 16,
                 isExpanded: true,
                 onChanged: (newValue) =>

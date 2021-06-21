@@ -2,7 +2,6 @@ import 'package:betrayalcompanionapp/Screens/Game_Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
-import 'package:betrayalcompanionapp/GameLogic/HauntInformation.dart';
 
 void main() => runApp(MainPage());
 

@@ -7,7 +7,7 @@ import 'package:betrayalcompanionapp/Screens/Game_Screen.dart';
 import 'package:flutter/material.dart';
 
 class CharacterDetails extends StatefulWidget {
-  Character character;
+  final Character character;
 
   CharacterDetails(this.character);
 

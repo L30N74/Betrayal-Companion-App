@@ -28,7 +28,7 @@ class Logic {
     throw new Exception("No Character with the name \"$name\"");
   }
 
-  static Character RemoveCharacterPairFromList(CharacterColor color) {
+  static void RemoveCharacterPairFromList(CharacterColor color) {
     switch(color) {
       case CharacterColor.White:
         characters.remove(Logic.GetCharacterByName("Professor Longfellow"));

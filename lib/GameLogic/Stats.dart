@@ -57,20 +57,24 @@ class Stats {
   }
 
   bool IsCurrentIndex(String stat, int index) {
+    bool val = false;
+
     switch(stat) {
       case "Might":
-        return (mightIndex == index);
+        val = (mightIndex == index);
         break;
       case "Speed":
-        return (speedIndex == index);
+        val = (speedIndex == index);
         break;
       case "Sanity":
-        return (sanityIndex == index);
+        val = (sanityIndex == index);
         break;
       case "Knowledge":
-        return (knowledgeIndex == index);
+        val = (knowledgeIndex == index);
         break;
     }
+
+    return val;
   }
 
   void SetStatIndex(String stat, int index) {

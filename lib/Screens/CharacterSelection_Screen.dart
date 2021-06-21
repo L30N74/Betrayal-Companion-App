@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class CharacterSelection_Screen extends StatefulWidget {
-  int playerCount;
+  final int playerCount;
 
   CharacterSelection_Screen(this.playerCount);
 
