@@ -7,6 +7,7 @@ import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/Screens/Character_Details.dart';
 import 'package:betrayalcompanionapp/GameLogic/GlobalMethods.dart';
 import 'package:betrayalcompanionapp/main.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class Game extends StatelessWidget {
@@ -28,6 +29,11 @@ class GameWidget extends StatefulWidget {
 class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateMixin{
   var _controller;
 
+  var carouselOptions;
+  var carouselIndex = 10;
+
+  String _selectedPage = "Omen In Play";
+
   @override
   void initState() {
     _controller = TabController(vsync: this, length: 3, initialIndex: 0);
@@ -36,6 +42,8 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    carouselOptions = new CarouselOptions(height: 150, enableInfiniteScroll: true, initialPage: carouselIndex, enlargeCenterPage: true, onPageChanged: (index, _) => carouselIndex = index);
+
     return SafeArea(
         child: Scaffold(
             body: Container(
@@ -54,7 +62,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                       controller: _controller,
                       children: [
                         PlayerGamePage(),
-                        OmenCountPage(),
+                        OmenAndTrackPage(),
                         HauntRevealPage()
                       ],
                     ),
@@ -249,63 +257,121 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
 //    );
 //  }
 
-  Container OmenCountPage() {
+  Container OmenAndTrackPage() {
+    List<String> pages = ["Omen In Play", "Turn/Damage Track"];
+
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Text(
-            "Omen In Play",
-            style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline),
+          DropdownButton(
+            icon: const Icon(Icons.arrow_drop_down),
+            iconSize: 50,
+            iconEnabledColor: Colors.black,
+            value: _selectedPage,
+            items: pages.map((String text) {
+              return DropdownMenuItem(
+                value: text,
+                child: (text == pages.first)
+                    ? Center(child: Text(text, style: TextStyle(fontSize: 40, color: Colors.black),))
+                    : Center(child: Text(text, style: TextStyle(fontSize: 30, color: Colors.black),)),
+              );
+            }).toList(),
+            onChanged: (newValue) {
+              setState(() {
+                _selectedPage = newValue;
+              });
+            },
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: SizedBox(
-                  height: 50,
-                  width: 60,
-                  child: RaisedButton(
-                    child: Text("-", style: TextStyle(fontSize: 25, color: Colors.black),),
-                    onPressed: () {
-                      setState(() {
-                        Logic.omenInPlay--;
-
-                        if(Logic.omenInPlay < 0) Logic.omenInPlay = 0;
-                      });
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 60,
-                child: Center(
-                  child: Text(
-                    Logic.omenInPlay.toString(),
-                    style: TextStyle(fontSize: 48, color: Colors.white),
-                  ),
-                ),
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: SizedBox(
-                  height: 50,
-                  width: 60,
-                  child: RaisedButton(
-                    child: Text("+", style: TextStyle(fontSize: 25, color: Colors.black),),
-                    onPressed: () {
-                      setState(() {
-                        Logic.omenInPlay++;
-                      });
-                    },
-                  ),
-                ),
-              ),
-            ],
+          Container(
+            child: (_selectedPage == pages.first)
+                ? OmenPage()
+                : TurnDamageTrackPage(),
           ),
           Divider(),
         ],
+      ),
+    );
+  }
+
+  Container OmenPage() {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: SizedBox(
+              height: 50,
+              width: 60,
+              child: RaisedButton(
+                child: Text("-", style: TextStyle(fontSize: 25, color: Colors.black),),
+                onPressed: () {
+                  setState(() {
+                    Logic.omenInPlay--;
+
+                    if(Logic.omenInPlay < 0) Logic.omenInPlay = 0;
+                  });
+                },
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 60,
+            child: Center(
+              child: Text(
+                Logic.omenInPlay.toString(),
+                style: TextStyle(fontSize: 48, color: Colors.white),
+              ),
+            ),
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: SizedBox(
+              height: 50,
+              width: 60,
+              child: RaisedButton(
+                child: Text("+", style: TextStyle(fontSize: 25, color: Colors.black),),
+                onPressed: () {
+                  setState(() {
+                    Logic.omenInPlay++;
+                  });
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container TurnDamageTrackPage() {
+    final items = List<String>.generate(13, (i) => "$i");
+
+    return Container(
+      height: 150,
+      child: SingleChildScrollView(
+        child: new CarouselSlider(
+          options: carouselOptions,
+          items: items.map((item) => Container(
+            decoration: BoxDecoration(
+                color: darkGreyColor,
+                borderRadius: BorderRadius.all(Radius.circular(30),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 15
+                  )
+                ]
+            ),
+            child: Center(
+              child: Text(
+                item,
+                style: TextStyle(color: Colors.white, fontSize: 32),
+              ),
+            ),
+          )).toList(),
+        ),
       ),
     );
   }

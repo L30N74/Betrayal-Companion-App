@@ -30,7 +30,7 @@ class NewGameWidget extends StatefulWidget {
 class NewGameWidgetState extends State<NewGameWidget> {
   PageController _controller;
 
-  int playerCount = 2;
+  int playerCount = 3;
 
   double screenHeight;
   double screenWidth;
@@ -38,7 +38,7 @@ class NewGameWidgetState extends State<NewGameWidget> {
   @override
   void initState() {
     super.initState();
-    _controller = PageController(initialPage: 0, viewportFraction: 0.5);
+    _controller = PageController(initialPage: 1, viewportFraction: 0.5);
   }
 
 
