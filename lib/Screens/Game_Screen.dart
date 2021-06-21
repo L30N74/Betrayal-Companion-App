@@ -346,11 +346,17 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                         textAlign: TextAlign.center),
                     ),
                     Container(
-                        child:  Image(
+                      child: Stack(
+                        children: [
+                          Image(image: AssetImage(Logic.players[index].imagePath), height: 90, width: 90),
+                          if(Logic.players[index].isDead) Image(image: AssetImage("assets/images/dead_border.png"), height: 90, width: 90,),
+                        ],
+                      ),
+                        /*child:  Image(
                           image: AssetImage(Logic.players[index].imagePath),
                           width: 90,
                           height: 90
-                        )
+                        )*/
                     ),
                   ],
                 ),
