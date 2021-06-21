@@ -54,7 +54,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
                       controller: _controller,
                       children: [
                         PlayerGamePage(),
-                        HauntCountPage(),
+                        OmenCountPage(),
                         HauntRevealPage()
                       ],
                     ),
@@ -249,34 +249,62 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
 //    );
 //  }
 
-  Container HauntCountPage() {
+  Container OmenCountPage() {
     return Container(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
             "Omen In Play",
             style: TextStyle(fontSize: 54, color: Colors.white, decoration: TextDecoration.underline),
           ),
-          Text(
-            Logic.omenInPlay.toString(),
-            style: TextStyle(fontSize: 48, color: Colors.white),
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(50),
-            child: SizedBox(
-              height: 80,
-              width: 200,
-              child: RaisedButton(
-                child: Icon(Icons.add),
-                onPressed: () {
-                  setState(() {
-                    Logic.omenInPlay++;
-                  });
-                },
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: SizedBox(
+                  height: 50,
+                  width: 60,
+                  child: RaisedButton(
+                    child: Text("-", style: TextStyle(fontSize: 25, color: Colors.black),),
+                    onPressed: () {
+                      setState(() {
+                        Logic.omenInPlay--;
+
+                        if(Logic.omenInPlay < 0) Logic.omenInPlay = 0;
+                      });
+                    },
+                  ),
+                ),
               ),
-            ),
+              SizedBox(
+                width: 60,
+                child: Center(
+                  child: Text(
+                    Logic.omenInPlay.toString(),
+                    style: TextStyle(fontSize: 48, color: Colors.white),
+                  ),
+                ),
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: SizedBox(
+                  height: 50,
+                  width: 60,
+                  child: RaisedButton(
+                    child: Text("+", style: TextStyle(fontSize: 25, color: Colors.black),),
+                    onPressed: () {
+                      setState(() {
+                        Logic.omenInPlay++;
+                      });
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
+          Divider(),
         ],
       ),
     );
