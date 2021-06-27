@@ -12,6 +12,7 @@ class Logic {
   static List<Character> players = new List<Character>(); //Characters the players chose
 
   static int omenInPlay = 0;
+  static int turnDamageState = 10;
 
   static bool isHauntRevealed = false;
   static bool useExpansion = false;
@@ -167,13 +168,13 @@ class Logic {
   }
 
   static void DetermineHaunt() {
-    String room = revealedHauntInformation.room.name;
-    String omen = revealedHauntInformation.omen.name;
+    String room = Logic.revealedHauntInformation.room.name;
+    String omen = Logic.revealedHauntInformation.omen.name;
 
     SQLiteDbProvider.db.
     getHauntByRoomAndOmen(room, omen).then(
       (haunt) {
-        revealedHauntInformation = new HauntInformation(
+        Logic.revealedHauntInformation = new HauntInformation(
           hauntName: haunt.hauntName,
           hauntNumber: haunt.hauntNumber,
           traitorProperties: haunt.traitorProperties

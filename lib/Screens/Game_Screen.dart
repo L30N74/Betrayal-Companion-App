@@ -26,21 +26,20 @@ class GameWidget extends StatefulWidget {
 
 class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateMixin{
   var _controller;
-
-  var carouselOptions;
-  var carouselIndex = 10;
+  var _carouselController = CarouselController();
 
   String _selectedPage = "Omen In Play";
 
   @override
   void initState() {
-    _controller = TabController(vsync: this, length: 3, initialIndex: 0);
     super.initState();
+    _controller = new TabController(vsync: this, length: 3, initialIndex: 0);
+    _carouselController = CarouselController();
   }
 
   @override
   Widget build(BuildContext context) {
-    carouselOptions = new CarouselOptions(height: 150, enableInfiniteScroll: true, initialPage: carouselIndex, enlargeCenterPage: true, onPageChanged: (index, _) => carouselIndex = index);
+    if(_carouselController == null)  _carouselController = CarouselController();
 
     return SafeArea(
         child: Scaffold(
@@ -115,9 +114,6 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
   }
 
   Container HauntDormentPage() {
-    print(Logic.revealedHauntInformation.omen.name);
-    print(Logic.revealedHauntInformation.room.name);
-
     return Container(
       margin: EdgeInsets.only(top: 20),
       child: Column(
@@ -358,7 +354,17 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
       height: 150,
       child: SingleChildScrollView(
         child: new CarouselSlider(
-          options: carouselOptions,
+          carouselController: _carouselController,
+          options: CarouselOptions(
+              height: 150,
+              enableInfiniteScroll: true,
+              initialPage: Logic.turnDamageState,
+              enlargeCenterPage: true,
+              onPageChanged: (index, _) =>
+                  setState(() {
+                    Logic.turnDamageState = index;
+                  })
+          ),
           items: items.map((item) => Container(
             decoration: BoxDecoration(
                 color: darkGreyColor,
