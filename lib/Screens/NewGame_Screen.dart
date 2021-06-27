@@ -148,7 +148,7 @@ class NewGameWidgetState extends State<NewGameWidget> {
             ]
         ),
         margin: const EdgeInsets.all(0.2),
-        child: Center(child: Text((index+2).toString() + " Spieler", style: TextStyle(fontSize: 24, color: Colors.white))),
+        child: Center(child: Text((index+2).toString() + " Players", style: TextStyle(fontSize: 24, color: Colors.white))),
       ),
     );
   }
@@ -171,7 +171,6 @@ class NewGameWidgetState extends State<NewGameWidget> {
         // Check if 2 Players was selected
         if(playerCount == 2){
           //Choose a third player
-          //TODO: Redirect to coin flipping to determine which player plays two characters
           Navigator.push(context, MaterialPageRoute(builder: (context) => CoinFlip()));
         }
         else
@@ -179,23 +178,4 @@ class NewGameWidgetState extends State<NewGameWidget> {
       }
     );
   }
-
-//  Widget get _randomizePlayerButton(context) => RaisedButton(
-//    child: Text("Randomize Players", style: TextStyle(fontSize: 40)),
-//    onPressed: (){
-//      playerCount  = int.parse(selectedPlayerCount.split(" ")[0]);
-//
-//      RandomizePlayers();
-//
-//      // Check if 2 Players was selected
-//      if(playerCount == 2){
-//        // TODO: Choose a third player
-//      }
-//      else {
-//        //                    Logic.CreateAlertDialog(context);
-//      }
-//
-//      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
-//    },
-//  );
 }

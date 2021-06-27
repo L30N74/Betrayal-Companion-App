@@ -107,12 +107,12 @@ class _CharacterSelection_ScreenState extends State<CharacterSelection_Screen> {
               });
 
               if(playerCount == 2 && Logic.players.length == 2){
-                //Two-Player mode: Redirect to Coinflip to determine who plays as two characters
+                // Two-Player mode: Redirect to Coinflip to determine who plays as two characters
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => CoinFlip()));
               }
               else if(Logic.players.length >= playerCount) {
+				// All players have been selected. Redirect to game screen
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => Game()));
-//                Logic.CreateAlertDialog(context);
               }
             })
         ],

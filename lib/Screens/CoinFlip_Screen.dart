@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:betrayalcompanionapp/GlobalWidgets/Header.dart';
 import 'package:betrayalcompanionapp/Screens/CharacterSelection_Screen.dart';
 import 'package:betrayalcompanionapp/Screens/Game_Screen.dart';
@@ -52,21 +51,24 @@ class _CoinFlipWidgetState extends State<CoinFlipWidget> {
                   ),
                 ),
                 Expanded(
-                  child: Column(
-                    children: [
-                      SizedBox(height: 30,),
-                      CoinContainer(),
-                      SizedBox(height: 30,),
-                      PlayerChoicesContainer(),
-                      RaisedButton(
-                        child: Text("Flip", style: TextStyle(fontSize: 26, color: Colors.black),),
-                        onPressed: () {
-                          setState(() {
-                            FlipCoin();
-                          });
-                        },
-                      ),
-                    ],
+                  child: SingleChildScrollView(
+                    controller: new ScrollController(),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 30,),
+                        CoinContainer(),
+                        SizedBox(height: 30,),
+                        PlayerChoicesContainer(),
+                        RaisedButton(
+                          child: Text("Flip", style: TextStyle(fontSize: 26, color: Colors.black),),
+                          onPressed: () {
+                            setState(() {
+                              FlipCoin();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -86,13 +88,21 @@ class _CoinFlipWidgetState extends State<CoinFlipWidget> {
   }
 
   Container CoinContainer() {
+    double width = MediaQuery.of(context).size.width / 1.2;
+
     return Container(
       child: Column(
         children: [
-          Container(
-            height: 300,
-            width: 300,
-            child: (result == "Heads") ? Image(image: AssetImage("assets/images/coin_heads.png"),) : Image(image: AssetImage("assets/images/coin_tails.png"),),
+          InkWell(
+            onTap: () =>
+                setState(() {
+                  FlipCoin();
+                }),
+            child: Container(
+              height: width,
+              width: width,
+              child: (result == "Heads") ? Image(image: AssetImage("assets/images/coin_heads.png"),) : Image(image: AssetImage("assets/images/coin_tails.png"),),
+            ),
           )
         ],
       ),
