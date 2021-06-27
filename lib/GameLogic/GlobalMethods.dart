@@ -16,7 +16,7 @@ class Logic {
   static bool isHauntRevealed = false;
   static bool useExpansion = false;
 
-  static HauntInformation revealedHauntInformation;
+  static HauntInformation revealedHauntInformation = new HauntInformation.empty();
 
 
   static Character GetCharacterByName(String name) {

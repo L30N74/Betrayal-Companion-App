@@ -115,6 +115,9 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
   }
 
   Container HauntDormentPage() {
+    print(Logic.revealedHauntInformation.omen.name);
+    print(Logic.revealedHauntInformation.room.name);
+
     return Container(
       margin: EdgeInsets.only(top: 20),
       child: Column(
@@ -213,7 +216,7 @@ class _GameWidgetState extends State<GameWidget> with SingleTickerProviderStateM
               ),
               Align(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     FlatButton(
                       onPressed: () {
