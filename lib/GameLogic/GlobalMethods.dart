@@ -61,73 +61,85 @@ class Logic {
   static void InitializeCharacterLists(){
     players = new List<Character>();
 
-    Stats stats_Rheinhardt = new Stats([2, 3, 3, 4, 5, 6, 7, 7], 2,
+    Stats stats_Rheinhardt = new Stats(
+        [2, 3, 3, 4, 5, 6, 7, 7], 2,
         [1, 2, 2, 4, 4, 5, 5, 7], 2,
         [3, 4, 5, 5, 6, 7, 7, 8], 4,
         [1, 3, 3, 4, 5, 6, 6, 8], 3);
     String hobbies_Rheinhardt = "Fencing, Gardening";
 
-    Stats stats_Longfellow = new Stats([2, 3, 3, 4, 5, 6, 7, 7], 2,
-        [1, 2, 2, 4, 4, 5, 5, 7], 2,
-        [3, 4, 5, 5, 6, 7, 7, 8], 4,
-        [1, 3, 3, 4, 5, 6, 6, 8], 3);
+    Stats stats_Longfellow = new Stats(
+        [2, 2, 4, 4, 5, 5, 6, 6], 3,
+        [1, 2, 3, 4, 5, 5, 6, 6], 2,
+        [1, 3, 3, 4, 5, 5, 6, 7], 2,
+        [4, 5, 5, 5, 5, 6, 7, 8], 4);
     String hobbies_Longfellow = "Gaelic Music, Drama, Fine Wines";
 
-    Stats stats_Granville = new Stats([3, 3, 4, 5, 6, 6, 7, 8], 2,
+    Stats stats_Granville = new Stats(
+        [3, 3, 4, 5, 6, 6, 7, 8], 2,
         [3, 3, 3, 4, 5, 6, 7, 8], 2,
         [3, 3, 3, 4, 5, 6, 6, 6], 2,
         [2, 3, 3, 4, 5, 6, 7, 8], 4);
     String hobbies_Granville = "Television, Shopping";
 
-    Stats stats_LeClerc = new Stats([2, 3, 4, 4, 4, 5, 6, 8], 3,
+    Stats stats_LeClerc = new Stats(
+        [2, 3, 4, 4, 4, 5, 6, 8], 3,
         [3, 4, 4, 4, 4, 5, 6, 8], 2,
         [1, 1, 2, 4, 4, 4, 5, 6], 4,
         [2, 3, 3, 4, 4, 5, 6, 8], 2);
     String hobbies_LeClerc = "Reading, Soccer";
 
-    Stats stats_Lopez = new Stats([3, 4, 4, 4, 4, 6, 7, 8], 3,
+    Stats stats_Lopez = new Stats(
+        [3, 4, 4, 4, 4, 6, 7, 8], 3,
         [2, 2, 2, 4, 4, 5, 6, 6], 2,
         [4, 4, 4, 5, 6, 7, 8, 8], 2,
         [4, 5, 5, 5, 5, 6, 6, 7], 3);
     String hobbies_Lopez = "Old Movies, Horses";
 
-    Stats stats_Zostra = new Stats([2, 3, 3, 5, 5, 6, 6, 7], 2,
+    Stats stats_Zostra = new Stats(
+        [2, 3, 3, 5, 5, 6, 6, 7], 2,
         [2, 3, 3, 4, 5, 5, 5, 6], 3,
         [4, 4, 4, 5, 6, 7, 8, 8], 2,
         [1, 3, 4, 4, 4, 5, 6, 6], 3);
     String hobbies_Zostra = "Astrology, Cooking, Baseball";
 
-    Stats stats_Akimoto = new Stats([3, 3, 3, 4, 6, 6, 7, 7], 3,
+    Stats stats_Akimoto = new Stats(
+        [3, 3, 3, 4, 6, 6, 7, 7], 3,
         [2, 3, 3, 4, 5, 5, 6, 8], 2,
         [3, 4, 4, 4, 5, 6, 6, 7], 3,
         [3, 4, 4, 5, 6, 7, 7, 8], 2);
     String hobbies_Akimoto = "Bugs, Basketball";
 
-    Stats stats_Jaspers = new Stats([3, 4, 4, 4, 5, 6, 7, 8], 2,
+    Stats stats_Jaspers = new Stats(
+        [3, 4, 4, 4, 5, 6, 7, 8], 2,
         [2, 3, 3, 4, 5, 6, 6, 7], 3,
         [3, 3, 3, 4, 5, 6, 7, 8], 3,
         [1, 3, 3, 5, 5, 6, 6, 7], 2);
     String hobbies_Jaspers = "Computers, Camping, Hockey";
 
-    Stats stats_Ingstrom = new Stats([4, 4, 4, 4, 5, 6, 8, 8], 3,
+    Stats stats_Ingstrom = new Stats(
+        [4, 4, 4, 4, 5, 6, 8, 8], 3,
         [2, 2, 3, 3, 4, 4, 6, 7], 3,
         [3, 4, 5, 5, 6, 6, 7, 8], 2,
         [1, 2, 3, 4, 4, 5, 5, 5], 2);
     String hobbies_Ingstrom = "Dolls, Music";
 
-    Stats stats_Dubourde = new Stats([3, 4, 5, 6, 6, 6, 7, 7], 2,
+    Stats stats_Dubourde = new Stats(
+        [3, 4, 5, 6, 6, 6, 7, 7], 2,
         [2, 3, 3, 3, 4, 5, 6, 7], 3,
         [1, 2, 3, 4, 5, 5, 6, 7], 2,
         [2, 3, 4, 4, 5, 6, 6, 6], 3);
     String hobbies_Dubourde = "Swimming, Medicine";
 
-    Stats stats_Williams = new Stats([4, 4, 4, 5, 6, 7, 7, 8], 4,
+    Stats stats_Williams = new Stats(
+        [4, 4, 4, 5, 6, 7, 7, 8], 4,
         [2, 3, 3, 4, 5, 6, 6, 7], 2,
         [1, 2, 3, 4, 5, 5, 5, 7], 2,
         [2, 3, 3, 4, 5, 5, 5, 7], 2);
     String hobbies_Williams = "Track, Music, Shakespearean Literature";
 
-    Stats stats_Bellows = new Stats([2, 2, 2, 3, 4, 5, 5, 6], 4,
+    Stats stats_Bellows = new Stats(
+        [2, 2, 2, 3, 4, 5, 5, 6], 4,
         [4, 5, 5, 6, 6, 7, 8, 8], 2,
         [2, 2, 3, 4, 5, 5, 6, 7], 2,
         [2, 2, 3, 3, 5, 5, 6, 6], 2);
