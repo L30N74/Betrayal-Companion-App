@@ -167,13 +167,16 @@ class Logic {
     DateTime today = DateTime.now().toUtc();
     Character starter = players[0];
 
+    // Determine baseline
     final timeDifference = today.difference(players[0].birthday).inDays;
 
     for(Character c in players) {
       var difference =  today.difference(c.birthday).inDays;
 
-      if(difference < timeDifference)
+      if(difference < timeDifference) {
+        timeDifference = difference;
         starter = c;
+      }
     }
 
     return starter;
